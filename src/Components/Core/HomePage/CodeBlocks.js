@@ -31,7 +31,9 @@ function CodeBlocks({
 
 
             {/* Section 2 */}
-            <div className="flex text-[1rem] lg:w-[500px]">
+            <div className="flex text-[1rem] lg:w-[500px]
+            border-l-richblack-400 border-t-richblack-400 border-l-2 border-t-2
+            p-2 rounded-md relative">
                 {/* HW : Gradient */}
 
                 <div className="text-center flex flex-col w-[10%]
@@ -47,6 +49,7 @@ function CodeBlocks({
                     <p>9</p>
                     <p>10</p>
                     <p>11</p>
+                    <p>12</p>
                 </div>
 
                 <div className={`w-[90%] flex flex-col gap-2
@@ -62,6 +65,10 @@ function CodeBlocks({
                         }
                         omitDeletionAnimation = {true}
                     />
+                </div>
+
+                <div className={`absolute z-10 right-20 -top-20 inset-5 blur-3xl rounded-full opacity-25 ${backgroundGradient}`}>
+
                 </div>
 
             </div>
