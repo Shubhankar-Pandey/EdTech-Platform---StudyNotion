@@ -6,6 +6,11 @@ import Banner from "../assets/Images/banner.mp4"
 import CodeBlocks from "../Components/Core/HomePage/CodeBlocks";
 import TimeLineSection from "../Components/Core/HomePage/TimeLineSection";
 import LearningLanguageSection from "../Components/Core/HomePage/LearningLanguageSection";
+import BecomeAnInstructorSection from "../Components/Core/HomePage/BecomeAnInstructorSection";
+import Footer from "../Components/Core/Footer";
+
+
+
 
 function Home(){
     return (
@@ -174,7 +179,7 @@ function Home(){
                     </div>
                 </div>
                 
-                <div className="w-11/12 flex mx-auto mt-20 justify-between">
+                <div className="w-11/12 flex flex-col mx-auto mt-20 justify-between">
                     {/* Part 3 */}
                     <TimeLineSection/>
 
@@ -188,11 +193,14 @@ function Home(){
 
 
             {/***************** Section 3 *****************/}
+            <div className="w-11/12 mx-auto">
+                <BecomeAnInstructorSection/>
+            </div>
 
 
 
             {/***************** Section 4- Footer *****************/}
-
+            <Footer/>
 
 
         </div>
