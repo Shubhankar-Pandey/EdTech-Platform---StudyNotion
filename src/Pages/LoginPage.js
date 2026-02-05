@@ -136,10 +136,10 @@ function LoginPage(){
                 </div>
 
                 {/* Part 2 - image  */}
-                <div className="w-[40%] object-cover relative">
+                <div className="w-[40%] object-cover relative mt-6">
                     <img alt="frame" src={frame}/>
                     <img alt="loginPageImage" src={loginPageImage}
-                    className="absolute z-10 bottom-6 right-6"/>
+                    className="absolute z-10 -top-6 right-6"/>
                 </div>
 
             </div>

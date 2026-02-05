@@ -7,7 +7,7 @@ import CodeBlocks from "../Components/Core/HomePage/CodeBlocks";
 import TimeLineSection from "../Components/Core/HomePage/TimeLineSection";
 import LearningLanguageSection from "../Components/Core/HomePage/LearningLanguageSection";
 import BecomeAnInstructorSection from "../Components/Core/HomePage/BecomeAnInstructorSection";
-import Footer from "../Components/Core/Footer";
+import Footer from "../Components/Common/Footer";
 
 
 
