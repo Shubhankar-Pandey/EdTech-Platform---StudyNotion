@@ -88,9 +88,7 @@ function Navbar(){
                                                             <NavLink key={index} to={sublink.link}>
                                                             <p>{sublink.title}</p>
                                                             </NavLink>
-                                                        ))
-                                                    }
-
+                                                        )) }
                                                 </div>
 
                                                 
