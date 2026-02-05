@@ -1,4 +1,5 @@
-import loginPageImage from "../assets/Images/login.webp"
+import loginPageImage_for_Student from "../assets/Images/login.webp"
+import loginPageImage_for_Instructor from "../assets/Images/loginpageImageForInstructor.jpg"
 import frame from "../assets/Images/frame.png"
 import { NavLink } from "react-router-dom";
 import { CgAsterisk } from "react-icons/cg";
@@ -41,7 +42,7 @@ function LoginPage(){
     
     return (
         <div>
-            <div className="w-11/12 flex mx-auto mt-20 justify-evenly">
+            <div className="w-11/12 flex mx-auto mt-16 justify-evenly">
 
                 {/* Part 1 */}
                 <div className="w-[40%]">
@@ -127,7 +128,7 @@ function LoginPage(){
                         </div>
 
                         <button type="submit" className="mt-8 w-[80%] bg-yellow-50 p-2
-                        font-semibold rounded-md hover:scale-95 transition-all duration-200">
+                        rounded-md hover:scale-95 transition-all duration-200">
                             Login
                         </button>
 
@@ -138,8 +139,14 @@ function LoginPage(){
                 {/* Part 2 - image  */}
                 <div className="w-[40%] object-cover relative mt-6">
                     <img alt="frame" src={frame}/>
-                    <img alt="loginPageImage" src={loginPageImage}
-                    className="absolute z-10 -top-6 right-6"/>
+                    {
+                        formData.role === "Student" ?
+                        (<img alt="loginPageImage" src={loginPageImage_for_Student}
+                            className="absolute z-10 -top-6 right-6"/>) 
+                        : (<img alt="loginPageImage" src={loginPageImage_for_Instructor}
+                            className="lg:h-[425px] absolute z-10 -top-6 right-6"/>)
+                    }
+                    
                 </div>
 
             </div>
