@@ -105,8 +105,8 @@ function LoginPage(){
 
                                 <button
                                  type="button"
-                                 onClick={() => {
-                                    // e.preventDefault();
+                                 onClick={(e) => {
+                                    e.preventDefault();
                                     setVisible(!isVisible)
                                 }}
                                  className="absolute -translate-x-7 translate-y-3
@@ -124,7 +124,7 @@ function LoginPage(){
 
                         <div className="text-blue-200 flex justify-end
                         w-[80%] font-light text-sm p-1 hover:text-blue-50">
-                            <NavLink>Forgot Password</NavLink>
+                            <NavLink to="/resetPassword">Forgot Password</NavLink>
                         </div>
 
                         <button type="submit" className="mt-8 w-[80%] bg-yellow-50 p-2

@@ -4,6 +4,8 @@ import Home from "./Pages/Home";
 import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import Navbar from "./Components/Common/Navbar";
+import ResetPassword from "./Pages/ResetPassword";
+import UpdatePassword from "./Pages/UpdatePassword";
 
 
 
@@ -15,6 +17,8 @@ function App() {
         <Route path = "/" element = {<Home/>}/>
         <Route path = "/login" element = {<LoginPage/>}/>
         <Route path="/signup" element= {<SignupPage/>}></Route>
+        <Route path="/resetPassword" element = {<ResetPassword/>}></Route>
+        <Route path="/updatePassword/:id" element = {<UpdatePassword/>}></Route>
       </Routes>
     </div>
   );

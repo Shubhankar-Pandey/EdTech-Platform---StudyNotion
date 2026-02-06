@@ -7,12 +7,16 @@ const crypto = require("crypto");
 
 // ****************************** resetPasswordToken ******************************
 
-
+// here we receive email of the user 
+// with this email we will create a token
+// with this token we create a link, which is sent to email of user
+// means we also need to sent the email containing the url
+// url -> is create by token -> token is created by email
+// url is sent in email of the user 
 exports.resetPasswordToken = async(req, res) => {
     try{
         // get email from request body
         const {email} = req.body;
-
         // check user for this email, validation for email
         const user = await User.findOne({email});
         if(!user){
@@ -33,7 +37,7 @@ exports.resetPasswordToken = async(req, res) => {
         {new : true});
 
         // create url
-        const url = `https://localhost:3000/reset-password/${token}`;
+        const url = `http://localhost:3000/updatePassword/${token}`;
 
         // send mail containing the url
         await mailSender(email,
