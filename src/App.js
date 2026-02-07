@@ -6,6 +6,7 @@ import SignupPage from "./Pages/SignupPage";
 import Navbar from "./Components/Common/Navbar";
 import ResetPassword from "./Pages/ResetPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
+import VerifyEmail from "./Pages/VerifyEmail";
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/signup" element= {<SignupPage/>}></Route>
         <Route path="/resetPassword" element = {<ResetPassword/>}></Route>
         <Route path="/updatePassword/:id" element = {<UpdatePassword/>}></Route>
+        <Route path="/verify-email" element = {<VerifyEmail/>}></Route>
       </Routes>
     </div>
   );

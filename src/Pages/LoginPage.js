@@ -1,16 +1,21 @@
 import loginPageImage_for_Student from "../assets/Images/login.webp"
 import loginPageImage_for_Instructor from "../assets/Images/loginpageImageForInstructor.jpg"
 import frame from "../assets/Images/frame.png"
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CgAsterisk } from "react-icons/cg";
 import { useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 import { IoEyeOffSharp } from "react-icons/io5";
+import { login } from "../Services/operation/authAPI" 
+import { useDispatch } from "react-redux";
 
 
 function LoginPage(){
 
     const [isVisible, setVisible] = useState(false);
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [formData, setFormValue] = useState({
         role : "Student",
@@ -38,6 +43,13 @@ function LoginPage(){
             password : event.target.value,
         }));
     }
+
+
+    function handleOnSubmit(e){
+        e.preventDefault();
+        dispatch(login(formData.email, formData.password, navigate))
+    }
+
 
     
     return (
@@ -71,7 +83,7 @@ function LoginPage(){
                         </div>
                     </div>
                     
-                    <form>
+                    <form onSubmit={handleOnSubmit}>
                         <div className="flex flex-col mt-8">
                             <label htmlFor="email" className="text-white font-thin text-sm mb-1 flex">
                                 Email Address

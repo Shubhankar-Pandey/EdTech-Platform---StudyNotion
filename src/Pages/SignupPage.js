@@ -5,7 +5,11 @@ import signupPageImage_for_Student from "../assets/Images/signup.webp"
 import { CgAsterisk } from "react-icons/cg";
 import { IoEyeSharp } from "react-icons/io5";
 import { IoEyeOffSharp } from "react-icons/io5";
-
+import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { setSignupData } from "../Slices/authSlice";
+import { useNavigate } from "react-router-dom";
+import { sendOtp } from "../Services/operation/authAPI";
 
 
 
@@ -14,8 +18,12 @@ function SignupPage(){
     const [createPasswordVisible, setCreatePasswordVisible] = useState(false);
     const [confirmPasswordVisible, setconfirmPasswordVisible] = useState(false);
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    
+
     const [formData, setFormData] = useState({
-        role : "Student",
+        accountType : "Student",
         firstName : "",
         lastName : "",
         email : "",
@@ -26,7 +34,7 @@ function SignupPage(){
     function selectRoleHandler(user){
         setFormData(prev => ({
             ...prev,
-            role : user,
+            accountType : user,
         }))
     }
 
@@ -36,6 +44,35 @@ function SignupPage(){
             [e.target.name] : e.target.value,
         }))
     }
+
+    function handleOnSubmit(e){
+        e.preventDefault();
+
+        if(formData.createPassword !== formData.confirmPassword){
+            toast.error("Password do not match");
+            return;
+        }
+
+        const signupData = {
+            ...formData,
+        }
+
+        dispatch(setSignupData(signupData));
+
+        dispatch(sendOtp(formData.email, navigate))
+
+        setFormData({
+            accountType : "Student",
+            firstName: "",
+            lastName: "",
+            email: "",
+            createPassword: "",
+            confirmPassword: "",
+        })
+
+    }   
+
+
 
     return (
         <div>
@@ -54,21 +91,21 @@ function SignupPage(){
                         <div onClick={() => selectRoleHandler("Student")}
                         className = {`w-[50%] m-1 rounded-full flex items-center p-2
                          justify-center
-                          ${formData.role === "Student" ?
+                          ${formData.accountType === "Student" ?
                            "bg-richblack-900 border-richblack-200 border-2 text-white" :
                             "" }`}>
                             <p className="">Student</p>
                         </div>
                         <div onClick={() => selectRoleHandler("Instructor")}
                          className={`w-[50%] m-1 rounded-full flex items-center p-2 
-                         justify-center ${formData.role === "Instructor" ?
+                         justify-center ${formData.accountType === "Instructor" ?
                           "bg-richblack-900 border-richblack-200 border-2 text-white" :
                            "" }`}>
                             <p>Instructor</p>
                         </div>
                     </div>
 
-                    <form>
+                    <form onSubmit={handleOnSubmit}>
                         
                         {/* First Name  & Last Name */}
                         <div className="flex mt-8 gap-2">
@@ -86,7 +123,7 @@ function SignupPage(){
                                 value={formData.firstName}
                                 className="text-richblack-200  p-2
                                 bg-richblack-800 border-b border-richblack-600 rounded-md"
-                                placeholder="Enter email address"></input>
+                                placeholder="Enter first name"></input>
                             </div>
 
                             <div className="flex flex-col w-[40%]">
@@ -102,7 +139,7 @@ function SignupPage(){
                                 value={formData.lastName}
                                 className="text-richblack-200  p-2
                                 bg-richblack-800 border-b border-richblack-600 rounded-md"
-                                placeholder="Enter email address"></input>
+                                placeholder="Enter last name"></input>
                             </div>
 
                         </div>
@@ -217,7 +254,7 @@ function SignupPage(){
                 <div className="w-[40%] object-cover relative mt-6">
                     <img alt="frame" src={frame}/>
                     {
-                        formData.role === "Student" ?
+                        formData.accountType === "Student" ?
                         (<img alt="loginPageImage" src={signupPageImage_for_Student}
                             className="absolute z-10 -top-6 right-6"/>) 
                         : (<img alt="loginPageImage" src={signupPageImage_for_Instructor}

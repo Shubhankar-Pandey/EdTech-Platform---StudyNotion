@@ -55,6 +55,10 @@ exports.sendOTP = async(req, res) => {
 
         // create an entry in db
         await OTP.create({email, otp});
+        // otp schema me hi user ke mail pe otp send hoga
+        // using post middleware 
+        // check otp schema in model folder
+
 
         // return response
         return res.status(200).json({
@@ -84,6 +88,7 @@ exports.signUp = async(req, res) => {
              confirmPassword, accountType, otp} = req.body;
 
         let {email} = req.body;
+
 
         // request body me jo otp hai -> wo jab user email verfiy karne ke liye
         // apna email dekh ke otp likhega, to ye wo wala otp hai

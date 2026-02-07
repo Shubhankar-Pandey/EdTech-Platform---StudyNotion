@@ -33,7 +33,7 @@ const { auth } = require("../middleware/auth")
 router.post("/login", login)
 
 // Route for user signUp
-router.post("/signUp", signUp)
+router.post("/signup", signUp)
 
 // Route for sending OTP to the user's email
 router.post("/sendOTP", sendOTP)
