@@ -28,7 +28,7 @@ function Sidebar(){
 
 
     return (
-        <div>
+        <div className="bg-richblack-400">
             <div className="flex min-w-[222px] flex-col
              border-r-[1px] border-richblack-700 h-[calc(100vh - 3.5rem)]
              bg-richblack-800 py-10">
@@ -52,7 +52,7 @@ function Sidebar(){
                             {
                                 name : "Settings",
                                 path : "/dashboard/settings",
-                                icon : "VscSettingGear",
+                                icon : "VscSettingsGear",
                             }
                         }
                     />

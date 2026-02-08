@@ -7,6 +7,7 @@ import { matchPath, NavLink, useLocation } from "react-router-dom";
 function SidebarLink({link}){ 
 
     const Icon = Icons[link.icon];
+
     const location = useLocation(); 
     const dispatch = useDispatch();
 
@@ -20,7 +21,7 @@ function SidebarLink({link}){
             to={link.path}
             className={`${matchRoute(link.path) && "bg-yellow-100 opacity-30"}`}
         >
-            <div>
+            <div className="text-white">
                 <Icon/>
                 <span>{link.name}</span>
             </div>

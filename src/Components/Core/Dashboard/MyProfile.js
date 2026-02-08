@@ -10,7 +10,7 @@ function MyProfile(){
 
 
     return (
-        <div>
+        <div className="text-white">
 
             <h1>
                 My Profile

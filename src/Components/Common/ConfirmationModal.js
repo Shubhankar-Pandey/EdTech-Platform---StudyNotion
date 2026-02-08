@@ -1,5 +1,5 @@
 import { IconBase } from "react-icons";
-import ConfirmationModal from "./IconButton"
+import IconButton from "./IconButton"
 
 
 function ConfirmationModal({modalData}){
