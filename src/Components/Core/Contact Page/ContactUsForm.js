@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import CountryCodes from "../../../data/countrycode.json"
 
 
 function ContactUsForm(){
@@ -27,48 +28,152 @@ function ContactUsForm(){
 
 
     const submitContactForm = async(data) => {
-
+        console.log(data);
     }
 
 
     return (
-        <form onSubmit={handleSubmit(submitContactForm)}>
-
-            <div>
+        <form className="text-richblack-5 flex flex-col items-center gap-5"
+         onSubmit={handleSubmit(submitContactForm)}>
+        
+            {/* FirstName and LastName  */}
+            <div className="flex gap-5">
 
                 {/* First Name  */}
-                <label htmlFor="firstName">First Name</label>
-                <input
-                    type="text"
-                    placeholder="Enter first name"
-                    name="firstName"
-                    id="firstName"
-                    className="text-richblack-200 bg-richblack-800
-                    border-b border-richblack-600 rounded-md p-2"
-                    {...register("firstName", {required:true})}
-                />
-                {
-                    errors.firstName && (
-                        <span>Please enter your first name</span>
-                    )
-                }
-
+                <div className="flex flex-col">
+                    <label htmlFor="firstName">First Name</label>
+                    <input
+                        type="text"
+                        placeholder="Enter first name"
+                        name="firstName"
+                        id="firstName"
+                        className="text-richblack-200 bg-richblack-800
+                        border-b border-richblack-600 rounded-md p-2"
+                        {...register("firstName", {required:true})}
+                    />
+                    {
+                        errors.firstName && (
+                            <span>Please enter your first name</span>
+                        )
+                    }
+                </div>
 
                 {/* Last Name  */}
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                    type="text"
-                    placeholder="Enter last name"
-                    name="lastName"
-                    id="lastName"
-                    className="text-richblack-200 bg-richblack-800
-                    border-b border-richblack-600 rounded-md p-2"
-                    {...register("lastName")}
-                />
+                <div className="flex flex-col">
+                    <label htmlFor="lastName">Last Name</label>
+                    <input
+                        type="text"
+                        placeholder="Enter last name"
+                        name="lastName"
+                        id="lastName"
+                        className="text-richblack-200 bg-richblack-800
+                        border-b border-richblack-600 rounded-md p-2"
+                        {...register("lastName")}
+                    />
+                </div>                
 
             </div>
 
+            {/* Email  */}
+            <div className="flex flex-col">
+                <label htmlFor="email">Email</label>
+                    <input
+                        type="text"
+                        placeholder="Enter your email"
+                        name="email"
+                        id="email"
+                        className="text-richblack-200 bg-richblack-800
+                            border-b border-richblack-600 rounded-md p-2"
+                        {...register("email", {required:true})}
+                    />
+                    {
+                        errors.email && (
+                            <span>Please enter your email</span>
+                        )
+                    }
+            </div>
 
+            {/* Phone No.  */}
+            <div>
+
+                <label htmlFor="phonenumber">Phone Number</label>
+
+                <div className="flex gap-5">
+
+                    {/* Drop down  */}
+                    <select
+                        name="dropdown"
+                        id="dropdown"
+                        {...register("countryCode", {required:true})}
+                        className="text-richblack-200 bg-richblack-800
+                            border-b border-richblack-600 rounded-md p-2"
+                    >
+                        {
+                            CountryCodes.map((element, index) => (
+                                <option key={index} value={element.code}>
+                                    {element.code} -{element.country}
+                                </option>
+                            ))
+                        }
+                    </select>
+                    {
+                        errors.countryCode && (
+                            <span>Please select your country code</span>
+                        )
+                        
+                    }
+
+                    {/* Phone Number  */}
+                    <input
+                        className="text-richblack-200 bg-richblack-800
+                        border-b border-richblack-600 rounded-md p-2"
+                        type="number"
+                        placeholder="1234567890"
+                        name="phonenumber"
+                        id="phonenumber"
+                        {...register("phonenumber",
+                            {
+                                required: true,
+                                maxLength : {value:10, message : "Invalid phone number"},
+                                minLength : {value:8, message : "Invalid phone number"},
+                            })}
+                    />
+                    {
+                        errors.phonenumber && (
+                            <span>Please enter phone number</span>
+                        )
+                        
+                    }
+                    
+                </div>
+                
+
+            </div>
+            
+            {/* Message  */}
+            <div className="flex flex-col">
+                <label htmlFor="message">Message</label>
+                    <textarea
+                        placeholder="Enter your message"
+                        name="message"
+                        id="message"
+                        cols="30"
+                        rows="7"
+                        {...register("message", {required:true})}
+                        className="text-richblack-200 bg-richblack-800
+                            border-b border-richblack-600 rounded-md p-2"
+                    />
+                    {
+                        errors.message && (
+                            <span>Please enter your message</span>
+                        )
+                    }
+            </div>
+            
+            <button type="submit" className="bg-yellow-50 p-2
+                text-black rounded-md hover:scale-95 transition-all duration-200">
+                    Send Message
+            </button>
 
         </form>
     )

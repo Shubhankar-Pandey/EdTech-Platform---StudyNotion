@@ -7,6 +7,7 @@ import foundingStoryImage from "../assets/Images/FoundingStory.png";
 import StatsComponent from "../Components/Core/About Page/StatsComponent"
 import LearningGrid from "../Components/Core/About Page/LearningGrid"
 import ContactFormSection from "../Components/Core/About Page/ContactFormSection"
+import Footer from "../Components/Common/Footer"
 
 
 
@@ -144,6 +145,8 @@ function AboutPage(){
                 <ContactFormSection/>
             </section>
 
+            {/* Footer  */}
+            <Footer/>
         </div>
     )
 }

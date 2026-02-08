@@ -8,6 +8,7 @@ import ResetPassword from "./Pages/ResetPassword";
 import UpdatePassword from "./Pages/UpdatePassword";
 import VerifyEmail from "./Pages/VerifyEmail";
 import AboutPage from "./Pages/AboutPage";
+import MyProfile from "./Components/Core/Dashboard/MyProfile";
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/updatePassword/:id" element = {<UpdatePassword/>}></Route>
         <Route path="/verify-email" element = {<VerifyEmail/>}></Route>
         <Route path="/about" element={<AboutPage/>}></Route>
+        <Route path="dashboard/my-profile" element={<MyProfile/>}></Route>
       </Routes>
     </div>
   );

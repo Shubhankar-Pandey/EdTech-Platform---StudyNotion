@@ -49,7 +49,6 @@ export function sendOtp(email, navigate) {
 
 
 
-
 export function signUp(
   accountType,
   firstName,
@@ -94,7 +93,6 @@ export function signUp(
 
 
 
-
 export function login(email, password, navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
@@ -120,6 +118,7 @@ export function login(email, password, navigate) {
         dispatch(setUser({ ...response.data.user, image: userImage }))
 
       localStorage.setItem("token", JSON.stringify(response.data.token))
+      localStorage.setItem("user", JSON.stringify(response.data.user))
 
       navigate("/dashboard/my-profile")
       
@@ -136,7 +135,6 @@ export function login(email, password, navigate) {
 
 
 
-
 export function getPasswordResetToken(email, setEmailSent){
     return async(dispatch) => {
         dispatch(setLoading(true));
@@ -144,7 +142,7 @@ export function getPasswordResetToken(email, setEmailSent){
 
             const response = await apiConnector("POST", RESETPASSTOKEN_API, {email});
 
-            // console.log("Reset password token response.... = ", response);
+            console.log("Reset password token response.... = ", response);
 
             if(!response.data.success){
                 throw new Error(response.data.message);
@@ -161,9 +159,6 @@ export function getPasswordResetToken(email, setEmailSent){
         dispatch(setLoading(false));
     }
 }
-
-
-
 
 
 
@@ -189,6 +184,8 @@ export function resetPassword(password, confirmPassword, token){
         dispatch(setLoading(false));
     }
 }
+
+
 
 
 export function logout(navigate) {

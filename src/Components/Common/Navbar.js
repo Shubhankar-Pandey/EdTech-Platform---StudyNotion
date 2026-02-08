@@ -19,8 +19,8 @@ function Navbar(){
     const user = useSelector((state) => state.profile.user);
     const totalItems = useSelector((state) => state.cart.totalItems); 
 
-    console.log("user = ", user);
-    console.log("token", token);
+    // console.log("user = ", user);
+    // console.log("token", token);
 
     const location = useLocation();
 
