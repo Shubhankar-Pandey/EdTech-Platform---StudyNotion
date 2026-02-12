@@ -19,9 +19,6 @@ function Navbar(){
     const user = useSelector((state) => state.profile.user);
     const totalItems = useSelector((state) => state.cart.totalItems); 
 
-    // console.log("user = ", user);
-    // console.log("token", token);
-
     const location = useLocation();
 
     const [subLinks, setSubLinks] = useState([]);
@@ -78,20 +75,27 @@ function Navbar(){
                                                 transition-all duration-200
                                                 group-hover:visible
                                                 group-hover:opacity-100
-                                                lg:w-[300px]">
+                                                lg:w-[300px] z-10">
 
                                                     <div className="absolute left-32 rounded
                                                     -top-2 h-6 w-6 rotate-45 bg-richblack-5">
-
+                                                        
                                                     </div>
 
-                                                    {
-                                                        subLinks?.length > 0 &&
-                                                        subLinks.map((sublink, index) => (
-                                                            <NavLink key={index} to={sublink.link}>
-                                                            <p>{sublink.title}</p>
-                                                            </NavLink>
-                                                        )) }
+                                                    <div className="flex flex-col gap-4 mt-1">
+                                                        {
+                                                            subLinks?.length > 0 &&
+                                                            subLinks.map((sublink, index) => (
+                                                                <NavLink key={index} to={sublink.link}
+                                                                    className="hover:bg-richblack-50
+                                                                     p-2 rounded-md">
+                                                                    <p>{sublink.name}</p>
+                                                                </NavLink>
+                                                            )) 
+                                                        }
+                                                    </div>
+
+                                                    
                                                 </div>
 
                                                 

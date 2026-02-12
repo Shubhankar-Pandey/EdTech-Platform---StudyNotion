@@ -37,10 +37,10 @@ function ContactUsForm(){
          onSubmit={handleSubmit(submitContactForm)}>
         
             {/* FirstName and LastName  */}
-            <div className="flex gap-5">
+            <div className="flex w-full justify-between">
 
                 {/* First Name  */}
-                <div className="flex flex-col">
+                <div className="flex flex-col w-[45%]">
                     <label htmlFor="firstName">First Name</label>
                     <input
                         type="text"
@@ -59,7 +59,7 @@ function ContactUsForm(){
                 </div>
 
                 {/* Last Name  */}
-                <div className="flex flex-col">
+                <div className="flex flex-col w-[45%]">
                     <label htmlFor="lastName">Last Name</label>
                     <input
                         type="text"
@@ -75,11 +75,11 @@ function ContactUsForm(){
             </div>
 
             {/* Email  */}
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
                 <label htmlFor="email">Email</label>
                     <input
                         type="text"
-                        placeholder="Enter your email"
+                        placeholder="Enter your email address"
                         name="email"
                         id="email"
                         className="text-richblack-200 bg-richblack-800
@@ -94,11 +94,11 @@ function ContactUsForm(){
             </div>
 
             {/* Phone No.  */}
-            <div>
+            <div className="w-full">
 
                 <label htmlFor="phonenumber">Phone Number</label>
 
-                <div className="flex gap-5">
+                <div className="flex gap-5 justify-between">
 
                     {/* Drop down  */}
                     <select
@@ -106,7 +106,7 @@ function ContactUsForm(){
                         id="dropdown"
                         {...register("countryCode", {required:true})}
                         className="text-richblack-200 bg-richblack-800
-                            border-b border-richblack-600 rounded-md p-2"
+                            border-b border-richblack-600 rounded-md p-2 w-[30%]"
                     >
                         {
                             CountryCodes.map((element, index) => (
@@ -126,9 +126,9 @@ function ContactUsForm(){
                     {/* Phone Number  */}
                     <input
                         className="text-richblack-200 bg-richblack-800
-                        border-b border-richblack-600 rounded-md p-2"
+                        border-b border-richblack-600 rounded-md p-2 w-[65%]"
                         type="number"
-                        placeholder="1234567890"
+                        placeholder="91**********"
                         name="phonenumber"
                         id="phonenumber"
                         {...register("phonenumber",
@@ -151,7 +151,7 @@ function ContactUsForm(){
             </div>
             
             {/* Message  */}
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
                 <label htmlFor="message">Message</label>
                     <textarea
                         placeholder="Enter your message"
@@ -171,7 +171,8 @@ function ContactUsForm(){
             </div>
             
             <button type="submit" className="bg-yellow-50 p-2
-                text-black rounded-md hover:scale-95 transition-all duration-200">
+                text-black rounded-md hover:scale-95
+                 transition-all duration-200 w-full mt-4">
                     Send Message
             </button>
 

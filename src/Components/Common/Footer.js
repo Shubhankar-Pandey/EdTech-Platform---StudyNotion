@@ -73,7 +73,7 @@ function Footer(){
                             flex flex-col items-start gap-3">
                             {
                                 FooterLink2[0].links.map((subject, index) => (
-                                    <NavLink to={`${subject.link}`}>
+                                    <NavLink key={index} to={`${subject.link}`}>
                                         <p>{subject.title}</p>
                                     </NavLink>
                                 ))
@@ -87,7 +87,7 @@ function Footer(){
                             flex flex-col items-start gap-3">
                             {
                                 FooterLink2[1].links.map((subject, index) => (
-                                    <NavLink to={`${subject.link}`}>
+                                    <NavLink key={index} to={`${subject.link}`}>
                                         <p>{subject.title}</p>
                                     </NavLink>
                                 ))
@@ -101,7 +101,7 @@ function Footer(){
                             flex flex-col items-start gap-3">
                             {
                                 FooterLink2[2].links.map((subject, index) => (
-                                    <NavLink to={`${subject.link}`}>
+                                    <NavLink key={index} to={`${subject.link}`}>
                                         <p>{subject.title}</p>
                                     </NavLink>
                                 ))

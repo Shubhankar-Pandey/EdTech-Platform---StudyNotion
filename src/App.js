@@ -11,6 +11,7 @@ import AboutPage from "./Pages/AboutPage";
 import MyProfile from "./Components/Core/Dashboard/MyProfile";
 import PrivateRoute from "./Components/Core/Auth/PrivateRoute";
 import Dashboard from "./Pages/Dashboard";
+import ContactUs from "./Pages/ContactUs";
 
 
 
@@ -28,6 +29,7 @@ function App() {
         <Route path="/updatePassword/:id" element = {<UpdatePassword/>}></Route>
         <Route path="/verify-email" element = {<VerifyEmail/>}></Route>
         <Route path="/about" element={<AboutPage/>}></Route>
+        <Route path="/contact" element={<ContactUs/>}></Route>
 
         <Route
           element={

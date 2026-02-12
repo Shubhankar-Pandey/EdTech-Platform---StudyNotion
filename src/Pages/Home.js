@@ -8,6 +8,7 @@ import TimeLineSection from "../Components/Core/HomePage/TimeLineSection";
 import LearningLanguageSection from "../Components/Core/HomePage/LearningLanguageSection";
 import BecomeAnInstructorSection from "../Components/Core/HomePage/BecomeAnInstructorSection";
 import Footer from "../Components/Common/Footer";
+import ExploreSection from "../Components/Core/HomePage/ExploreSection";
 
 
 
@@ -133,7 +134,8 @@ function Home(){
                     />
                 </div>
 
-
+                {/* Explore Section  */}
+                <ExploreSection/>
 
             </div>
 
