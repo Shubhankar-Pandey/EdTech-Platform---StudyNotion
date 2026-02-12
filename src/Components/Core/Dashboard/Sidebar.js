@@ -28,11 +28,13 @@ function Sidebar(){
 
 
     return (
-        <div className="bg-richblack-400">
-            <div className="flex min-w-[222px] flex-col
-             border-r-[1px] border-richblack-700 h-[calc(100vh - 3.5rem)]
-             bg-richblack-800 py-10">
+        <div className="w-[18%]">
 
+            <div className="flex flex-col
+             border-r-[1px] border-richblack-700 
+             bg-richblack-800 py-10 h-full">
+                
+                {/* Sidebar links  */}
                 <div className="flex flex-col">
                     {
                         sidebarLinks.map((link) => {
@@ -46,7 +48,10 @@ function Sidebar(){
                     }
                 </div>
 
-                <div className="flex flex-col">
+                <div className="border-t border-richblack-600 w-[90%] mx-auto mt-4"></div>
+                
+                {/* Settings and logout button */}
+                <div className="flex flex-col mt-4">
                     <SidebarLink 
                         link={
                             {
@@ -71,7 +76,8 @@ function Sidebar(){
                             className="text-richblack-200"
                         >
 
-                        <div className="flex items-center gap-x-2 text-richblack-200">
+                        <div className="flex items-center gap-2 p-2 mx-4
+                        text-richblack-200">
                             <VscSignOut/>
                             <span>Logout</span>
                         </div>
@@ -82,9 +88,11 @@ function Sidebar(){
 
             </div>
 
-            {
-                confirmationModal && <ConfirmationModal modalData={confirmationModal} />
-            }
+            <div className="absolute z-10 mx-[40%] w-[30%] top-60">
+                {
+                    confirmationModal && <ConfirmationModal modalData={confirmationModal} />
+                }
+            </div>
         
         </div>
 
