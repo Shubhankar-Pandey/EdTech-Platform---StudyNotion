@@ -88,11 +88,10 @@ function Sidebar(){
 
             </div>
 
-            <div className="absolute z-10 mx-[40%] w-[30%] top-60">
-                {
-                    confirmationModal && <ConfirmationModal modalData={confirmationModal} />
-                }
-            </div>
+            {
+                confirmationModal && <ConfirmationModal modalData={confirmationModal} />
+            }
+
         
         </div>
 

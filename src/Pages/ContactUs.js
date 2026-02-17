@@ -21,7 +21,7 @@ function ContactUs(){
                         </div>
                         <div className="flex flex-col">
                             <p className="text-richblack-5 font-bold">
-                                Chat on us
+                                Chat with us
                             </p>
                             <p className="text-richblack-200 text-sm">
                                 Our friendly team is here to help.
