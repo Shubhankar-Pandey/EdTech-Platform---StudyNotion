@@ -21,6 +21,8 @@ router.get("/getUserDetails", auth, getAllUserDetails)
 
 // Get Enrolled Courses
 router.get("/getEnrolledCourses", auth, getEnrolledCourses)
+
+// Update Profile Picture
 router.put("/updateDisplayPicture", auth, updateDisplayPicture)
 
 

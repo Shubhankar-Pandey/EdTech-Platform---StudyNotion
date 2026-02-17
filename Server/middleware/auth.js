@@ -5,10 +5,23 @@ const jwt = require("jsonwebtoken");
 
 exports.auth = async(req, res, next) => {
     try{
-        // fetch token from req
-        const token = req.cookies.token;
-                            // req.body.token || 
-                        // req.header("Authorization").replace("Bearer ", "");
+
+        let token;
+
+        // 1️⃣ cookies
+        if (req.cookies?.token) {
+        token = req.cookies.token;
+        }
+
+        // 2️⃣ body (only if exists)
+        else if (req.body?.token) {
+        token = req.body.token;
+        }
+
+        // 3️⃣ authorization header
+        else if (req.header("Authorization")) {
+        token = req.header("Authorization").replace("Bearer ", "");
+        }
 
         // if token missing
         if(!token){

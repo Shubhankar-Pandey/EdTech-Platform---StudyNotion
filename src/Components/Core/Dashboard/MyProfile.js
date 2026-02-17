@@ -10,9 +10,6 @@ function MyProfile(){
     const {user} = useSelector((state) => state.profile);
     const navigate = useNavigate();
 
-    console.log("user : ", user);
-
-
     return (
         <div className="text-white w-full">
 
