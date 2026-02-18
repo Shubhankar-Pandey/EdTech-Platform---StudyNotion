@@ -15,6 +15,9 @@ import ContactUs from "./Pages/ContactUs";
 import EnrolledCourses from "./Components/Core/Dashboard/EnrolledCourses";
 import Cart from "./Components/Core/Dashboard/Cart/Cart";
 import { useSelector } from "react-redux";
+import Setting from "./Components/Core/Dashboard/Settings/Setting";
+
+
 
 
 
@@ -48,7 +51,7 @@ function App() {
           <Route path="dashboard/my-profile" element={<MyProfile/>}></Route>
           
           {
-            user.accountType === "Student" && (
+            user?.accountType === "Student" && (
               <>
                 <Route path="dashboard/enrolled-courses" element={<EnrolledCourses/>}></Route>
                 <Route path="dashboard/cart" element={<Cart/>}></Route>
@@ -56,7 +59,7 @@ function App() {
             )
           }
           
-          
+          <Route path="dashboard/settings" element={<Setting/>}></Route>
         </Route>
 
 
