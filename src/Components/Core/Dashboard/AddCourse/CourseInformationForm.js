@@ -306,7 +306,7 @@ function CourseInformationForm(){
                 />
                 
                 {/* Buttons at last  */}
-                <div>
+                <div className="mt-10 flex justify-end">
                     {
                         editCourse && (
                             <button 
@@ -317,7 +317,8 @@ function CourseInformationForm(){
                     }
 
                     <IconButton
-                        customClasses={"bg-yellow-50 px-6 py-2 rounded-md text-richblack-900 font-bold transition-all duration-200 hover:scale-95"}
+                        customClasses="bg-yellow-50 px-6 py-2 rounded-md 
+                        text-richblack-900 font-bold transition-all duration-200 hover:scale-95"
                         text = {!editCourse ? "Next" : "Save Changes"}
                     />
                 </div>
