@@ -9,6 +9,8 @@ const  {uploadImageToCloudinary} = require("../utils/imageUploader");
 
 exports.createCourse = async(req, res) => {
     try{
+
+        // console.log("request : ", req.body);
         // fetch data 
         const {courseName, courseDescription,
              whatYouWillLearn, price, category} = req.body;
@@ -27,6 +29,7 @@ exports.createCourse = async(req, res) => {
         
         // need to insert instructor in course schema
         // for this need to get instruction name 
+        // console.log("req.user : ", req.user);
         const userId = req.user.id;
         const instructorDetails = await User.findById(userId);
 
@@ -37,8 +40,8 @@ exports.createCourse = async(req, res) => {
             });
         }
 
-        // check given tag is valid or not 
-        const categoryDetails = await Category.findById(category);
+        // check given category is valid or not 
+        const categoryDetails = await Category.findOne({name : category});
         if(!categoryDetails){
             return res.status(404).json({
                 success : false,
@@ -52,6 +55,7 @@ exports.createCourse = async(req, res) => {
 
         
         // create an entry for new course in db
+        // console.log("Befor creating the course");
         const newCourse = await Course.create({
             courseName,
             courseDescription,
@@ -61,6 +65,7 @@ exports.createCourse = async(req, res) => {
             // thumbnail : thumbnailImage.secure_url,
             category : categoryDetails._id,
         })
+        // console.log("after course created");
 
         // add this new course to the user schema of instructor 
         await User.findByIdAndUpdate(
@@ -75,8 +80,8 @@ exports.createCourse = async(req, res) => {
 
         // update the category schema
         // Add the new course to the Categories
-        await Category.findByIdAndUpdate(
-			{ _id: category },
+        await Category.findOneAndUpdate(
+			{ name : category },
 			{
 				$push: {
 					course: newCourse._id,

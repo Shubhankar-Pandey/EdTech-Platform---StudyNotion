@@ -27,6 +27,9 @@ function CourseInformationForm(){
     const {course, editCourse} = useSelector((state) => state.course);
     const [loading , setLoading] = useState(false);
 
+    // console.log("course : ", course);
+    // console.log("editCourse : ", editCourse);
+
     const [courseCategories, setCourseCategories] = useState([]);
 
     const getCategories = async() => {
@@ -42,7 +45,7 @@ function CourseInformationForm(){
     useEffect(() => {
         if(editCourse){
             setValue("courseTitle", course.courseName);
-            setValue("courseDescription", course.courseShortDescription);
+            setValue("courseDescription", course.courseDescription);
             setValue("coursePrice", course.price);
             setValue("courseTag", course.tag);
             setValue("courseBenefits", course.whatYouWillLearn);
@@ -57,7 +60,7 @@ function CourseInformationForm(){
     const isFormUpdated = () => {
         const currentValues = getValues();
         if(currentValues.courseTitle !== course.courseName 
-            || currentValues.courseDescription !== course.courseShortDescription 
+            || currentValues.courseDescription !== course.courseDescription 
             || currentValues.coursePrice !== course.price 
             // || currentValues.courseTag.toString() !== course.tag 
             || currentValues.courseBenefits !== course.whatYouWillLearn 
@@ -85,8 +88,8 @@ function CourseInformationForm(){
                 if(currentValues.courseTitle !== course.courseName){
                     formData.append("courseName", data.courseTitle);
                 }
-                if(currentValues.courseDescription !== course.courseShortDescription){
-                    formData.append("courseShortDescription", data.courseDescription);
+                if(currentValues.courseDescription !== course.courseDescription){
+                    formData.append("courseDescription", data.courseDescription);
                 }
                 if(currentValues.coursePrice !== course.price){
                     formData.append("price", data.coursePrice);
@@ -126,12 +129,14 @@ function CourseInformationForm(){
         // create a new course
         const formData = new FormData();
         formData.append("courseName", data.courseTitle);
-        formData.append("courseDescription", data.courseShortDescription);
+        formData.append("courseDescription", data.courseDescription);
         formData.append("price", data.coursePrice);
         formData.append("whatYouWillLearn", data.courseBenefits);
         formData.append("category", data.courseCategory);
         formData.append("instructions", JSON.stringify(data.courseRequirements));
         // formData.append("status", COURSE_STATUS.DRAFT);
+
+        // console.log("formData : ", [...formData.entries()]);
 
         setLoading(true);
         const result = await addCourseDetails(formData, token);
@@ -181,7 +186,7 @@ function CourseInformationForm(){
                         rows="4"
                         id="courseShortDescription"
                         placeholder="Enter Description"
-                        {...register("courseShortDescription", {required:true})}
+                        {...register("courseDescription", {required:true})}
                         className="p-2 bg-richblack-700 text-richblack-5
                         rounded-md border-b-[1px] border-richblack-500"
                     />
