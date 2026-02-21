@@ -5,7 +5,7 @@ function IconButton({text, onClick, children, disabled,
      outline = false, customClasses, type}){
 
     return (
-        <button
+        <button className={`${customClasses} flex gap-2`}
             type = {type}
             disabled = {disabled}
             onClick={onClick}
@@ -18,7 +18,7 @@ function IconButton({text, onClick, children, disabled,
                         {children}
                     </>
                 )
-                : ( text)
+                : ( text )
             }
         </button>
     )

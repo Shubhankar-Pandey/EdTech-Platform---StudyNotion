@@ -1,9 +1,9 @@
 import { useSelector } from "react-redux";
-import { MdOutlineFileUpload } from "react-icons/md";
-import { updateDisplayPicture } from "../../../../Services/operation/SettingsAPI";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import ChangeProfilePicture from "./ChangeProfilePicture";
 
 
 
@@ -11,8 +11,6 @@ function Setting(){
 
     const {user} = useSelector((state) => state.profile);
     const {token} = useSelector((state) => state.auth);
-
-    const [newProfilePic, setNewProfilePic] = useState(null);
 
     const {
             register, 
@@ -34,64 +32,17 @@ function Setting(){
             }
         }, [isSubmitSuccessful, reset])
 
-        const submitContactForm = async(data) => {
+        const updateProfileDetails = async(data) => {
             console.log(data);
         }
 
 
-
-    function handleOnUpload(){
-        if(!newProfilePic){
-            toast.error("Please select an image");
-        }
-        else{
-            updateDisplayPicture(token, newProfilePic);
-        }
-        
-    }
-
     return (
         <div className="text-richblack-5 flex flex-col">
-            <h1 className="text-2xl text-richblack-5"> Setting </h1>
+            <h1 className="text-2xl text-richblack-5"> Settings </h1>
 
             {/* Update profile picture  */}
-            <div className="w-[70%] mx-20 mt-16 bg-richblack-800 p-4
-             rounded-lg border-[1px] border-richblack-700
-              flex items-center gap-8">
-
-                <img alt="userImage" src={user.image}
-                className="w-16 h-16 rounded-full"></img>
-
-                <div>
-                    <p>Change profile picture</p>
-                    
-                    <div className="flex gap-2">
-                        <input
-                        type="file"
-                        className=" w-[80%] border-[1px] border-richblack-700 rounded-md
-                                    file:mr-4 file:py-1 file:px-2 mt-2
-                                    file:rounded-md 
-                                    file:border-0 
-                                    file:bg-richblack-700
-                                    file:text-richblack-50
-                                    hover:file:bg-richblack-600"
-                        onChange={(e) => {
-                            setNewProfilePic(e.target.value);
-                        }}
-                        />
-
-                        <button className="bg-yellow-50 text-richblack-900
-                                px-2 rounded-md mt-2 py-1 flex gap-1 items-center
-                                hover:scale-95 transition-all duration-200"
-                                onClick={handleOnUpload}>
-                                <MdOutlineFileUpload className="text-xl"/>
-                            Upload
-                        </button>
-                    </div>
-                    
-                </div>
-
-            </div>
+            <ChangeProfilePicture/>
 
             {/* Update Profile Information  */}
             <div className="w-[70%] mx-20 mt-16 bg-richblack-800 p-4
@@ -100,7 +51,7 @@ function Setting(){
                 <p>Profile Information</p>
 
                 <form className="flex flex-col gap-4 w-11/12"
-                onSubmit={handleSubmit(submitContactForm)}>
+                onSubmit={handleSubmit(updateProfileDetails)}>
 
                         {/* First name and last name  */}
                         <div className="flex justify-between">
@@ -153,34 +104,34 @@ function Setting(){
                                 border-b-[1px] border-richblack-300 p-2
                                 flex justify-evenly">
                                     {/* Male  */}
-                                    <div className="flex gap-2">
-                                        <label htmlFor="male">Male</label>
+                                    <div className="flex gap-1">
                                         <input 
                                             type="radio"
                                             name="gender"
                                             value="male"
                                             {...register("gender")}
                                         />
+                                        <label htmlFor="male">Male</label>
                                     </div>
                                     {/* Female  */}
-                                    <div className="flex gap-2">
-                                        <label htmlFor="female">Female</label>
+                                    <div className="flex gap-1">
                                         <input 
                                             type="radio"
                                             name="gender"
                                             value="female"
                                             {...register("gender")}
                                         />
+                                        <label htmlFor="female">Female</label>
                                     </div>
                                     {/* Other  */}
-                                    <div className="flex gap-2">
-                                        <label htmlFor="other">Other</label>
+                                    <div className="flex gap-1">
                                         <input 
                                             type="radio"
                                             name="gender"
                                             value="other"
                                             {...register("gender")}
                                         />
+                                        <label htmlFor="other">Other</label>
                                     </div>
                                 </div>
 
@@ -219,6 +170,7 @@ function Setting(){
                             </div>
                         </div>
                         
+                        {/* Save and cancel button  */}
                         <div className="flex justify-center gap-4 mt-10">
 
                             <button
@@ -236,9 +188,27 @@ function Setting(){
 
                         </div>
                         
-                        
                 </form>
             
+            </div>
+
+            {/* Delete account  */}
+            <div className="w-[70%] mx-20 mt-16 gap-6 flex p-6 rounded-md
+                border-[1px] border-pink-700 bg-pink-900">
+                    <div className="bg-pink-700 p-3 rounded-full max-h-min">
+                        <RiDeleteBin6Line className="text-pink-200 text-3xl"/>
+                    </div>
+                    <div>
+                        <h2 className="text-xl font-bold">Delete Account</h2>
+                        <p className="text-pink-25 mt-4">Would you like to delete account ?</p>
+                        <p className="text-pink-25 mt-2">This account contains Paid Courses.
+                            Deleting your account will remove all the contain
+                            associated with it.
+                        </p>
+                        <p className="text-pink-300 mt-2">
+                            I want to delete my account.
+                        </p>
+                    </div>
             </div>
 
         </div>

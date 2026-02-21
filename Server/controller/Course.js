@@ -14,11 +14,11 @@ exports.createCourse = async(req, res) => {
              whatYouWillLearn, price, category} = req.body;
         
         // fetch thumbnail
-        const thumbnail = req.files.thumbnailImage;
+        // const thumbnail = req.files.thumbnailImage;
 
         // validation 
         if(!courseName || !courseDescription || !whatYouWillLearn || 
-            !price || !category || !thumbnail){
+            !price || !category){
                 return res.status(400).json({
                     success : false,
                     message : "Fill all the details",
@@ -47,8 +47,8 @@ exports.createCourse = async(req, res) => {
         } 
 
         // Upload image to cloudinary
-        const thumbnailImage = await uploadImageToCloudinary(thumbnail,
-                                                            process.env.FOLDER_NAME)
+        // const thumbnailImage = await uploadImageToCloudinary(thumbnail,
+        //                                                     process.env.FOLDER_NAME)
 
         
         // create an entry for new course in db
@@ -58,7 +58,7 @@ exports.createCourse = async(req, res) => {
             instructor : instructorDetails._id,
             whatYouWillLearn,
             price,
-            thumbnail : thumbnailImage.secure_url,
+            // thumbnail : thumbnailImage.secure_url,
             category : categoryDetails._id,
         })
 
