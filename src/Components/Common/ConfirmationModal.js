@@ -1,45 +1,38 @@
-import { VscSignOut } from "react-icons/vsc";
+import IconBtn from "./IconButton"
 
+export default function ConfirmationModal({ modalData }) {
+  return (
+    <div className="fixed inset-0 z-[1000] !mt-0 grid place-items-center
+     overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">
 
-function ConfirmationModal({modalData}){
-    return (
-        <div className="w-full h-full flex items-center justify-center
-        absolute top-0 bg-richblack-100 bg-opacity-50">
-            
-            <div className="flex flex-col items-center
-            bg-black text-richblack-5 p-4 w-[40%]
-            border-2 border-richblack-500 rounded-xl text-lg">
-                <p>
-                    {modalData.text1}
-                </p>
-                <p>
-                    {modalData.text2}
-                </p>
-                <div className="flex gap-4 items-center mt-5">
-                    <button
-                        onClick = {modalData?.btn1Handler}
-                        className="border-[1px] py-1 px-2
-                         border-richblack-700 rounded-md
-                         bg-richblack-800
-                         hover:scale-95 transition-all duration-200
-                         hover:bg-richblack-700
-                         flex items-center gap-1 text-pink-200">
-                            <VscSignOut/>
-                            {modalData?.btn1Text}
-                    </button>
-                    <button
-                        onClick={modalData?.btn2Handler}
-                        className="border-[1px] py-1 px-2
-                         border-richblack-700 rounded-md
-                         bg-richblack-800
-                         hover:scale-95 transition-all duration-200
-                         hover:bg-richblack-700">
-                           {modalData?.btn2Text}
-                    </button>
-                </div>
-            </div>
+      <div className="w-11/12 max-w-[350px] rounded-lg border border-richblack-400 bg-richblack-800 p-6">
+
+        <p className="text-2xl font-semibold text-richblack-5">
+          {modalData?.text1}
+        </p>
+        <p className="mt-3 mb-5 leading-6 text-richblack-200">
+          {modalData?.text2}
+        </p>
+
+        <div className="flex items-center gap-x-4">
+
+          <IconBtn
+            onClick={modalData?.btn1Handler}
+            text={modalData?.btn1Text}
+            customClasses = {"bg-yellow-50 py-2 px-4 rounded-md hover:scale-95 transition-all duration-200 font-bold"}
+          />
+
+          <button
+            className="cursor-pointer rounded-md bg-richblack-200 py-2 px-4
+            font-semibold text-richblack-900 hover:scale-95 transition-all duration-200"
+            onClick={modalData?.btn2Handler}>
+            {modalData?.btn2Text}
+          </button>
+
         </div>
-    )
-}
 
-export default ConfirmationModal;
+      </div>
+
+    </div>
+  )
+}

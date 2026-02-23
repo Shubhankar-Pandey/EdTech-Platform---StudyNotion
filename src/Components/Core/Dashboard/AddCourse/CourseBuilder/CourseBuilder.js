@@ -80,13 +80,15 @@ function CourseBuilder(){
         // values update karna hai
         // naya section add or update hua hai means course ki value change karni padegi
         if(result){
+            // console.log("create section result : ", result);
             dispatch(setCourse(result));
+            // console.log("course data after creating section : ", course);
             setEditSectionName(null);
             setValue("sectionName", "");
         }
 
         // loading ko false karo
-        loading(false);
+        setLoading(false);
 
     }
 
@@ -105,7 +107,7 @@ function CourseBuilder(){
     
 
     return (
-        <div className="border-[1px] border-richblack-700 bg-richblack-800 p-6">
+        <div className="border-[1px] border-richblack-700 bg-richblack-800 p-6 rounded-lg">
 
             <p className="text-2xl"> Course Builder </p>
 

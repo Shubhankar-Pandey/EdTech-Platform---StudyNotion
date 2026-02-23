@@ -19,6 +19,7 @@ function Navbar(){
     const user = useSelector((state) => state.profile.user);
     const totalItems = useSelector((state) => state.cart.totalItems); 
 
+
     const location = useLocation();
 
     const [subLinks, setSubLinks] = useState([]);

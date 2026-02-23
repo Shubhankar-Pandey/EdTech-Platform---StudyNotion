@@ -90,7 +90,7 @@ export default function ChangeProfilePicture() {
                 onClick={handleClick}
                 disabled={loading}
                 className="cursor-pointer rounded-md bg-richblack-700
-                py-2 px-5 font-semibold text-richblack-50"
+                py-2 px-5 font-semibold text-richblack-50 hover:scale-95 transition-all duration-200"
               >
                 Select
               </button>
