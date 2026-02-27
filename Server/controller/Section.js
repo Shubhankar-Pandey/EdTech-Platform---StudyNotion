@@ -1,3 +1,4 @@
+const { LuRotateCwSquare } = require("react-icons/lu");
 const Course = require("../models/Course");
 const Section = require("../models/Section");
 
@@ -67,7 +68,7 @@ exports.createSection = async (req, res) => {
 exports.updateSection = async (req, res) => {
     try{
         // fetch data
-        const {sectionName, sectionId} = req.body;  
+        const {sectionName, sectionId, courseId} = req.body;  
 
         // data validation
         if(!sectionName || !sectionId){
@@ -79,16 +80,24 @@ exports.updateSection = async (req, res) => {
 
         // update data
         const updatedSection = await Section.findByIdAndUpdate(
-            {sectionId},
+            sectionId,
             {sectionName},
             {new : true},
         )
+
+        const updatedCourse = await Course.findById(courseId)
+        .populate({
+            path: "courseContent",
+            populate: {
+            path: "subSection",
+            },
+        });
 
         // return response
         return res.status(200).json({
             success : true,
             message : "Section name updated successfully",
-            updatedSection : updatedSection,
+            data : updatedCourse,
         });
 
     }
@@ -108,10 +117,10 @@ exports.updateSection = async (req, res) => {
 exports.deleteSection = async(req, res) => {
     try{
         // get Id -> assuming that we are sending Id in params
-        const {sectionId} = req.params;
+        const {sectionId, courseId} = req.body;
 
         // validation
-        if(!sectionId){
+        if(!sectionId || !courseId){
             return res.status(400).json({
                 success : false,
                 message : "Section ID is missing",
@@ -120,15 +129,30 @@ exports.deleteSection = async(req, res) => {
 
         // delete section
         await Section.findByIdAndDelete(sectionId);
-        // TODO [Testing] : do we need to need to delete entry from course schema ??
-        // Answer -> Nahi karna padega auto update ho jaayega 
-        // Find out -> auto update kaise ho gaya ?
+        // TODO [Testing] : we need to need to delete entry of this deleted section from course schema 
+        // remove reference from course
+        const updatedCourse = await Course.findByIdAndUpdate(
+            courseId,
+            {
+                $pull : {
+                    courseContent : sectionId,
+                }
+            },
+            {new : true}
+        ).populate({
+            path : "courseContent",
+            populate : {
+                path : "subSection"
+            }
+        })
+
 
 
         // return response
         return res.status(200).json({
             success : true,
-            message : "Section deleted successfully"
+            message : "Section deleted successfully",
+            data : updatedCourse
         })
 
     }

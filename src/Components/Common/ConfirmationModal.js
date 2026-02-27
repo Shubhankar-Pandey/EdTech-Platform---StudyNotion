@@ -19,7 +19,7 @@ export default function ConfirmationModal({ modalData }) {
           <IconBtn
             onClick={modalData?.btn1Handler}
             text={modalData?.btn1Text}
-            customClasses = {"bg-yellow-50 py-2 px-4 rounded-md hover:scale-95 transition-all duration-200 font-bold"}
+            customClasses = {"bg-yellow-50 py-2 px-4 rounded-md hover:scale-95 transition-all duration-200 font-bold text-richblack-900"}
           />
 
           <button

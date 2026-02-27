@@ -8,6 +8,8 @@ exports.auth = async(req, res, next) => {
 
         let token;
 
+        // console.log("in auth middleware : ", req.body);
+
         // 1️⃣ cookies
         if (req.cookies?.token) {
         token = req.cookies.token;
@@ -23,7 +25,7 @@ exports.auth = async(req, res, next) => {
         token = req.header("Authorization").replace("Bearer ", "");
         }
 
-        console.log("token : ", token);
+        // console.log("token in auth middleware : ", token);
 
         // if token missing
         if(!token){
@@ -33,7 +35,7 @@ exports.auth = async(req, res, next) => {
             })
         }
 
-        console.log("before verifying token : ");
+        // console.log("before verifying token : ");
         // verify the token 
         try{
             const payload = jwt.verify(token, process.env.JWTSECRET);

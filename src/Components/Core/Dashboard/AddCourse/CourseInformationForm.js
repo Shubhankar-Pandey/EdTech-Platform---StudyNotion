@@ -8,6 +8,9 @@ import RequirementField from "./RequirementField"
 import { setCourse, setStep } from "../../../../Slices/courseSlice";
 import IconButton from "../../../Common/IconButton";
 import toast from "react-hot-toast";
+import Upload from "./Upload";
+import ChipInput from "./ChipInput";
+
 
 
 function CourseInformationForm(){
@@ -62,11 +65,11 @@ function CourseInformationForm(){
         if(currentValues.courseTitle !== course.courseName 
             || currentValues.courseDescription !== course.courseDescription 
             || currentValues.coursePrice !== course.price 
-            // || currentValues.courseTag.toString() !== course.tag 
+            || currentValues.courseTag.toString() !== course.tag.toString()
             || currentValues.courseBenefits !== course.whatYouWillLearn 
             || currentValues.courseCategory !== course.category 
-            || currentValues.courseRequirements.toString() !== course.instructions 
-            // || currentValues.courseImage !== course.thumbnail 
+            || currentValues.courseRequirements.toString() !== course.instructions.toString()
+            || currentValues.courseImage !== course.thumbnail 
         ){
             return true;
         }
@@ -103,12 +106,12 @@ function CourseInformationForm(){
                 if(currentValues.courseRequirements.toString() !== course.instructions.toString()){
                     formData.append("instructions", JSON.stringify(data.courseRequirements));
                 }
-                // if(currentValues.courseTag !== course.tag){
-                //     formData.append("tag", data.courseTag);
-                // }
-                // if(currentValues.courseImage !== course.thumbnail){
-                //     formData.append("thumbnail", data.courseImage);
-                // }
+                if(currentValues.courseTag.toString() !== course.tag.toString()){
+                    formData.append("tag", data.courseTag);
+                }
+                if(currentValues.courseImage !== course.thumbnail){
+                    formData.append("thumbnail", data.courseImage);
+                }
 
 
                 setLoading(true);
@@ -131,10 +134,12 @@ function CourseInformationForm(){
         formData.append("courseName", data.courseTitle);
         formData.append("courseDescription", data.courseDescription);
         formData.append("price", data.coursePrice);
+        formData.append("tag", JSON.stringify(data.courseTag))
         formData.append("whatYouWillLearn", data.courseBenefits);
         formData.append("category", data.courseCategory);
         formData.append("instructions", JSON.stringify(data.courseRequirements));
-        // formData.append("status", COURSE_STATUS.DRAFT);
+        formData.append("status", "Draft");
+        formData.append("thumbnail", data.courseImage)
 
         // console.log("formData : ", [...formData.entries()]);
 
@@ -143,8 +148,9 @@ function CourseInformationForm(){
         if(result){
             dispatch(setStep(2));
             dispatch(setCourse(result));
-            setLoading(false);
+            
         }
+        setLoading(false);
     }
 
 
@@ -192,7 +198,7 @@ function CourseInformationForm(){
                     />
                 </div>
                 {
-                    errors.courseShortDescription && (
+                    errors.courseDescription && (
                         <span>Course Description is Required**</span>
                     )
                 }
@@ -238,7 +244,7 @@ function CourseInformationForm(){
                         <option value="">Select Category</option>
                         {
                             !loading && courseCategories.map((item, index) => (
-                                <option key={index} value={item.name}>
+                                <option key={index} value={item?._id}>
                                     {item.name}
                                 </option>
                             ))
@@ -253,26 +259,27 @@ function CourseInformationForm(){
 
 
                 {/* create custom component for handling tags input  */}
-                {/* <ChipInput
+                <ChipInput
                     label="Tags"
-                    name = "courseTags"
+                    name = "courseTag"
                     placeholder = "Enter tags and press enter"
-                    registe = {register}
+                    register = {register}
                     errors = {errors}
                     setValue = {setValue}
                     getValues = {getValues}
-                /> */}
+                />
 
 
 
                 {/* create a component for uploading and showing preview of media  */}
-                {/* <Upload
-                    name = ""
-                    label = ""
+                <Upload
+                    name = "courseImage"
+                    label = "Course Thumbnail"
                     register = {register}
                     errors = {errors}
-
-                /> */}
+                    setValue={setValue}
+                    editData={editCourse ? course?.thumbnail : null}
+                />
 
 
                 {/* Course benefits  */}

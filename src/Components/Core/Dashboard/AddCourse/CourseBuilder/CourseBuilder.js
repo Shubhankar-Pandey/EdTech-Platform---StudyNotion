@@ -76,17 +76,11 @@ function CourseBuilder(){
             )
         }
 
-
-        // values update karna hai
-        // naya section add or update hua hai means course ki value change karni padegi
         if(result){
-            // console.log("create section result : ", result);
             dispatch(setCourse(result));
-            // console.log("course data after creating section : ", course);
             setEditSectionName(null);
             setValue("sectionName", "");
         }
-
         // loading ko false karo
         setLoading(false);
 
