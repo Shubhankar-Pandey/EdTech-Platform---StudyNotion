@@ -5,6 +5,7 @@ import IconButton from "../../../../Common/IconButton";
 import { IoCaretBackOutline } from "react-icons/io5";
 import { resetCourseState, setStep } from "../../../../../Slices/courseSlice";
 import { editCourseDetails } from "../../../../../Services/operation/courseDetailsAPI";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -17,6 +18,7 @@ function PublishForm(){
     const {token} = useSelector((state) => state.auth);
     const {course} = useSelector((state) => state.course);
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -32,7 +34,7 @@ function PublishForm(){
 
     const goToCourses = () => {
         dispatch(resetCourseState());
-        // navigate("/dashboard/my-courses")
+        navigate("/dashboard/my-courses")
     }
 
     const handleCoursePublish = async() => {

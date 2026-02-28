@@ -3,7 +3,7 @@ const Category = require("../models/Category");
 const User = require("../models/User");
 const Section = require("../models/Section")
 const SubSection = require("../models/SubSection")
-const CourseProgresss = require("../models/CourseProgress");
+const CourseProgress = require("../models/CourseProgress");
 
 const { convertSecondsToDuration } = require("../utils/secToDuration")
 const  {uploadImageToCloudinary} = require("../utils/imageUploader");
@@ -215,7 +215,7 @@ exports.deleteCourse = async (req, res) => {
     }
 
     // Unenroll students from the course
-    const studentsEnrolled = course.studentsEnrolled
+    const studentsEnrolled = course.studentEnrolled
     for (const studentId of studentsEnrolled) {
       await User.findByIdAndUpdate(studentId, {
         $pull: { courses: courseId },
@@ -359,6 +359,7 @@ exports.getCourseDetails = async(req, res) => {
 
 exports.getFullCourseDetails = async (req, res) => {
   try {
+    // console.log("reached in getFullCourseDetails, request body : ", req.body);
     const { courseId } = req.body
     const userId = req.user.id
     const courseDetails = await Course.findOne({
@@ -367,11 +368,11 @@ exports.getFullCourseDetails = async (req, res) => {
       .populate({
         path: "instructor",
         populate: {
-          path: "additionalDetails",
+          path: "additionalDetail",
         },
       })
       .populate("category")
-      .populate("ratingAndReviews")
+      .populate("ratingAndReview")
       .populate({
         path: "courseContent",
         populate: {
@@ -422,6 +423,7 @@ exports.getFullCourseDetails = async (req, res) => {
       },
     })
   } catch (error) {
+    console.log(error);
     return res.status(500).json({
       success: false,
       message: error.message,

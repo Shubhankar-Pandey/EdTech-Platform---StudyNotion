@@ -17,6 +17,8 @@ import Cart from "./Components/Core/Dashboard/Cart/Cart";
 import { useSelector } from "react-redux";
 import Setting from "./Components/Core/Dashboard/Settings/Setting";
 import AddCourse from "./Components/Core/Dashboard/AddCourse/AddCourse";
+import MyCourses from "./Components/Core/Dashboard/MyCourses";
+import EditCourse from "./Components/Core/Dashboard/EditCourse/EditCourse";
 
 
 
@@ -64,6 +66,8 @@ function App() {
             user?.accountType === "Instructor" && (
               <>
                 <Route path="dashboard/add-course" element={<AddCourse/>}></Route>
+                <Route path="dashboard/my-courses" element={<MyCourses/>}></Route>
+                <Route path="dashboard/edit-course/:courseId" element={<EditCourse/>}></Route>
               </>
             )
           }

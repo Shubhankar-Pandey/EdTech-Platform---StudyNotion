@@ -48,7 +48,7 @@ exports.auth = async(req, res, next) => {
             })
         }
         // if all things are valid then move to the next middleware
-        console.log("auth middleware is wroking good");
+        // console.log("auth middleware is wroking good");
         next();
     }
     catch(error){
@@ -96,7 +96,7 @@ exports.isInstructor = async(req, res, next) => {
             });
         }
         // if all things are valid then move to the next middleware
-        console.log("Instructor verfied successfully");
+        // console.log("Instructor verfied successfully");
         next();
     }   
     catch(error){
