@@ -29,7 +29,7 @@ async function sendVerificationEmail(email, otp){
             "Verification email from StudyNotion", 
             emailResponse(otp)
         );
-        console.log("Email send successfullly : ", mailResponse);
+        // console.log("Email send successfullly : ", mailResponse);
     }   
     catch(error){
         console.log("Error occurred in sending mail : ", error);

@@ -74,8 +74,14 @@ exports.deleteAccount = async(req, res) => {
             })
         }
 
-        // HW : unenroll user from all enrolled courses
-        
+        // TODO : remove user's profile pic from cloudinary if any
+
+        // if user is instructor 
+
+        // if user is student 
+        // unenroll user from all enrolled courses
+
+        // TODO : can we do anything for course progress model on deletion of student's profile
 
         // delete profile
         const profileId = userDetail.additionalDetail;

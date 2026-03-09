@@ -1,5 +1,4 @@
 import loginPageImage_for_Student from "../assets/Images/login.webp"
-import loginPageImage_for_Instructor from "../assets/Images/loginpageImageForInstructor.jpg"
 import frame from "../assets/Images/frame.png"
 import { NavLink, useNavigate } from "react-router-dom";
 import { CgAsterisk } from "react-icons/cg";
@@ -18,17 +17,10 @@ function LoginPage(){
     const navigate = useNavigate();
 
     const [formData, setFormValue] = useState({
-        role : "Student",
         email : "",
         password : "",
     })
 
-    function selectRoleHandler(user){
-        setFormValue(prev => ({
-            ...prev,
-            role : user,
-        }));
-    }
 
     function emailHandler(event){
         setFormValue(prev => ({
@@ -63,25 +55,6 @@ function LoginPage(){
                     <p className="text-richblack-100 mt-2">Build skills for today,
                          tommorrow and beyond.</p>
                     
-                    <div className="flex bg-richblack-800 text-richblack-200
-                     rounded-full w-[50%] border-b border-richblack-600 mt-8
-                     hover:cursor-pointer"> 
-                        <div onClick={() => selectRoleHandler("Student")}
-                        className = {`w-[50%] m-1 rounded-full flex items-center p-2
-                         justify-center
-                          ${formData.role === "Student" ?
-                           "bg-richblack-900 border-richblack-200 border-2 text-white" :
-                            "" }`}>
-                            <p className="">Student</p>
-                        </div>
-                        <div onClick={() => selectRoleHandler("Instructor")}
-                         className={`w-[50%] m-1 rounded-full flex items-center p-2 
-                         justify-center ${formData.role === "Instructor" ?
-                          "bg-richblack-900 border-richblack-200 border-2 text-white" :
-                           "" }`}>
-                            <p>Instructor</p>
-                        </div>
-                    </div>
                     
                     <form onSubmit={handleOnSubmit}>
                         <div className="flex flex-col mt-8">
@@ -151,14 +124,10 @@ function LoginPage(){
                 {/* Part 2 - image  */}
                 <div className="w-[40%] object-cover relative mt-6">
                     <img alt="frame" src={frame}/>
-                    {
-                        formData.role === "Student" ?
-                        (<img alt="loginPageImage" src={loginPageImage_for_Student}
-                            className="absolute z-10 -top-6 right-6"/>) 
-                        : (<img alt="loginPageImage" src={loginPageImage_for_Instructor}
-                            className="lg:h-[425px] absolute z-10 -top-6 right-6"/>)
-                    }
                     
+                    <img alt="loginPageImage" src={loginPageImage_for_Student}
+                    className="absolute z-10 -top-6 right-6"/>
+                        
                 </div>
 
             </div>

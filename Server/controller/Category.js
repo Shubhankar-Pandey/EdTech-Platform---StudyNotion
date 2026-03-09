@@ -1,5 +1,9 @@
 const Category = require("../models/Category");
 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max)
+}
+
 
 
 // *************** create Category ka handler function ***************
@@ -45,6 +49,7 @@ exports.createCategory = async(req, res) => {
 
 exports.showAllCategory = async(req, res) => {
     try{
+        // console.log("reached in showAllCategory request body : ", req.body);
         const allCategory = await Category.find({},{name : true, description : true});
         
         return res.status(200).json({
@@ -70,11 +75,14 @@ exports.showAllCategory = async(req, res) => {
 
 exports.categoryPageDetails = async(req, res) => {
     try{
+        // console.log("reached in categoryPageDetails , request body : ", req.body);
         // get id
         const {categoryId} = req.body;
+        // console.log("categoryId : ", categoryId);
 
         // validation
         if(!categoryId){
+            // console.log("CategoryId is missing");
             return res.status(401).json({
                 success : false,
                 message : "CategoryId is missing",
@@ -82,25 +90,67 @@ exports.categoryPageDetails = async(req, res) => {
         }
 
         // fetch details -> get courses for specified categoryId
-        const selectedCategory = await Category.findById(categoryId).populate("course").exec();
+        const selectedCategory = await Category.findById(categoryId)
+        .populate({
+            path : "course",
+            match: { status: "Published" },
+            populate: "ratingAndReview",
+        })
+        .exec();
+
+        // console.log("selectedCategory : ", selectedCategory);
         
         // validation
-        if(selectedCategory.course.length === 0){
+        if (!selectedCategory) {
+            // console.log("Category not found.");
+            return res
+            .status(404)
+            .json({ success: false, message: "Category not found" })
+        }
+        if(selectedCategory?.course?.length === 0){
+            // console.log("selectedCategory.course.length === 0");
             return res.status(401).json({
                 success : false,
                 message : "There is no course in this category",
             });
         }
 
-        // get courses for different categories
-        const differentCategories = await Category.find({
-                                                _id : {$ne : categoryId}
-                                            })
-                                            .populate("course")
-                                            .exec();
+        // Get courses for other categories
+        const categoriesExceptSelected = await Category.find({
+            _id: { $ne: categoryId },
+        })
+        let differentCategory = null;
+
+        if (categoriesExceptSelected.length > 0) {
+            const randomIndex = getRandomInt(categoriesExceptSelected.length);
+
+            differentCategory = await Category.findById(
+                categoriesExceptSelected[randomIndex]._id
+            )
+            .populate({
+                path: "course",
+                match: { status: "Published" },
+            })
+            .exec();
+        }
 
         // get top 5 best selling courses
         // HW : Do your self
+
+        const allCategories = await Category.find()
+            .populate({
+                path: "course",
+                match: { status: "Published" },
+                populate: {
+                    path: "instructor",
+                },
+            })
+            .exec()
+
+        const allCourses = allCategories.flatMap((category) => category.course)
+        const mostSellingCourses = allCourses
+        .sort((a, b) => b.sold - a.sold)
+        .slice(0, 10)
 
 
         // return response
@@ -108,12 +158,14 @@ exports.categoryPageDetails = async(req, res) => {
             success : true,
             data : {
                 selectedCategory,
-                differentCategories,
+                differentCategory,
+                mostSellingCourses
             },
         })
 
     }
     catch(error){
+        console.log(error);
         return res.status(500).json({
             success : false,
             message : "Error in fetching category page details",

@@ -40,7 +40,7 @@ function CourseBuilder(){
             toast.error("Please add atleast one Secton");
             return;
         }
-        if(course.courseContent.some((section) => section.length === 0)){
+        if(course.courseContent.some((section) => section.subSection.length === 0)){
             toast.error("Please add atleast one lecture in each section");
             return;
         }

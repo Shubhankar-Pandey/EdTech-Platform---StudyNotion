@@ -38,7 +38,7 @@ function EditCourse(){
     }
 
     return (
-        <div className="text-richblack-5">
+        <div className="text-richblack-5 w-[70%] mx-auto">
             <h1>Edit Course</h1>
 
             <div>

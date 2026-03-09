@@ -4,7 +4,7 @@ import { fetchInstructorCourses } from "../../../Services/operation/courseDetail
 import IconButton from "../../Common/IconButton"
 import CoursesTable from "./InstructorCourses/CoursesTable"
 import { useEffect, useState } from "react";
-
+import { FaPlus } from "react-icons/fa";
 
 
 function MyCourses(){
@@ -28,15 +28,16 @@ function MyCourses(){
 
 
     return (
-        <div className="text-richblack-5">
+        <div className="text-richblack-5 w-11/12">
 
-            <div>
-                <h1>My Courses</h1>
+            <div className="flex justify-between items-center">
+                <h1 className="text-2xl">My Courses</h1>
                 <IconButton
-                  text="Add Course"
                   onClick={() => navigate("/dashboard/add-course")}  
-                  // TODO : add plus icon yourself  
-                />
+                  customClasses={"bg-yellow-50 px-4 py-2 text-richblack-900 rounded-md hover:scale-95 transition-all duration-200 flex items-center justify-center font-bold"}>
+                    <FaPlus/>
+                    <p>Add Course</p>
+                </IconButton>
             </div>
 
             

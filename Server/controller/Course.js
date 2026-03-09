@@ -14,7 +14,7 @@ const  {uploadImageToCloudinary} = require("../utils/imageUploader");
 exports.createCourse = async(req, res) => {
     try{
         // console.log();
-        // console.log("reached in crete course controller -> request : ", req.body);
+        console.log("reached in crete course controller -> request : ", req.body);
         // fetch data 
         const {courseName, courseDescription,
              whatYouWillLearn, price, category, tag, status,
@@ -79,7 +79,7 @@ exports.createCourse = async(req, res) => {
             thumbnail : thumbnailImage.secure_url,
             category : categoryDetails._id,
             status: status,
-			instructions: instructions,
+			      instructions: instructions,
             tag : tag,
         })
         // console.log("after course created");
@@ -97,8 +97,8 @@ exports.createCourse = async(req, res) => {
 
         // update the category schema
         // Add the new course to the Categories
-        await Category.findOneAndUpdate(
-			{ name : category },
+        await Category.findByIdAndUpdate(
+			{ _id : category },
 			{
 				$push: {
 					course: newCourse._id,

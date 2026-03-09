@@ -86,7 +86,12 @@ function Navbar(){
                                                         {
                                                             subLinks?.length > 0 &&
                                                             subLinks.map((sublink, index) => (
-                                                                <NavLink key={index} to={sublink.link}
+                                                                <NavLink key={index} to={
+                                                                    `/catalog/${sublink.name
+                                                                    .split(" ")
+                                                                    .join("-")
+                                                                    .toLowerCase()}`
+                                                                }
                                                                     className="hover:bg-richblack-50
                                                                      p-2 rounded-md">
                                                                     <p>{sublink.name}</p>
