@@ -3,12 +3,13 @@ const express = require("express")
 const router = express.Router()
 
 // import controllers 
-const { capturePayment, verifySignature } = require("../controller/Payments")
+const { capturePayment, verifyPayment, sendPaymentSuccessEmail } = require("../controller/Payments")
 const { auth, isInstructor, isStudent, isAdmin } = require("../middleware/auth")
 
 // map controllers
 router.post("/capturePayment", auth, isStudent, capturePayment)
-router.post("/verifySignature", verifySignature)
+router.post("/verifyPayment", auth, isStudent, verifyPayment)
+router.post("/sendPaymentSuccessEmail", auth, isStudent, sendPaymentSuccessEmail);
 
 
 // ************************* export the router *************************

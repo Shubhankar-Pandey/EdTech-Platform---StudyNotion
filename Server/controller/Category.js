@@ -49,7 +49,6 @@ exports.createCategory = async(req, res) => {
 
 exports.showAllCategory = async(req, res) => {
     try{
-        // console.log("reached in showAllCategory request body : ", req.body);
         const allCategory = await Category.find({},{name : true, description : true});
         
         return res.status(200).json({

@@ -20,6 +20,7 @@ import AddCourse from "./Components/Core/Dashboard/AddCourse/AddCourse";
 import MyCourses from "./Components/Core/Dashboard/MyCourses";
 import EditCourse from "./Components/Core/Dashboard/EditCourse/EditCourse";
 import Catalog from "./Pages/Catalog";
+import CourseDetails from "./Pages/CourseDetails";
 
 
 
@@ -45,6 +46,7 @@ function App() {
         <Route path="/verify-email" element = {<VerifyEmail/>}></Route>
         <Route path="/about" element={<AboutPage/>}></Route>
         <Route path="/contact" element={<ContactUs/>}></Route>
+        <Route path="/courses/:courseId" element={<CourseDetails/>}></Route>
 
         <Route
           element={

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { apiConnector } from "../Services/apiConnector";
 import { categories } from "../Services/apis";
 import { getCatalogPageData } from "../Services/operation/pageAndComponentData";
+import Course_Card from "../Components/Core/Catalog/Course_Card";
+import CourseSlider from "../Components/Core/Catalog/CourseSlider";
 
 
 
@@ -67,24 +69,40 @@ function Catalog(){
 
                 {/* Section 1  */}
                 <div>
-                    <div>
+                    <div>Courses to get you started</div>
+                    <div className="flex gap-x-2">
                         <p>Most popular</p>
                         <p>New</p>
                     </div>
-                    {/* <CourseSlider/> */}
+                    <div>
+                        <CourseSlider Courses = {catalogPageData?.data?.selectedCategory?.courses}/>
+                    </div>
+                    
                 </div>
 
                 {/* Section 2  */}
                 <div>
-                    <p>Top Courses</p>
+                    <p>Top Courses in {catalogPageData?.data?.selectedCategory?.name} </p>
                     <div>
-                        {/* <CourseSlider/> */}
+                        <CourseSlider Courses = {catalogPageData?.data?.differentCategory?.courses}/>
                     </div>
                 </div>
 
                 {/* Section 3  */}
                 <div>
-                    <p>Frequently Bought Together</p>
+                    <p>Frequently Bought</p>
+
+                    <div className="py-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2">
+                            {
+                                catalogPageData?.data?.mostSellingCourses?.slice(0,4)
+                                .map((course, index) => (
+                                    <Course_Card key={index} course = {course}/>
+                                ))
+                            }
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
