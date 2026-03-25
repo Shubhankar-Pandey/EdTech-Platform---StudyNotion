@@ -9,6 +9,8 @@ import ConfirmationModal from "../Components/Common/ConfirmationModal";
 import RatingStars from "../Components/Common/RatingStars"
 import {FormatDate} from "../Services/FormatDate"
 import CourseDetailsCard from "../Components/Core/Course/CourseDetailsCard";
+import { HiGlobeAlt } from "react-icons/hi";
+import { GoDotFill } from "react-icons/go";
 
 
 
@@ -25,6 +27,13 @@ function CourseDetails(){
 
     const [confirmationModal, setConfirmationModal] = useState(null);
     const [courseData, setCourseData] = useState(null);
+
+    const[isActive, setIsActive] = useState([]);
+    const handleActive = (id) => {
+        setIsActive(
+            !isActive.includes(id) ? isActive.concat(id) : isActive.filter((e) => e !== id)
+        )
+    }
 
     useEffect(() => {
         const getFullCourseDetails = async() => {
@@ -111,71 +120,85 @@ function CourseDetails(){
     } = courseData?.courseDetails;
 
 
-    const[isActive, setIsActive] = useState(Array(0));
-    const handleActive = (id) => {
-        setIsActive(
-            !isActive.includes(id) ? isActive.concat(id) : isActive.filter((e) => e != id)
-        )
-    }
+    
 
 
     return (
         <div className="flex flex-col text-richblack-5">
 
-            <div className="relative">
-                <p>{courseName}</p>
-                <p>{courseDescription}</p>
+            <div className="relative w-full bg-richblack-800 h-80 flex items-center gap-4">
 
-                <div className="flex gap-x-2">
-                    <span>{avgReviewCount}</span>
-                    <RatingStars Review_Count = {avgReviewCount}/>
-                    <span>{`(${ratingAndReview.length} reviews)`}</span>
-                    <span>{`(${studentEnrolled.length} students enrolled)`}</span>
+                <div className="w-[50%] flex flex-col gap-2 border-r-2 border-r-richblack-700 ml-20">
+                    <p className="text-3xl">{courseName}</p>
+                    <p className="text-richblack-200">{courseDescription}</p>
+
+                    <div className="flex gap-x-2">
+                        <span className="text-yellow-50">{avgReviewCount}</span>
+                        <RatingStars Review_Count = {avgReviewCount}/>
+                        <span className="text-richblack-25">{`(${ratingAndReview.length} reviews)`}</span>
+                        <span className="text-richblack-25">{`${studentEnrolled.length} students enrolled`}</span>
+                    </div>
+
+                    <div>
+                        <p className="text-richblack-25">Created By {instructor.firstName} {instructor.lastName}</p>
+                    </div>
+
+                    <div className="flex gap-x-2 text-richblack-25">
+                        <p>Created At {FormatDate(createdAt)}</p>
+                        <div className="flex items-center gap-x-1 ml-3">
+                            <HiGlobeAlt className="text-lg"/>
+                            <p> {" "} English </p> 
+                        </div>
+                        
+                    </div>
                 </div>
 
-                <div>
-                    <p>Created By {instructor.firstName} {instructor.lastName}</p>
+                <div className="absolute top-10 right-36">
+                    <CourseDetailsCard 
+                        course = {courseData?.courseDetails}
+                        setConfirmationModal = {setConfirmationModal}
+                        handleBuyCourse = {handleBuyCourse}
+                    />
                 </div>
 
-                <div className="flex gap-x-2">
-                    <p>Created At {FormatDate(createdAt)}</p>
-                    <p> {" "} English </p> 
-                </div>
+
             </div>
 
 
-            <div>
-                <CourseDetailsCard 
-                    course = {courseData?.courseDetails}
-                    setConfirmationModal = {setConfirmationModal}
-                    handleBuyCourse = {handleBuyCourse}
-                />
-            </div>
+            
 
-            <div>
-                <p>What you will learn</p>
-                <div>
+            <div className="border-2 border-richblack-700 w-[50%] ml-20 p-6 mt-10">
+                <p className="text-2xl">What you will learn</p>
+                <div className="text-richblack-50">
                     {whatYouWillLearn}
                 </div>
             </div>
 
-            <div>
+            <div className="w-[50%] ml-20 mt-10">
                 <div>
-                    <p>Course Content</p>
+                    <p className="text-xl">Course Content</p>
                 </div>
 
-                <div className="flex gap-x-3">
+                <div className="flex justify-between mt-3">
 
-                    <div>
-                        <span>{courseContent.length} section(s)</span>
-                        <span> {totalNoOfLectures} lectures(s) </span>
+                    <div className="flex gap-x-3 text-richblack-50">
+                        <div className="flex items-center">
+                            <GoDotFill />
+                            <span>{courseContent.length} sections</span>
+                        </div>
+                        <div className="flex items-center">
+                            <GoDotFill />
+                            <span> {totalNoOfLectures} lectures </span>
+                        </div>
                     </div>
 
                     <div>
-                        <button onClick={() => {
-                            setIsActive([])}}
+                        <button 
+                        className="text-yellow-50"
+                        onClick={() =>
+                            setIsActive([])}
                         >Collapse All Sections </button>
-                    </div>
+                    </div> 
                     
                 </div>
                 

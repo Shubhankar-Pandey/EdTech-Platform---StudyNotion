@@ -41,13 +41,18 @@ function CourseDetailsCard({course, setConfirmationModal, handleBuyCourse}){
 
 
     return (
-        <div className="text-richblack-5">
+        <div className="text-richblack-5 bg-richblack-700 rounded-md">
 
-            <img alt="course thumbnail image" src={course.thumbnail}  width="200"/>
-            <p>Rs. {course.price}</p>
+            <img alt="course thumbnail image" src={course.thumbnail}  width="384px" height="201px"/>
+            
 
-            <div>
-                <button onClick={
+            <div className="px-5 py-3 flex flex-col gap-3">
+                <p className="text-3xl">Rs. {course.price}</p>
+
+                <button
+                    className="bg-richblack-800 rounded-md p-2 border-b-2 border-r-2 border-richblack-300
+                    hover:scale-95 transition-all duration-200"
+                onClick={
                     user && course?.studentEnrolled.includes(user?._id)
                     ? () => navigate("/dashboard/enrolled-courses")
                     : () => handleBuyCourse()
@@ -59,20 +64,32 @@ function CourseDetailsCard({course, setConfirmationModal, handleBuyCourse}){
 
                 {
                     (!course.studentEnrolled.includes(user?._id)) && (
-                        <button onClick={() => handleAddToCart()}>
+                        <button 
+                        className="bg-yellow-50 rounded-md p-2 border-b-2 border-r-2 border-yellow-5
+                        hover:scale-95 transition-all duration-200 text-richblack-900"
+                        onClick={() => handleAddToCart()}>
                             Add to cart
                         </button>
                     )
                 }
+                
             </div>
 
-            <p>30-Day Money-Back Guarantee</p>
+            <div className="flex flex-col justify-center items-center gap-3">
+                <p className="text-richblack-25">30-Day Money-Back Guarantee</p>
 
-            <div>
-                <button onClick={() => handleShare()}>
-                    Share
-                </button>
+                <div className="mb-5">
+                    <button 
+                        className="text-yellow-100"
+                    onClick={() => handleShare()}>
+                        Share
+                    </button>
+                </div>
             </div>
+
+            
+
+            
                 
         </div>
     )

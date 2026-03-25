@@ -17,22 +17,22 @@ function Course_Card({course}){
 
 
     return (
-        <div className="text-richblack-5">
+        <div className="text-richblack-5 p-4">
             <NavLink to={`/courses/${course._id}`}>
                 <div>
                     <div>
                         <img alt="Course Thumbnail" src={course?.thumbnail}
-                        className="h-96 rounded-xl"/>
+                        className="rounded-xl"/>
                     </div>
-                    <div>
+                    <div className="mt-5 flex flex-col gap-2">
                         <p>{course?.courseName}</p>
-                        <p> {course?.instructor?.firstName} {course?.instructor?.lastName} </p>
+                        <p> <span className="text-richblack-300">Instructor :</span> {course?.instructor?.firstName} {course?.instructor?.lastName} </p>
                         <div className="flex gap-x-3">
-                            <span> {avgReviewCount || 0} </span>
+                            <span className="text-yellow-50"> {avgReviewCount || 0} </span>
                             <RatingStars Review_Count={avgReviewCount} />
                             <span> {course?.ratingAndReview?.length} Ratings </span>
                         </div>
-                        <p> {course?.price} </p>
+                        <p> Rs. {course?.price} </p>
                     </div>
                 </div>
             </NavLink>

@@ -101,7 +101,7 @@ exports.categoryPageDetails = async(req, res) => {
         
         // validation
         if (!selectedCategory) {
-            // console.log("Category not found.");
+            console.log("Category not found.");
             return res
             .status(404)
             .json({ success: false, message: "Category not found" })
@@ -134,7 +134,6 @@ exports.categoryPageDetails = async(req, res) => {
         }
 
         // get top 5 best selling courses
-        // HW : Do your self
 
         const allCategories = await Category.find()
             .populate({
