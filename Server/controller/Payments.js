@@ -184,7 +184,7 @@ exports.verifyPayment = async(req, res) => {
         await enrollStudent(courses, userId, res);
 
         // return res
-        return res.json(200).json({
+        return res.status(200).json({
             success : true,
             message : "Payment Verified",
         })
