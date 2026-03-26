@@ -3,7 +3,7 @@ import { setUser } from "../../Slices/profileSlice";
 import {setLoading, setToken} from "../../Slices/authSlice" 
 import { apiConnector } from "../apiConnector";
 import { endpoints } from "../apis";
-import { resetCart } from "../../Slices/cartSlice";
+
 
 const {
   SENDOTP_API,
@@ -194,7 +194,6 @@ export function logout(navigate) {
   return (dispatch) => {
     dispatch(setToken(null))
     dispatch(setUser(null))
-    dispatch(resetCart())
     localStorage.removeItem("token")
     localStorage.removeItem("user")
     toast.success("Logged Out")
