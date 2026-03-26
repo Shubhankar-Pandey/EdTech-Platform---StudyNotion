@@ -18,8 +18,8 @@ function Home(){
         <div>
 
             {/***************** Section 1 *****************/}
-            <div className="relative mx-auto flex flex-col w-11/12 items-center
-            justify-between text-white max-w-maxContent">
+            <div className="relative flex flex-col w-full px-4 md:px-10 items-center
+            justify-between text-white">
  
                 <NavLink to={"/signup"}>
                     <div className=" group mt-16 p-1 mx-auto rounded-full bg-richblack-800
@@ -33,16 +33,16 @@ function Home(){
                     </div>
                 </NavLink>
 
-                <div className="text-center text-4xl font-semibold mt-8">
+                <div className="text-center text-3xl md:text-4xl font-semibold mt-8">
                     Empower Your Future with
                     <HighlightText text={"Coding Skills"}/>
                 </div>
 
-                <div className="mt-4 w-[90%] text-center text-lg font-bold text-richblack-300">
+                <div className="mt-4 w-[90%] md:w-[70%] text-center text-base md:text-lg font-bold text-richblack-300">
                     With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.
                 </div>
 
-                <div className="flex gap-7 mt-8">
+                <div className="flex flex-col md:flex-row gap-4 md:gap-7 mt-8">
                     <CTAButton active = {true} linkTo={"/signup"}>
                         Learn More
                     </CTAButton>
@@ -51,17 +51,11 @@ function Home(){
                     </CTAButton>
                 </div>
                 
-                <div className="relative w-[80%] mx-3 my-14">
-                    <div className="w-[70%] inset-10 rounded-full absolute -top-4 left-40 bg-blue-100 blur-2xl">
-
-                    </div>
-                    <div className="bg-white inset-0 absolute translate-x-6 translate-y-6">
-
-                    </div>
-                    <video className="relative z-10 w-full object-cover" muted autoPlay loop>
+                <div className="relative w-full lg:w-[80%] mx-auto my-14 px-4 overflow-hidden md:overflow-visible flex items-center justify-center">
+                    <div className="absolute inset-0 z-0 bg-blue-100 blur-2xl rounded-full scale-90 translate-x-[-10%] translate-y-[-10%] opacity-30"></div>
+                    <video className="relative z-10 w-full object-cover shadow-[10px_10px_rgba(255,255,255)] md:shadow-[20px_20px_rgba(255,255,255)] rounded-md" muted autoPlay loop>
                         <source src={Banner} type="video/mp4"></source>
                     </video>
-                    
                 </div>
 
                 {/* Code Section 1 */}
@@ -145,10 +139,10 @@ function Home(){
             {/***************** Section 2 *****************/}
             <div className="bg-pure-greys-5 text-richblack-700">
                 {/* Part 1 */}
-                <div className="homepage_bg h-[310px] flex justify-center">
-                    <div className="w-11/12 max-w-maxContent flex items-center
+                <div className="homepage_bg h-[250px] md:h-[310px] flex justify-center">
+                    <div className="w-full px-4 md:px-10 flex flex-col md:flex-row items-center
                      justify-center gap-5">
-                        <div className="flex gap-7 mt-16">
+                        <div className="flex gap-4 md:gap-7 mt-16">
                             <CTAButton active={true} linkTo={"/signup"}>
                                 <div className="flex gap-2 items-center justify-center">
                                     Explore Full Catalog
@@ -163,17 +157,17 @@ function Home(){
                 </div>
                 
                 {/* Part 2 */}
-                <div className="w-11/12 flex mx-auto mt-20 justify-evenly"> 
-                    <div className="w-[45%] text-4xl font-semibold">
+                <div className="w-full px-4 md:px-10 flex flex-col md:flex-row mx-auto mt-10 md:mt-20 justify-evenly gap-10 md:gap-0"> 
+                    <div className="w-full md:w-[45%] text-3xl md:text-4xl font-semibold">
                         Get the skill you need for a 
                         <HighlightText text={"job that is in demand"}/>
                     </div>
-                    <div className="w-[45%] flex flex-col items-start">
+                    <div className="w-full md:w-[45%] flex flex-col items-start gap-5">
                         <div className="text-[16px]">
                             The modern StudyNotion is the dictates its own terms.
                             Today, to be a competitive specialist requires more than professional skills.
                         </div>
-                        <div className="mt-7">
+                        <div className="mt-2 md:mt-7">
                             <CTAButton active={true} linkTo={"/signup"}>
                                 <div>Learn More</div>
                             </CTAButton>
@@ -181,7 +175,7 @@ function Home(){
                     </div>
                 </div>
                 
-                <div className="w-11/12 flex flex-col mx-auto mt-20 justify-between">
+                <div className="w-full px-4 md:px-10 flex flex-col mx-auto mt-20 justify-between">
                     {/* Part 3 */}
                     <TimeLineSection/>
 
@@ -195,7 +189,7 @@ function Home(){
 
 
             {/***************** Section 3 *****************/}
-            <div className="w-11/12 mx-auto">
+            <div className="w-full px-4 md:px-10">
                 <BecomeAnInstructorSection/>
             </div>
 

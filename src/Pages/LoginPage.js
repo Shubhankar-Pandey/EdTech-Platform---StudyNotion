@@ -46,10 +46,10 @@ function LoginPage(){
     
     return (
         <div>
-            <div className="w-11/12 flex mx-auto mt-16 justify-evenly">
+            <div className="w-full max-w-7xl px-4 md:px-10 flex flex-col-reverse lg:flex-row mx-auto mt-10 md:mt-16 justify-between items-center lg:items-center gap-10 md:gap-20">
 
                 {/* Part 1 */}
-                <div className="w-[40%]">
+                <div className="w-full lg:w-[45%] flex flex-col justify-center">
 
                     <p className="text-richblack-5 text-3xl">Welcome Back</p>
                     <p className="text-richblack-100 mt-2">Build skills for today,
@@ -67,7 +67,7 @@ function LoginPage(){
                             id="email"
                             required
                             value={formData.email}
-                            className="text-richblack-200 w-[80%] p-2
+                            className="text-richblack-200 w-full md:w-[80%] p-2
                             bg-richblack-800 border-b border-richblack-600 rounded-md"
                             placeholder="Enter email address"></input>
                         </div>
@@ -77,7 +77,7 @@ function LoginPage(){
                                 Password
                                 <CgAsterisk className="text-pink-200" />
                             </label>
-                            <div className="relative w-[80%]">
+                            <div className="relative w-full md:w-[80%]">
                                 <input onChange={passwordHandler}
                                 type= {isVisible === true ? "text" : "password"}
                                 id="password" 
@@ -108,12 +108,12 @@ function LoginPage(){
                         </div>
 
                         <div className="text-blue-200 flex justify-end
-                        w-[80%] font-light text-sm p-1 hover:text-blue-50">
+                        w-full md:w-[80%] font-light text-sm p-1 hover:text-blue-50">
                             <NavLink to="/resetPassword">Forgot Password</NavLink>
                         </div>
 
-                        <button type="submit" className="mt-8 w-[80%] bg-yellow-50 p-2
-                        rounded-md hover:scale-95 transition-all duration-200">
+                        <button type="submit" className="mt-8 w-full md:w-[80%] bg-yellow-50 p-2
+                        rounded-md hover:scale-95 transition-all duration-200 font-semibold text-richblack-900">
                             Login
                         </button>
 
@@ -122,7 +122,7 @@ function LoginPage(){
                 </div>
 
                 {/* Part 2 - image  */}
-                <div className="w-[40%] object-cover relative mt-6">
+                <div className="w-full lg:w-[50%] object-cover relative mt-6 lg:mt-0 max-w-[500px]">
                     <img alt="frame" src={frame}/>
                     
                     <img alt="loginPageImage" src={loginPageImage_for_Student}

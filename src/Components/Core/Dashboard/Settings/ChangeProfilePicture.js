@@ -64,9 +64,9 @@ export default function ChangeProfilePicture() {
     <>
       <div className="flex items-center justify-between rounded-md
        border-[1px] border-richblack-700 bg-richblack-800
-        p-8 px-12 text-richblack-5 w-[70%] mx-20 mt-16">
+        p-5 md:p-8 md:px-12 text-richblack-5 w-full md:w-[90%] lg:w-[70%] lg:mx-auto mt-8 md:mt-16">
 
-        <div className="flex items-center gap-x-4">
+        <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
 
           <img
             src={previewSource || user?.image}
@@ -76,9 +76,9 @@ export default function ChangeProfilePicture() {
 
           <div className="space-y-2">
 
-            <p>Change Profile Picture</p>
+            <p className="font-semibold sm:font-normal">Change Profile Picture</p>
 
-            <div className="flex flex-row gap-3">
+            <div className="flex flex-row flex-wrap justify-center sm:justify-start gap-3">
               <input
                 type="file"
                 ref={fileInputRef}

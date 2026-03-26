@@ -20,8 +20,8 @@ function ExploreSection(){
                 Learn to Build Anything You Can Imagine
             </p>
             
-            <div className="flex gap-5 bg-richblack-800 border-b-richblack-500 border-b-2
-             px-4 py-2 rounded-full mt-10">
+            <div className="flex flex-row flex-wrap justify-center gap-2 md:gap-5 bg-richblack-800 border-b-richblack-500 border-b-2
+             px-4 py-2 rounded-lg md:rounded-full mt-10 w-full md:w-auto">
                 {
                     HomePageExplore.map((course, index) => (
                         <div key={index} className={`text-richblack-200

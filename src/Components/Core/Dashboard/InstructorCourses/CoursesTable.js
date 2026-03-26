@@ -50,10 +50,10 @@ function CoursesTable({ courses, setCourses }) {
         {/* ===== TABLE HEADER ===== */}
         <Thead>
           <Tr className="border-b border-richblack-700 text-left">
-            <Th className="w-[50%] p-4">Courses</Th>
-            <Th className="w-[15%] p-4">Duration</Th>
-            <Th className="w-[15%] p-4">Price</Th>
-            <Th className="w-[20%] p-4 text-center">Action</Th>
+            <Th className="p-4 flex-1">Courses</Th>
+            <Th className="p-4 w-auto md:w-[15%]">Duration</Th>
+            <Th className="p-4 w-auto md:w-[15%]">Price</Th>
+            <Th className="p-4 w-auto md:w-[20%] text-center">Action</Th>
           </Tr>
         </Thead>
 
@@ -72,11 +72,11 @@ function CoursesTable({ courses, setCourses }) {
                 className="border-b border-richblack-700 align-top hover:bg-richblack-800 transition-all"
               >
                 {/* ===== COURSE COLUMN ===== */}
-                <Td className="p-4 w-[50%]">
-                  <div className="flex gap-x-4">
+                <Td className="p-4 flex-1">
+                  <div className="flex flex-col md:flex-row gap-4">
                     <img
                       src={course?.thumbnail}
-                      className="rounded-lg object-cover h-[120px] w-[180px]"
+                      className="rounded-lg object-cover h-auto w-full md:h-[120px] md:w-[180px] aspect-video md:aspect-auto"
                       alt="Course Thumbnail"
                     />
 
@@ -114,18 +114,18 @@ function CoursesTable({ courses, setCourses }) {
                 </Td>
 
                 {/* ===== DURATION ===== */}
-                <Td className="p-4 w-[15%] align-middle">
+                <Td className="p-4 w-auto md:w-[15%] align-middle">
                   2hr 30min
                 </Td>
 
                 {/* ===== PRICE ===== */}
-                <Td className="p-4 w-[15%] align-middle">
+                <Td className="p-4 w-auto md:w-[15%] align-middle">
                   Rs.{course.price}
                 </Td>
 
                 {/* ===== ACTION ===== */}
-                <Td className="p-4 w-[20%]">
-                  <div className="flex justify-center gap-x-5 mt-12">
+                <Td className="p-4 w-auto md:w-[20%]">
+                  <div className="flex md:justify-center gap-x-5 md:mt-12 items-center md:items-start mt-2">
                     <button
                       disabled={loading}
                       onClick={() =>

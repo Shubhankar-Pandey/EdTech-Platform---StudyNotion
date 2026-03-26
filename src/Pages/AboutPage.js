@@ -23,7 +23,7 @@ function AboutPage(){
 
                 <div className="flex flex-col items-center mt-10">
 
-                    <header className = "flex flex-col items-center w-[55%]">
+                    <header className = "flex flex-col items-center w-full md:w-[70%] lg:w-[55%] px-4 mx-auto">
                         <div className="flex flex-col items-center text-3xl">
                             <p className="text-richblack-5">
                                 Driving Innovation in Online Education for a
@@ -40,10 +40,10 @@ function AboutPage(){
                         </p>
                     </header>
 
-                    <div className="flex gap-3 flex-wrap mt-10">
-                        <img alt="aboutUsImage1" src={aboutus1}></img>
-                        <img alt="aboutUsImage2" src={aboutus2}></img>
-                        <img alt="aboutUsImage3" src={aboutus3}></img>
+                    <div className="flex flex-col md:flex-row gap-5 flex-wrap justify-center items-center mt-10 w-full px-4">
+                        <img alt="aboutUsImage1" src={aboutus1} className="w-full sm:w-[80%] md:w-[30%] object-cover shadow-md"></img>
+                        <img alt="aboutUsImage2" src={aboutus2} className="w-full sm:w-[80%] md:w-[30%] object-cover shadow-md"></img>
+                        <img alt="aboutUsImage3" src={aboutus3} className="w-full sm:w-[80%] md:w-[30%] object-cover shadow-md"></img>
                     </div>
 
                 </div>
@@ -61,9 +61,9 @@ function AboutPage(){
             <section className="flex flex-col mt-20
              border-t border-richblack-600">
 
-                <div className="flex justify-evenly mt-20 items-center">
+                <div className="flex flex-col md:flex-row justify-evenly mt-10 md:mt-20 items-center gap-10 md:gap-0 px-4 md:px-0 w-full max-w-7xl mx-auto">
 
-                    <div className="w-[35%] flex flex-col">
+                    <div className="w-full md:w-[45%] lg:w-[35%] flex flex-col">
 
                         <h1 className="text-3xl text-pink-300 font-bold">Our Founding Story</h1>
 
@@ -88,16 +88,16 @@ function AboutPage(){
 
                     </div>
 
-                    <div className="w-[35%]">
-                        <img alt="foundingStoryImage" src={foundingStoryImage}/>
+                    <div className="w-full sm:w-[80%] md:w-[45%] lg:w-[35%] mt-10 md:mt-0">
+                        <img alt="foundingStoryImage" src={foundingStoryImage} className="w-full object-cover"/>
                     </div>
 
                 </div>
 
 
-                <div className="flex justify-evenly mt-40 items-center">
+                <div className="flex flex-col md:flex-row justify-evenly mt-20 lg:mt-40 items-center gap-10 md:gap-0 px-4 md:px-0 w-full max-w-7xl mx-auto">
 
-                    <div className="w-[35%] flex flex-col">
+                    <div className="w-full md:w-[45%] lg:w-[35%] flex flex-col">
                         <h1 className="text-3xl font-bold text-brown-200">Our Vision</h1>
                         <p className="text-richblack-300 mt-5">
                             With this vision in mind, we set out on a journey
@@ -111,7 +111,8 @@ function AboutPage(){
                         </p>
                     </div>
 
-                    <div className="w-[35%] flex flex-col">
+
+                    <div className="w-full md:w-[45%] lg:w-[35%] flex flex-col">
                         <h1 className="text-3xl font-bold text-blue-100">Our Mission</h1>
                         <p className="text-richblack-300 mt-5">
                             our mission goes beyond just delivering courses

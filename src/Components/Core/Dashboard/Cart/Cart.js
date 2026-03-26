@@ -10,17 +10,21 @@ function Cart(){
 
     return (
         <div className="text-richblack-5">
-            <h1>Your Cart</h1>
-            <p>{totalItems} Courses in Cart</p>
+            <h1 className="text-3xl">Your Cart</h1>
+            <p className="text-richblack-100 mt-5 mb-5 border-b-2 border-richblack-600">{totalItems} Courses in Cart</p>
             {
                 total > 0 ? 
                 (   
-                    <div>
-                        <RenderCartCourses/>
-                        <RenderTotalAmount/>
+                    <div className="flex flex-col lg:flex-row items-start gap-8 mt-8">
+                        <div className="w-full lg:flex-1">
+                            <RenderCartCourses/>
+                        </div>
+                        <div className="w-full lg:w-fit">
+                            <RenderTotalAmount/>
+                        </div>
                     </div>
                 )
-                : (<p>Your cart is Empty</p>)
+                : (<p className="text-xl">Your cart is Empty</p>)
             }
         </div>
     )

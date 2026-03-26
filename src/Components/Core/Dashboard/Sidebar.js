@@ -5,11 +5,12 @@ import SidebarLink from "./SidebarLink";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { VscSignOut } from "react-icons/vsc";
+import { AiOutlineMenu } from "react-icons/ai";
 import ConfirmationModal from "../../Common/ConfirmationModal";
 
 
 
-function Sidebar(){
+function Sidebar({setIsSidebarOpen}){
 
     const {user, loading : profileLoading} = useSelector((state) => state.profile);
     const {loading : authLoading} = useSelector((state) => state.auth);
@@ -28,11 +29,19 @@ function Sidebar(){
 
 
     return (
-        <div className="w-[18%]">
+        <div className="h-full w-full">
 
-            <div className="flex flex-col
+            <div className="flex flex-col relative
              border-r-[1px] border-richblack-700 
              bg-richblack-800 py-10 h-full">
+
+                {/* Close Hamburger for mobile */}
+                <button 
+                    className="absolute top-4 right-4 md:hidden p-2 text-richblack-25 transition-transform"
+                    onClick={() => setIsSidebarOpen(false)}
+                >
+                    <AiOutlineMenu size={24} />
+                </button>
                 
                 {/* Sidebar links  */}
                 <div className="flex flex-col">

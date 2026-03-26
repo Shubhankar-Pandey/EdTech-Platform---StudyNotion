@@ -7,8 +7,8 @@ import Logo4 from "../../../assets/TimeLineLogo/Logo4.svg"
 
 function TimeLineSection(){
     return (
-        <div className="flex w-full justify-evenly gap-10 mb-40">
-            <div className="flex flex-col justify-evenly p-12">
+        <div className="flex flex-col md:flex-row w-full justify-evenly gap-10 mb-40 items-center">
+            <div className="flex flex-col justify-evenly p-5 md:p-12 w-full md:w-auto">
                 <TimeLineBlock logo = {Logo1} heading = "Leadership"
                  subheading = "Fully committed to the success company"/>
                 <div className="ml-7 h-[10%] border-dotted border-l-2 border-pure-greys-200"></div>
@@ -24,12 +24,12 @@ function TimeLineSection(){
                 <TimeLineBlock logo = {Logo4} heading = "Solve the problem"
                  subheading = "Code your way to a solution"/>
             </div>
-            <div className="w-[55%] relative">
-                <img src={timeLineImage} alt="time line image"></img>
-                <div className="bg-caribbeangreen-700 w-[70%] absolute z-10
-                -bottom-12 left-24 flex p-10">
-                    <div className="w-[50%] flex items-center justify-center gap-5
-                     border-r border-caribbeangreen-200">
+            <div className="w-full md:w-[55%] relative mt-16 md:mt-0">
+                <img src={timeLineImage} alt="time line image" className="w-full object-cover shadow-[-20px_-20px_0_0] shadow-white rounded-lg"></img>
+                <div className="bg-caribbeangreen-700 w-full md:w-[70%] absolute z-10
+                -bottom-16 md:-bottom-12 md:left-24 flex flex-col sm:flex-row p-5 sm:p-10 gap-5 sm:gap-0">
+                    <div className="w-full sm:w-[50%] flex items-center justify-center gap-5
+                     sm:border-r border-caribbeangreen-200">
                         <div className="font-bold text-4xl text-white">
                             10
                         </div>
@@ -38,7 +38,7 @@ function TimeLineSection(){
                             <p>EXPERIENCES</p>
                         </div>
                     </div>
-                    <div className="w-[50%] flex items-center justify-center gap-5">
+                    <div className="w-full sm:w-[50%] flex items-center justify-center gap-5">
                         <div className="font-bold text-4xl text-white">
                             250
                         </div>

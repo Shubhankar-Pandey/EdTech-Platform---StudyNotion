@@ -19,9 +19,9 @@ function Catalog(){
     // fetch all categories
     useEffect(() => {
         const getCategories = async() => {
-            console.log("before api call");
+            // console.log("before api call");
             const res = await apiConnector("GET", categories.CATEGORIES_API);
-            console.log("after api call");
+            // console.log("after api call");
             const category_id = 
             res?.data?.data?.filter((ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName)[0]._id;
 
@@ -30,8 +30,8 @@ function Catalog(){
         getCategories();
     }, [catalogName]);
 
-    console.log("catalog name : ", catalogName);
-    console.log("category_id : ", categoryId);
+    // console.log("catalog name : ", catalogName);
+    // console.log("category_id : ", categoryId);
 
 
     useEffect(() => {
@@ -48,7 +48,7 @@ function Catalog(){
         getCategoryDetail();
     }, [categoryId])
 
-    console.log("catalogPageData : ", catalogPageData);
+    // console.log("catalogPageData : ", catalogPageData);
 
 
 

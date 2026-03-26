@@ -6,11 +6,11 @@ import { BiSolidVector } from "react-icons/bi";
 
 function ExploreCourses({index}){
     return (
-        <div className="flex justify-evenly absolute -bottom-24">
+        <div className="flex flex-col lg:flex-row justify-evenly static lg:absolute lg:-bottom-24 w-[90%] lg:w-full gap-5 lg:gap-0 mt-5 lg:mt-0 mx-auto">
             {
                 HomePageExplore[index].courses.map((course, index) => (
-                    <div key={index} className={`w-[25%] p-6 mt-10
-                    flex flex-col justify-between cursor-pointer
+                    <div key={index} className={`w-full lg:w-[30%] p-6 lg:mt-10 mt-2
+                    flex flex-col justify-between cursor-pointer rounded-lg
                     ${index === 0 ? "bg-white shadow-[10px_10px_0px_#ffd60a]" : "bg-richblack-800"}`}>
 
                         <div>

@@ -9,11 +9,11 @@ function ContactUs(){
     return (
         <div>
 
-            <div className="w-11/12 flex justify-between mx-auto mt-20 mb-60">
+            <div className="w-11/12 flex flex-col md:flex-row justify-between mx-auto mt-10 md:mt-20 mb-20 gap-10 md:gap-0">
             
                 {/* Left part */}
                 <div className="bg-richblack-800 rounded-xl p-10
-                flex flex-col gap-12 w-[35%] max-h-fit">
+                flex flex-col gap-12 w-full md:w-[35%] max-h-fit">
 
                     <div className="flex gap-2">
                         <div className="text-richblack-100 text-2xl">
@@ -69,7 +69,7 @@ function ContactUs(){
                 </div>
 
                 {/* Right part  */}
-                <div className="w-[60%] border-[1px] border-richblack-600
+                <div className="w-full md:w-[60%] border-[1px] border-richblack-600
                 rounded-xl p-10">
                     <h1 className="text-richblack-5 text-4xl">
                         Got a Idea? We've got the skills.

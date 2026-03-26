@@ -76,17 +76,17 @@ function SignupPage(){
 
     return (
         <div>
-            <div className="w-11/12 flex mx-auto mt-16 justify-evenly">
+            <div className="w-full max-w-7xl px-4 md:px-10 flex flex-col-reverse lg:flex-row mx-auto mt-10 md:mt-16 justify-between items-center lg:items-center gap-10 md:gap-20">
 
                 {/* Part 1 - form  */}
-                <div className="w-[40%]">
+                <div className="w-full lg:w-[45%] flex flex-col justify-center">
 
                     <p className="text-richblack-5 text-2xl">
                         Join the millions learning to code with StudyNotion for free
                     </p>
                     
                     <div className="flex bg-richblack-800 text-richblack-200
-                     rounded-full w-[50%] border-b border-richblack-600 mt-9
+                     rounded-full w-full md:w-[70%] xl:w-[50%] border-b border-richblack-600 mt-9
                      hover:cursor-pointer"> 
                         <div onClick={() => selectRoleHandler("Student")}
                         className = {`w-[50%] m-1 rounded-full flex items-center p-2
@@ -108,9 +108,9 @@ function SignupPage(){
                     <form onSubmit={handleOnSubmit}>
                         
                         {/* First Name  & Last Name */}
-                        <div className="flex mt-8 gap-2">
+                        <div className="flex flex-col md:flex-row mt-8 gap-4 md:gap-2">
 
-                            <div className="flex flex-col">
+                            <div className="flex flex-col w-full md:w-[48%]">
                                 <label htmlFor="firstName" className="text-white font-thin text-sm mb-1 flex">
                                     First Name
                                     <CgAsterisk className="text-pink-200" />
@@ -126,7 +126,7 @@ function SignupPage(){
                                 placeholder="Enter first name"></input>
                             </div>
 
-                            <div className="flex flex-col w-[40%]">
+                            <div className="flex flex-col w-full md:w-[48%]">
                                 <label htmlFor="lastName" className="text-white font-thin text-sm mb-1 flex">
                                     Last Name
                                     <CgAsterisk className="text-pink-200" />
@@ -156,16 +156,16 @@ function SignupPage(){
                             id="email"
                             required
                             value={formData.email}
-                            className="text-richblack-200 w-[80%] p-2
+                            className="text-richblack-200 w-full md:w-[80%] p-2
                              bg-richblack-800 border-b border-richblack-600 rounded-md"
                             placeholder="Enter email address"></input>
                         </div>
                         
                         {/* Create Password and confirm Password  */}
-                        <div className="flex gap-2 mt-6">
+                        <div className="flex flex-col md:flex-row gap-4 md:gap-2 mt-6">
 
                             {/* Create Password  */}
-                            <div className="flex flex-col">
+                            <div className="flex flex-col w-full md:w-[48%]">
                                 <label htmlFor="createPassword" className="text-white font-thin text-sm mb-1 flex">
                                     Create Password
                                     <CgAsterisk className="text-pink-200" />
@@ -201,7 +201,7 @@ function SignupPage(){
                             </div>
                             
                             {/* Confirm Password  */}
-                            <div className="flex flex-col">
+                            <div className="flex flex-col w-full md:w-[48%]">
                                 <label htmlFor="confirmPassword" className="text-white font-thin text-sm mb-1 flex">
                                     Confirm Password
                                     <CgAsterisk className="text-pink-200" />
@@ -238,8 +238,8 @@ function SignupPage(){
 
                         </div>
 
-                        <button type="submit" className="mt-10 w-[80%] bg-yellow-50 p-2
-                         rounded-md hover:scale-95 transition-all duration-200">
+                        <button type="submit" className="mt-10 w-full md:w-[80%] bg-yellow-50 p-2
+                         rounded-md hover:scale-95 transition-all duration-200 font-semibold text-richblack-900">
                             Create Account
                         </button>
 
@@ -251,7 +251,7 @@ function SignupPage(){
 
 
                 {/* Part 2 - image  */}
-                <div className="w-[40%] object-cover relative mt-6">
+                <div className="w-full lg:w-[50%] object-cover relative mt-6 lg:mt-0 max-w-[500px]">
                     <img alt="frame" src={frame}/>
                     {
                         formData.accountType === "Student" ?

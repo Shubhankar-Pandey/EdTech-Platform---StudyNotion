@@ -17,14 +17,14 @@ function MyProfile(){
                 My Profile
             </h1>
 
-            <div className="w-[70%] mx-20 mt-16 bg-richblack-800 p-4
+            <div className="w-11/12 md:w-[70%] mx-auto md:mx-0 mt-8 md:mt-16 bg-richblack-800 p-4
              rounded-lg border-[1px] border-richblack-700
-              flex items-center gap-5">
+              flex flex-col md:flex-row items-center md:items-start gap-5">
                 
                 <img alt="userImage" src={user.image}
                 className="w-16 h-16 rounded-full"></img>
 
-                <div className="flex w-full justify-between items-center p-2">
+                <div className="flex flex-col md:flex-row w-full justify-between items-center md:items-start p-2 gap-4">
 
                     <div className="flex flex-col">
                         <p>
@@ -41,16 +41,16 @@ function MyProfile(){
 
             </div>
 
-            <div className="w-[70%] mx-20 mt-4 bg-richblack-800 p-4
+            <div className="w-11/12 md:w-[70%] mx-auto md:mx-0 mt-4 bg-richblack-800 p-4
              rounded-lg border-[1px] border-richblack-700
-              flex flex-col">
+              flex flex-col gap-4">
 
                 <div className="flex justify-between">
                     <p className="text-richblack-5">Personal Details</p>
                     <EditButton link={"/edit-profile"}/>
                 </div>
 
-                <div className="flex justify-between w-[60%] text-sm">
+                <div className="flex flex-col md:flex-row justify-between w-full md:w-[60%] text-sm gap-4">
                     <div className="flex flex-col">
                         <p className="text-richblack-600">First Name</p>
                         <p className="text-richblack-5">{user.firstName}</p>
@@ -61,7 +61,7 @@ function MyProfile(){
                     </div>
                 </div>
 
-                <div className="flex justify-between w-[60%] text-sm mt-4">
+                <div className="flex flex-col md:flex-row justify-between w-full md:w-[60%] text-sm mt-4 gap-4">
                     <div className="flex flex-col">
                         <p className="text-richblack-600">Email</p>
                         <p className="text-richblack-300">{user.email}</p>

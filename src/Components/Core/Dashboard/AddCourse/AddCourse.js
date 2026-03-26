@@ -5,14 +5,14 @@ import RenderSteps from "./RenderSteps"
 function AddCourse (){
 
     return (
-        <div className="text-richblack-5 flex justify-between">
-            <div className="w-[60%]">
+        <div className="text-richblack-5 flex flex-col md:flex-row justify-between gap-10 md:gap-0">
+            <div className="w-full md:w-[60%]">
                 <div className="text-2xl">Add course</div>
                 <div className="w-full mt-5">
                     <RenderSteps/>
                 </div>
             </div>
-            <div className="w-[38%] text-sm p-6 border-[1px] border-richblack-700
+            <div className="w-full md:w-[38%] text-sm p-6 border-[1px] border-richblack-700
             rounded-md max-h-min bg-richblack-800">
                 <p className="text-xl">⚡Course Upload Tips</p>
                 <ul className="flex flex-col gap-3 mt-5 list-disc pl-3">

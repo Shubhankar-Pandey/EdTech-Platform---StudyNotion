@@ -8,10 +8,10 @@ function CodeBlocks({
     backgroundGradient, codeColor
 }){
     return (
-        <div className={`${position} flex w-11/12 my-20 justify-between gap-10`}>
+        <div className={`flex flex-col ${position} w-full md:w-11/12 my-20 justify-between gap-10`}>
 
             {/* Section 1 */}
-            <div className="w-[50%] flex flex-col gap-8">
+            <div className="w-full lg:w-[50%] flex flex-col gap-8 px-4 md:px-0">
                 {heading}
                 <div className="text-richblack-300 font-bold">
                     {subHeading}
@@ -31,9 +31,9 @@ function CodeBlocks({
 
 
             {/* Section 2 */}
-            <div className="flex text-[1rem] lg:w-[500px]
+            <div className="flex text-[1rem] w-full lg:w-[500px]
             border-l-richblack-400 border-t-richblack-400 border-l-2 border-t-2
-            p-2 rounded-md relative">
+            p-2 rounded-md relative mx-auto md:mx-0">
                 {/* HW : Gradient */}
 
                 <div className="text-center flex flex-col w-[10%]

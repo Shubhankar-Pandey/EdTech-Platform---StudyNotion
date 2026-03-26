@@ -125,58 +125,59 @@ function CourseDetails(){
 
     return (
         <div className="flex flex-col text-richblack-5">
+            <div className="relative w-full bg-richblack-800">
+                <div className="mx-auto w-full max-w-7xl px-4 md:px-10 py-10 lg:py-16 flex flex-col lg:flex-row gap-10 justify-between items-start">
+                    
+                    {/* Left Side Info */}
+                    <div className="w-full lg:w-[60%] flex flex-col gap-4 lg:border-r border-richblack-700 lg:pr-10">
+                        <p className="text-3xl font-bold">{courseName}</p>
+                        <p className="text-richblack-200">{courseDescription}</p>
 
-            <div className="relative w-full bg-richblack-800 h-80 flex items-center gap-4">
-
-                <div className="w-[50%] flex flex-col gap-2 border-r-2 border-r-richblack-700 ml-20">
-                    <p className="text-3xl">{courseName}</p>
-                    <p className="text-richblack-200">{courseDescription}</p>
-
-                    <div className="flex gap-x-2">
-                        <span className="text-yellow-50">{avgReviewCount}</span>
-                        <RatingStars Review_Count = {avgReviewCount}/>
-                        <span className="text-richblack-25">{`(${ratingAndReview.length} reviews)`}</span>
-                        <span className="text-richblack-25">{`${studentEnrolled.length} students enrolled`}</span>
-                    </div>
-
-                    <div>
-                        <p className="text-richblack-25">Created By {instructor.firstName} {instructor.lastName}</p>
-                    </div>
-
-                    <div className="flex gap-x-2 text-richblack-25">
-                        <p>Created At {FormatDate(createdAt)}</p>
-                        <div className="flex items-center gap-x-1 ml-3">
-                            <HiGlobeAlt className="text-lg"/>
-                            <p> {" "} English </p> 
+                        <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
+                            <span className="text-yellow-50">{avgReviewCount}</span>
+                            <RatingStars Review_Count={avgReviewCount}/>
+                            <span className="text-richblack-25">{`(${ratingAndReview.length} reviews)`}</span>
+                            <span className="text-richblack-25">{`${studentEnrolled.length} students enrolled`}</span>
                         </div>
-                        
+
+                        <div>
+                            <p className="text-richblack-25 font-semibold">Created By {instructor.firstName} {instructor.lastName}</p>
+                        </div>
+
+                        <div className="flex flex-wrap gap-x-2 text-richblack-25 items-center">
+                            <p>Created At {FormatDate(createdAt)}</p>
+                            <div className="flex items-center gap-x-1 ml-0 sm:ml-3">
+                                <HiGlobeAlt className="text-lg"/>
+                                <p> {" "} English </p> 
+                            </div>
+                        </div>
                     </div>
+
+                    {/* Right Side Card Layout */}
+                    <div className="w-full lg:w-[35%] relative">
+                        <CourseDetailsCard 
+                            course={courseData?.courseDetails}
+                            setConfirmationModal={setConfirmationModal}
+                            handleBuyCourse={handleBuyCourse}
+                        />
+                    </div>
+
                 </div>
-
-                <div className="absolute top-10 right-36">
-                    <CourseDetailsCard 
-                        course = {courseData?.courseDetails}
-                        setConfirmationModal = {setConfirmationModal}
-                        handleBuyCourse = {handleBuyCourse}
-                    />
-                </div>
-
-
             </div>
 
 
             
 
-            <div className="border-2 border-richblack-700 w-[50%] ml-20 p-6 mt-10">
-                <p className="text-2xl">What you will learn</p>
-                <div className="text-richblack-50">
+            <div className="border border-richblack-700 rounded-md w-full max-w-7xl px-4 md:px-10 lg:w-[50%] mx-auto lg:mx-0 lg:ml-20 p-6 mt-10">
+                <p className="text-2xl font-bold mb-4">What you will learn</p>
+                <div className="text-richblack-50 leading-relaxed">
                     {whatYouWillLearn}
                 </div>
             </div>
 
-            <div className="w-[50%] ml-20 mt-10">
+            <div className="w-full max-w-7xl px-4 md:px-10 lg:w-[50%] mx-auto lg:mx-0 lg:ml-20 mt-10">
                 <div>
-                    <p className="text-xl">Course Content</p>
+                    <p className="text-xl font-semibold">Course Content</p>
                 </div>
 
                 <div className="flex justify-between mt-3">
