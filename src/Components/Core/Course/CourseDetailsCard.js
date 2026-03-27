@@ -10,7 +10,6 @@ import { addToCart } from "../../../Slices/cartSlice";
 function CourseDetailsCard({course, setConfirmationModal, handleBuyCourse}){
 
     const {user} = useSelector((state) => state.profile);
-    const {token} = useSelector((state) => state.auth);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -19,7 +18,7 @@ function CourseDetailsCard({course, setConfirmationModal, handleBuyCourse}){
             toast.error("You are a instructor, you can't buy a course");
             return;
         }
-        if(token){
+        if(user){
             dispatch(addToCart(course));
             return;
         }

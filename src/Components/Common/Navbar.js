@@ -17,7 +17,7 @@ import { AiOutlineMenu } from "react-icons/ai";
 
 function Navbar(){
 
-    const token = useSelector((state) => state.auth.token);
+
     const user = useSelector((state) => state.profile.user);
     const totalItems = useSelector((state) => state.cart.totalItems); 
 
@@ -147,7 +147,7 @@ function Navbar(){
 
                     <div className="hidden md:flex gap-x-4 items-center">
                         {
-                            token === null && (
+                            user === null && (
                                 <div className="flex text-richblack-25 gap-3">
                                     <NavLink to={"/login"}>
                                         <button
@@ -174,7 +174,7 @@ function Navbar(){
                             )
                         }
                         {   
-                            token !== null && <ProfileDropDown/>
+                            user !== null && <ProfileDropDown/>
                         }
                     </div>
                     
@@ -223,11 +223,11 @@ function Navbar(){
                         <li onClick={() => setIsMobileMenuOpen(false)}><NavLink to="/about" className={matchRoute("/about") ? "text-yellow-50" : ""}>About Us</NavLink></li>
                         <li onClick={() => setIsMobileMenuOpen(false)}><NavLink to="/contact" className={matchRoute("/contact") ? "text-yellow-50" : ""}>Contact Us</NavLink></li>
                         
-                        {token !== null && (
+                        {user !== null && (
                             <li onClick={() => setIsMobileMenuOpen(false)}><NavLink to="/dashboard/my-profile" className={location.pathname.includes("dashboard") ? "text-yellow-50" : ""}>Dashboard</NavLink></li>
                         )}
 
-                        {token === null ? (
+                        {user === null ? (
                             <div className="flex flex-col gap-4 mt-4">
                                 <li onClick={() => setIsMobileMenuOpen(false)}><NavLink to="/login" className="px-6 py-2 border border-richblack-700 bg-richblack-800 rounded-md block text-center">Log in</NavLink></li>
                                 <li onClick={() => setIsMobileMenuOpen(false)}><NavLink to="/signup" className="px-6 py-2 border border-richblack-700 bg-richblack-800 rounded-md block text-center">Sign up</NavLink></li>

@@ -19,7 +19,7 @@ function SubSectionModal ({modalData, setModalData, add = false, view = false, e
 
     const [loading, setLoading] = useState(false);
 
-    const {token} = useSelector((state) => state.auth);
+
     const {course} = useSelector((state) => state.course);
 
 
@@ -69,7 +69,7 @@ function SubSectionModal ({modalData, setModalData, add = false, view = false, e
         setLoading(true);
 
         // API CALL
-        const result = await updateSubSection(formData, token);
+        const result = await updateSubSection(formData);
 
         if(result){
             const updatedCourseContent = course.courseContent.map((section) => section._id.toString() === modalData.sectionId.toString() ? result : section);
@@ -116,7 +116,7 @@ function SubSectionModal ({modalData, setModalData, add = false, view = false, e
         // console.log("before api call");
 
         // API CALL
-        const result = await createSubSection(formData, token);
+        const result = await createSubSection(formData);
 
         // console.log("after api call result : ", result);
 

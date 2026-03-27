@@ -24,7 +24,7 @@ import { IoMdCheckmarkCircle } from "react-icons/io";
 import { FaClock } from "react-icons/fa6";
 
 function CoursesTable({ courses, setCourses }) {
-  const { token } = useSelector((state) => state.auth);
+
   const [loading, setLoading] = useState(false);
   const [confomationModal, setConfomationModal] = useState(null);
   const navigate = useNavigate();
@@ -32,9 +32,9 @@ function CoursesTable({ courses, setCourses }) {
   const handleCourseDelete = async (courseId) => {
     setLoading(true);
 
-    await deleteCourse({ courseId: courseId }, token);
+    await deleteCourse({ courseId: courseId });
 
-    const result = await fetchInstructorCourses(token);
+    const result = await fetchInstructorCourses();
 
     if (result) {
       setCourses(result);

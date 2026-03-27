@@ -8,7 +8,7 @@ import { changePassword } from "../../../../Services/operation/SettingsAPI"
 import IconBtn from "../../../Common/IconButton"
 
 export default function UpdatePassword() {
-  const { token } = useSelector((state) => state.auth)
+
   const navigate = useNavigate()
 
   const [showOldPassword, setShowOldPassword] = useState(false)
@@ -23,7 +23,7 @@ export default function UpdatePassword() {
   const submitPasswordForm = async (data) => {
     // console.log("password Data - ", data)
     try {
-      await changePassword(token, data)
+      await changePassword(data)
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }

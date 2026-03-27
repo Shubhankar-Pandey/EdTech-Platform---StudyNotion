@@ -5,9 +5,9 @@ import { Navigate } from "react-router-dom";
 
 function PrivateRoute({children}){
 
-    const {token} = useSelector((state) => state.auth);
+    const {user} = useSelector((state) => state.profile);
 
-    if(token !== null){
+    if(user !== null){
         return children;
     }
     else{

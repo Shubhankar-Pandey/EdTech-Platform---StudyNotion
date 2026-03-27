@@ -6,7 +6,7 @@ import IconBtn from "../../../Common/IconButton"
 
 export default function RenderTotalAmount() {
   const { total, cart } = useSelector((state) => state.cart)
-  const { token } = useSelector((state) => state.auth)
+
   const { user } = useSelector((state) => state.profile)
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -15,7 +15,7 @@ export default function RenderTotalAmount() {
     // console.log("handleBuyCourse clicked")
     const courses = cart.map((course) => course._id)
     // console.log("courses = ", courses);
-    buyCourse(token, courses, user, navigate, dispatch)
+    buyCourse(courses, user, navigate, dispatch)
   }
 
   return (

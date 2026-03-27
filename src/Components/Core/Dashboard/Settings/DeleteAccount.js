@@ -7,7 +7,7 @@ import { deleteProfile } from "../../../../Services/operation/SettingsAPI"
 import { useState } from "react"
 
 export default function DeleteAccount() {
-  const { token } = useSelector((state) => state.auth)
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -15,7 +15,7 @@ export default function DeleteAccount() {
 
   async function handleDeleteAccount() {
     try {
-      dispatch(deleteProfile(token, navigate))
+      dispatch(deleteProfile(navigate))
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message)
     }

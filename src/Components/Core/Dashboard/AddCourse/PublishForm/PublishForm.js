@@ -15,7 +15,7 @@ function PublishForm(){
 
     const {register, handleSubmit, setValue, getValues} = useForm();
     const dispatch = useDispatch();
-    const {token} = useSelector((state) => state.auth);
+
     const {course} = useSelector((state) => state.course);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
@@ -56,7 +56,7 @@ function PublishForm(){
 
         // now API call karenge
         setLoading(true);
-        const result = await editCourseDetails(formData, token);
+        const result = await editCourseDetails(formData);
 
         if(result){
             goToCourses();

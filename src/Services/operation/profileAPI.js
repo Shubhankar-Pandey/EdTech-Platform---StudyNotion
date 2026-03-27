@@ -9,13 +9,13 @@ const { GET_USER_DETAILS_API, GET_USER_ENROLLED_COURSES_API } = profileEndpoints
 
 
 
-export function getUserDetails(token, navigate) {
+export function getUserDetails(navigate) {
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
       const response = await apiConnector("GET", GET_USER_DETAILS_API, null, {
-        Authorization: `Bearer ${token}`,
+        withCredentials: true,
       })
       console.log("GET_USER_DETAILS API RESPONSE............", response)
 
@@ -38,7 +38,7 @@ export function getUserDetails(token, navigate) {
 
 
 
-export async function getUserEnrolledCourses(token) {
+export async function getUserEnrolledCourses() {
   const toastId = toast.loading("Loading...")
   let result = []
   try {
@@ -48,7 +48,7 @@ export async function getUserEnrolledCourses(token) {
       GET_USER_ENROLLED_COURSES_API,
       null,
       {
-        Authorization: `Bearer ${token}`,
+        withCredentials: true,
       }
     )
     

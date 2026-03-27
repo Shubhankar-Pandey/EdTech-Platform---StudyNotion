@@ -14,7 +14,7 @@ function CourseBuilder(){
 
     const [loading, setLoading] = useState(false);
 
-    const { token } = useSelector((state) => state.auth);
+
 
     const {register, handleSubmit, formState:{errors}, getValues, setValue} = useForm()
 
@@ -61,8 +61,7 @@ function CourseBuilder(){
                     sectionName : data.sectionName,
                     sectionId : editSectionName,
                     courseId : course._id
-                },
-                token,
+                }
             )
         }
         else{
@@ -71,8 +70,7 @@ function CourseBuilder(){
                 {
                     sectionName : data.sectionName,
                     courseId : course._id,
-                },
-                token,
+                }
             )
         }
 

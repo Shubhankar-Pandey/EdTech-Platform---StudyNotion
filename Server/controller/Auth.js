@@ -228,8 +228,9 @@ exports.login = async(req, res) => {
             // create cookie and send response
             const options = {
                 httpOnly: true,   // prevents XSS -> not able to change cookie data
-                secure: true,     // HTTPS only
+                secure: false,     // true -> HTTPS only   flase -> HTTP
                 expires : new Date(Date.now() + 3*24*60*60*1000),
+                sameSite: "lax",
             }
             res.cookie("token", token, options).status(200).json({
                 success : true,
@@ -276,3 +277,27 @@ exports.changePassword = async(req, res) => {
         })
     }
 }
+
+
+
+// *************** logout ***************
+
+exports.logout = async (req, res) => {
+    try {
+        const options = {
+            httpOnly: true,
+            secure: false, 
+            sameSite: "lax",
+        };
+        res.clearCookie("token", options).status(200).json({
+            success: true,
+            message: "Logged out successfully",
+        });
+    } catch (error) {
+        console.log("Error during logout:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Logout failure, please try again",
+        });
+    }
+};

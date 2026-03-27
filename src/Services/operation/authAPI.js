@@ -1,6 +1,8 @@
 import { toast } from "react-hot-toast"
 import { setUser } from "../../Slices/profileSlice";
-import {setLoading, setToken} from "../../Slices/authSlice" 
+// import {setLoading, setToken} from "../../Slices/authSlice" 
+import {setLoading} from "../../Slices/authSlice" 
+
 import { apiConnector } from "../apiConnector";
 import { endpoints } from "../apis";
 
@@ -9,6 +11,7 @@ const {
   SENDOTP_API,
   SIGNUP_API,
   LOGIN_API,
+  LOGOUT_API,
   RESETPASSTOKEN_API,
   RESETPASSWORD_API,
 } = endpoints
@@ -101,6 +104,8 @@ export function login(email, password, navigate) {
       const response = await apiConnector("POST", LOGIN_API, {
         email,
         password,
+      },{
+        withCredentials: true,
       })
 
       console.log("LOGIN API RESPONSE............", response)
@@ -111,16 +116,13 @@ export function login(email, password, navigate) {
 
       toast.success("Login Successful")
 
-      dispatch(setToken(response.data.token))
-      
       const userImage = response.data?.user?.image 
         ? response.data.user.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
       
         dispatch(setUser({ ...response.data.user, image: userImage }))
 
-      localStorage.setItem("token", JSON.stringify(response.data.token))
-      localStorage.setItem("user", JSON.stringify(response.data.user))
+      // localStorage.setItem("user", JSON.stringify(response.data.user))
 
       navigate("/dashboard/my-profile")
       
@@ -191,12 +193,20 @@ export function resetPassword(password, confirmPassword, token){
 
 
 export function logout(navigate) {
-  return (dispatch) => {
-    dispatch(setToken(null))
-    dispatch(setUser(null))
-    localStorage.removeItem("token")
-    localStorage.removeItem("user")
-    toast.success("Logged Out")
-    navigate("/")
-  }
+  return async (dispatch) => {
+    dispatch(setLoading(true));
+    try {
+      await apiConnector("POST", LOGOUT_API, null, {
+        withCredentials: true,
+      });
+      dispatch(setUser(null));
+      localStorage.removeItem("user");
+      toast.success("Logged Out");
+      navigate("/");
+    } catch (error) {
+      console.log("LOGOUT API ERROR............", error);
+      toast.error("Logout Failed");
+    }
+    dispatch(setLoading(false));
+  };
 }

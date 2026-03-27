@@ -15,7 +15,7 @@ import ChipInput from "./ChipInput";
 
 function CourseInformationForm(){
 
-    const {token} = useSelector((state) => state.auth);
+
 
     const {
         register,
@@ -115,7 +115,7 @@ function CourseInformationForm(){
 
 
                 setLoading(true);
-                const result = await editCourseDetails(formData, token);
+                const result = await editCourseDetails(formData);
                 setLoading(false);
                 if(result){
                     dispatch(setStep(2));
@@ -144,7 +144,7 @@ function CourseInformationForm(){
         // console.log("formData : ", [...formData.entries()]);
 
         setLoading(true);
-        const result = await addCourseDetails(formData, token);
+        const result = await addCourseDetails(formData);
         if(result){
             dispatch(setStep(2));
             dispatch(setCourse(result));

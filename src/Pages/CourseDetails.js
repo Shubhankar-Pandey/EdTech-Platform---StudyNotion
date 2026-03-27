@@ -16,7 +16,7 @@ import { GoDotFill } from "react-icons/go";
 
 function CourseDetails(){
 
-    const {token} = useSelector((state) => state.auth);
+
     const {user} = useSelector((state) => state.profile);
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -75,8 +75,8 @@ function CourseDetails(){
     
     
     const handleBuyCourse = () => {
-        if(token){
-            buyCourse(token, [courseId], user, navigate, dispatch);
+        if(user){
+            buyCourse([courseId], user, navigate, dispatch);
             return;
         }
         setConfirmationModal({

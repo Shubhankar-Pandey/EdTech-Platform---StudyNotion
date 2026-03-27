@@ -9,7 +9,7 @@ import { FaPlus } from "react-icons/fa";
 
 function MyCourses(){
 
-    const {token} = useSelector((state) => state.auth);
+
     const navigate = useNavigate();
     const [courses, setCourses] = useState([]);
 
@@ -17,7 +17,7 @@ function MyCourses(){
 
     useEffect(() => {
         const fetchCourses = async() => {
-            const result = await fetchInstructorCourses(token);
+            const result = await fetchInstructorCourses();
             if(result){
                 setCourses(result);
             }

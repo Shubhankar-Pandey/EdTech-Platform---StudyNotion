@@ -30,14 +30,14 @@ function loadScript(src){
 } 
 
 
-async function sendPaymentSuccessEmail(response, amount, token) {
+async function sendPaymentSuccessEmail(response, amount) {
     try{
         await apiConnector("POST", SEND_PAYMENT_SUCCESS_EMAIL_API, {
             orderId : response.razorpay_order_id,
             paymentId : response.razorpay_payment_id,
             amount,
         },{
-            Authorization: `Bearer ${token}`
+            withCredentials: true
         })
     }
     catch(error){
@@ -46,15 +46,15 @@ async function sendPaymentSuccessEmail(response, amount, token) {
 }
 
 // verify payment
-async function verifyPayment(bodyData, token, navigate, dispatch){
+async function verifyPayment(bodyData, navigate, dispatch){
     const toastId = toast.loading("Verifying Payment....");
     dispatch(setPaymentLoading(true));
     try{
         const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, 
-            {Authorization : `Bearer ${token}`}
+            {withCredentials: true}
         )
 
-        if(!response.data.success){
+        if(!response.data.success) {
             throw new Error(response.data.message);
         }
 
@@ -72,8 +72,8 @@ async function verifyPayment(bodyData, token, navigate, dispatch){
 
 
 
-export async function buyCourse(token, courses, userDetails, navigate, dispatch) {
-    const toastId = toast.loading("Loading.....");
+export async function buyCourse(courses, userDetails, navigate, dispatch) {
+    const toastId = toast.loading("Loading...");
     try{
         // load the script 
         const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
@@ -86,7 +86,7 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         // initiate the order
         const orderResponse = await apiConnector("POST", COURSE_PAYMENT_API,
             {courses},
-            {Authorization: `Bearer ${token}`}
+            {withCredentials: true}
         )
 
         if(!orderResponse.data.success){
@@ -108,9 +108,9 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
             },
             handler : function(response){
                 // verify payment
-                verifyPayment({...response, courses}, token, navigate, dispatch);
+                verifyPayment({...response, courses}, navigate, dispatch);
                 // send successfull wala mail 
-                sendPaymentSuccessEmail(response, orderResponse.data.message.amount, token);
+                sendPaymentSuccessEmail(response, orderResponse.data.message.amount);
             }
         }
 

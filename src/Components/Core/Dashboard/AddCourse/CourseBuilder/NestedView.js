@@ -16,7 +16,7 @@ import { setCourse } from "../../../../../Slices/courseSlice";
 function NestedView({handleChangeEditSectionName}){
 
     const {course} = useSelector((state) => state.course);
-    const {token} = useSelector((state) => state.auth);
+
     const dispatch = useDispatch();
 
     const [addSubSection, setAddSubSection] = useState(null);
@@ -31,8 +31,7 @@ function NestedView({handleChangeEditSectionName}){
     const handleDeleteSection = async (sectionId) => {
         const result = await deleteSection({
             sectionId,
-            courseId : course._id,
-            token,
+            courseId : course._id
         })
 
         if(result){
@@ -45,8 +44,7 @@ function NestedView({handleChangeEditSectionName}){
     const handleDeleteSubSection = async(subSectionId, sectionId) => {
         const result = await deleteSubSection({
             subSectionId,
-            sectionId,
-            token,
+            sectionId
         })
 
         if(result){
