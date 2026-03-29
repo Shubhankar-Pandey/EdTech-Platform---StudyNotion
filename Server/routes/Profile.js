@@ -7,6 +7,7 @@ const {
   getAllUserDetails,
   updateDisplayPicture,
   getEnrolledCourses,
+  instructorDashboard,
 } = require("../controller/Profile")
 
 
@@ -24,6 +25,8 @@ router.get("/getEnrolledCourses", auth, getEnrolledCourses)
 
 // Update Profile Picture
 router.put("/updateDisplayPicture", auth, updateDisplayPicture)
+
+router.get("/instructorDashboard", auth, instructorDashboard)
 
 
 

@@ -1,8 +1,8 @@
 const Course = require("../models/Course");
 const Category = require("../models/Category");
 const User = require("../models/User");
-const Section = require("../models/Section")
-const SubSection = require("../models/SubSection")
+const Section = require("../models/Section");
+const SubSection = require("../models/SubSection");
 const CourseProgress = require("../models/CourseProgress");
 
 const { convertSecondsToDuration } = require("../utils/secToDuration")
@@ -385,7 +385,7 @@ exports.getFullCourseDetails = async (req, res) => {
       userId: userId,
     })
 
-    console.log("courseProgressCount : ", courseProgressCount)
+    // console.log("courseProgressCount : ", courseProgressCount)
 
     if (!courseDetails) {
       return res.status(400).json({
