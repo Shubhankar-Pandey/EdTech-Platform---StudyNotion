@@ -187,6 +187,7 @@ exports.signUp = async(req, res) => {
 // *************** login ***************
 
 exports.login = async(req, res) => {
+    console.log("login controller reached : req body : ", req.body);
     try{
         // fetch data from req body
         const {email, password} = req.body;
@@ -283,13 +284,14 @@ exports.changePassword = async(req, res) => {
 // *************** logout ***************
 
 exports.logout = async (req, res) => {
+    // console.log("reached log out controller");
     try {
         const options = {
             httpOnly: true,
             secure: false, 
             sameSite: "lax",
         };
-        res.clearCookie("token", options).status(200).json({
+        return res.clearCookie("token", options).status(200).json({
             success: true,
             message: "Logged out successfully",
         });

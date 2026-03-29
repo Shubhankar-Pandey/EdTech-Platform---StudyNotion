@@ -5,6 +5,7 @@ const mailSender = require("../utils/mailSender");
 const {courseEnrollmentEmail} = require("../mail/templates/courseEnrollmentEmail");
 const {paymentSuccessEmail} = require("../mail/templates/paymentSuccessEmail")
 const crypto = require("crypto");
+const CourseProgress = require("../models/CourseProgress");
 
 
 
@@ -118,12 +119,19 @@ const enrollStudent = async(courses, userId, res) => {
                 })
             }
 
+            const courseProgress = await CourseProgress.create({
+                courseID : courseId,
+                completedVideos : [],
+                userId : userId,
+            })
+
             // find the student and enroll this course to the list of enrolledCourses of student
             const enrolledStudent = await User.findByIdAndUpdate(
                 {_id : userId},
                 {
                     $push : {
                         courses : courseId,
+                        courseProgress : courseProgress._id,
                     }
                 },
                 {new : true}

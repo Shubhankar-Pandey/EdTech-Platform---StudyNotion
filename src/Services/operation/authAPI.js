@@ -97,10 +97,12 @@ export function signUp(
 
 
 export function login(email, password, navigate) {
+  console.log("reached in login operations");
   return async (dispatch) => {
     const toastId = toast.loading("Loading...")
     dispatch(setLoading(true))
     try {
+      console.log("before calling api");
       const response = await apiConnector("POST", LOGIN_API, {
         email,
         password,
@@ -121,8 +123,6 @@ export function login(email, password, navigate) {
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.user.firstName} ${response.data.user.lastName}`
       
         dispatch(setUser({ ...response.data.user, image: userImage }))
-
-      // localStorage.setItem("user", JSON.stringify(response.data.user))
 
       navigate("/dashboard/my-profile")
       
@@ -193,6 +193,7 @@ export function resetPassword(password, confirmPassword, token){
 
 
 export function logout(navigate) {
+  // console.log("logout hit");
   return async (dispatch) => {
     dispatch(setLoading(true));
     try {
