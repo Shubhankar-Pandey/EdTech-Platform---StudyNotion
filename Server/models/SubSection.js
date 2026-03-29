@@ -17,6 +17,8 @@ const subSectionSchema = new mongoose.Schema({
 
 })
 
+
+
 const SubSection =
   mongoose.models.SubSection || mongoose.model("SubSection", subSectionSchema);
 
