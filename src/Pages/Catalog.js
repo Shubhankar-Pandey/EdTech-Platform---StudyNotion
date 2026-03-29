@@ -75,7 +75,7 @@ function Catalog(){
                         <div className="text-3xl font-semibold">Courses to get you started</div>
                         <p className="underline text-yellow-50 mt-3">Most popular</p>
                         <div className="mt-3">
-                            <CourseSlider Courses = {catalogPageData?.data?.selectedCategory?.courses}/>
+                            <CourseSlider Courses = {catalogPageData?.data?.selectedCategory?.course}/>
                         </div>
                         
                     </div>
@@ -84,7 +84,7 @@ function Catalog(){
                     <div className="w-11/12 mx-auto mt-10">
                         <p className="text-3xl font-semibold">Top Courses in {catalogPageData?.data?.selectedCategory?.name} </p>
                         <div className="mt-3">
-                            <CourseSlider Courses = {catalogPageData?.data?.differentCategory?.courses}/>
+                            <CourseSlider Courses = {catalogPageData?.data?.topCourses}/>
                         </div>
                     </div>
 

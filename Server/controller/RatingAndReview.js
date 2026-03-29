@@ -162,7 +162,7 @@ exports.getAllRatingAndReviews = async(req, res) => {
         res.status(200).json({
             success : true,
             message : "All ratings and reviews fetched successfully",
-            allRatingAndReviews,
+            data: allRatingAndReviews,
         });
     }
     catch(error){

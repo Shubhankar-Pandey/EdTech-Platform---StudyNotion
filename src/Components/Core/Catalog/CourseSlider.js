@@ -1,9 +1,8 @@
-import Swiper from "swiper";
-import { SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { FreeMode, Pagination } from "swiper/modules";
+import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import Course_Card from "./Course_Card";
 
 
@@ -17,13 +16,21 @@ function CourseSlider({Courses}){
                 (<div>
                     <Swiper
                         slidesPerView = {1}
-                        loop = {true}
+                        loop = {Courses?.length > 3}
                         spaceBetween = {50}
-                        pagination = {true}
-                        modules = {[Pagination]}
+                        pagination = {{
+                            clickable: true,
+                        }}
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        }}
+                        modules = {[Pagination, FreeMode, Autoplay]}
+                        freeMode = {true}
                         breakpoints = {{
                             1024 : {slidesPerView : 3}
                         }}
+                        className="max-h-[30rem]"
                     >
                         {
                             Courses?.map((course, index) => (

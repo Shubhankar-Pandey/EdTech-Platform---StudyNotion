@@ -9,6 +9,7 @@ import LearningLanguageSection from "../Components/Core/HomePage/LearningLanguag
 import BecomeAnInstructorSection from "../Components/Core/HomePage/BecomeAnInstructorSection";
 import Footer from "../Components/Common/Footer";
 import ExploreSection from "../Components/Core/HomePage/ExploreSection";
+import ReviewSlider from "../Components/Common/ReviewSlider"
 
 
 
@@ -191,6 +192,10 @@ function Home(){
             {/***************** Section 3 *****************/}
             <div className="w-full px-4 md:px-10">
                 <BecomeAnInstructorSection/>
+                <h1 className="text-center text-4xl font-semibold mt-8 text-richblack-5">
+                    Reviews from other learners
+                </h1>
+                <ReviewSlider />
             </div>
 
 

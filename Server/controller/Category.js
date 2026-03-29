@@ -139,16 +139,22 @@ exports.categoryPageDetails = async(req, res) => {
             .populate({
                 path: "course",
                 match: { status: "Published" },
-                populate: {
-                    path: "instructor",
-                },
+                populate: [
+                    { path: "instructor"},
+                    { path: "ratingAndReview"}
+                ],
             })
             .exec()
 
         const allCourses = allCategories.flatMap((category) => category.course)
         const mostSellingCourses = allCourses
-        .sort((a, b) => b.sold - a.sold)
+        .sort((a, b) => (b.studentEnrolled?.length || 0) - (a.studentEnrolled?.length || 0))
         .slice(0, 10)
+
+        // get top courses within the selected category
+        const topCourses = [...selectedCategory.course]
+            .sort((a, b) => (b.studentEnrolled?.length || 0) - (a.studentEnrolled?.length || 0))
+            .slice(0, 5);
 
 
         // return response
@@ -157,7 +163,8 @@ exports.categoryPageDetails = async(req, res) => {
             data : {
                 selectedCategory,
                 differentCategory,
-                mostSellingCourses
+                mostSellingCourses,
+                topCourses,
             },
         })
 
