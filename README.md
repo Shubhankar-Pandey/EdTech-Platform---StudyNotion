@@ -1,36 +1,36 @@
-<<<<<<< HEAD
-# StudyNotion-EdTech-Platform
-Full Stack EdTech Platform
-=======
-# React & Tailwind CSS Starter Pack
+# StudyNotion - EdTech Platform
 
-This is a starter pack for creating React projects with Tailwind CSS configured. It uses React version **18.2** and Tailwind CSS version **3.2**.
+StudyNotion is a fully functional, MERN-stack web application designed for online education. It is an end-to-end platform allowing users to create, consume, and rate educational content. The platform is designed with role-based access, offering different features for Students and Instructors.
 
-## Usage
+## Features
 
-This starter pack includes a basic setup for using **Tailwind CSS with React**. To start building your own components and styles, follow these steps:
+- **Authentication**: Secure JWT-based authentication and authorization with OTP email verification.
+- **Student Dashboard**: Browse courses, add to cart, purhcase using integrated payment gateways (Razorpay), and watch course videos.
+- **Instructor Dashboard**: Create courses, manage course content (sections, subsections, and video lectures), and view statistics on course sales and enrollments.
+- **Responsive Navigation**: Full responsiveness across all devices, including a dynamic sidebar and mobile-friendly navigation.
+- **Ratings & Reviews**: Students can review courses they've purchased.
 
-1. Clone the repository to your local machine.
-    ```sh
-    git clone https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git
-    ```
+## Tech Stack
 
-1. Install the required packages.
-    ```sh
-    cd react-tailwind-css-starter-pack
-    npm install
-    ```
+- **Frontend**: React.js, Tailwind CSS, Redux Toolkit
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (Mongoose)
+- **Cloud Storage**: Cloudinary (for videos and images)
+- **Payments**: Razorpay
 
-1. Start the development server.
-    ```sh
-    npm start
-    ```
-1. Open the project in your browser at [`http://localhost:3000`](http://localhost:3000) to view your project.
-1. Create your React components and add your styles using Tailwind classes. You can also create new CSS files and import them into your components.
+## Running the Application Locally
 
-The project is set up to use `postcss-cli` to process your CSS files. You can add your own `tailwind.config.js` file to customize your Tailwind setup.
+1. **Clone the repository**
+2. **Install dependencies**
+   - For backend: `cd Server && npm install`
+   - For frontend: `npm install`
+3. **Configure Environment Variables**
+   - Create `.env` files in both the root and `Server` directories based on your `.env.example` configurations.
+   - You will need MongoDB URI, Cloudinary credentials, and Razorpay keys.
+4. **Start the servers**
+   - In the Server directory, run: `npm run dev`
+   - In the frontend root directory, run: `npm start` (or `npm run dev` if configured)
 
 ## Contributing
 
-Contributions are welcome! If you have any suggestions or find any issues, please feel free to open an issue or a pull request.
->>>>>>> af49282 (Initial commit)
+Contributions are welcome! If you have any suggestions or find any issues, please feel free to open an issue or pull request.
