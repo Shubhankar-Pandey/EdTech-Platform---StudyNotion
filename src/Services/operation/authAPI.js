@@ -2,7 +2,7 @@ import { toast } from "react-hot-toast"
 import { setUser } from "../../Slices/profileSlice";
 // import {setLoading, setToken} from "../../Slices/authSlice" 
 import {setLoading} from "../../Slices/authSlice" 
-import { resetCart } from "../../Slices/cartSlice";
+import { resetCart, setCartState } from "../../Slices/cartSlice";
 
 import { apiConnector } from "../apiConnector";
 import { endpoints } from "../apis";
@@ -125,6 +125,19 @@ export function login(email, password, navigate) {
       
         dispatch(setUser({ ...response.data.user, image: userImage }))
 
+      const userId = response.data.user._id;
+      const savedCart = localStorage.getItem(`cart_${userId}`);
+      const savedTotal = localStorage.getItem(`total_${userId}`);
+      const savedTotalItems = localStorage.getItem(`totalItems_${userId}`);
+
+      if (savedCart && savedTotal && savedTotalItems) {
+        dispatch(setCartState({
+          cart: JSON.parse(savedCart),
+          total: JSON.parse(savedTotal),
+          totalItems: JSON.parse(savedTotalItems)
+        }));
+      }
+
       navigate("/dashboard/my-profile")
       
     } catch (error) {
@@ -201,6 +214,22 @@ export function logout(navigate) {
       await apiConnector("POST", LOGOUT_API, null, {
         withCredentials: true,
       });
+
+      const userStr = localStorage.getItem("user");
+      if (userStr) {
+        const user = JSON.parse(userStr);
+        if (user && user._id) {
+          const userId = user._id;
+          const currentCart = localStorage.getItem("cart");
+          const currentTotal = localStorage.getItem("total");
+          const currentTotalItems = localStorage.getItem("totalItems");
+          
+          if (currentCart) localStorage.setItem(`cart_${userId}`, currentCart);
+          if (currentTotal) localStorage.setItem(`total_${userId}`, currentTotal);
+          if (currentTotalItems) localStorage.setItem(`totalItems_${userId}`, currentTotalItems);
+        }
+      }
+
       dispatch(setUser(null));
       dispatch(resetCart());
       localStorage.removeItem("user");
