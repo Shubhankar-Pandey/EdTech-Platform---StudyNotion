@@ -262,18 +262,51 @@ exports.login = async(req, res) => {
 exports.changePassword = async(req, res) => {
     try{
         // get data from req body
-          const {email} = req.body;
-        // data are = oldPassword, newPassword, confirmNewPassword
+        const {oldPassword, newPassword} = req.body;
+        
         // validation
+        if(!oldPassword || !newPassword){
+            return res.status(400).json({
+                success : false,
+                message : "Details missing, fill all the details",
+            });
+        }
+
+        const id = req.user.id;
+        const user = await User.findById(id);
+
+        if(!user) {
+            return res.status(404).json({
+                success: false,
+                message: "User not found"
+            });
+        }
+
+        const isPasswordMatch = await bcrypt.compare(oldPassword, user.password);
+
+        if(!isPasswordMatch) {
+            return res.status(401).json({
+                success: false,
+                message: "Current password is incorrect",
+            });
+        }
+
         // update password in db
-        // send mail -> password updated ka mail bhej do
+        const hashedNewPassword = await bcrypt.hash(newPassword, 10);
+        user.password = hashedNewPassword;
+        await user.save();
+
         // return response
+        return res.status(200).json({
+            success: true,
+            message: "Password changed successfully",
+        });
     }
     catch(error){
         console.log(error);
         return res.status(500).json({
             success : false,
-            message : "",
+            message : "Error changing password",
         })
     }
 }

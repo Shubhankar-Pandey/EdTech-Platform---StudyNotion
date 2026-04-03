@@ -23,7 +23,7 @@ exports.updateProfile = async (req, res) => {
 
     // Find the profile by id
     const userDetails = await User.findById(id)
-    const profile = await Profile.findById(userDetails.additionalDetails)
+    const profile = await Profile.findById(userDetails.additionalDetail)
 
     const user = await User.findByIdAndUpdate(id, {
       firstName,
@@ -42,7 +42,7 @@ exports.updateProfile = async (req, res) => {
 
     // Find the updated user details
     const updatedUserDetails = await User.findById(id)
-      .populate("additionalDetails")
+      .populate("additionalDetail")
       .exec()
 
     return res.json({
@@ -74,7 +74,7 @@ exports.deleteAccount = async (req, res) => {
     }
     // Delete Assosiated Profile with the User
     await Profile.findByIdAndDelete({
-      _id: new mongoose.Types.ObjectId(user.additionalDetails),
+      _id: new mongoose.Types.ObjectId(user.additionalDetail),
     })
     for (const courseId of user.courses) {
       await Course.findByIdAndUpdate(
@@ -102,7 +102,7 @@ exports.getAllUserDetails = async (req, res) => {
   try {
     const id = req.user.id
     const userDetails = await User.findById(id)
-      .populate("additionalDetails")
+      .populate("additionalDetail")
       .exec()
     console.log(userDetails)
     res.status(200).json({

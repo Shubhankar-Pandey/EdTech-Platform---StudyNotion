@@ -99,7 +99,7 @@ export default function EditProfile() {
                     message: "Date of Birth cannot be in the future.",
                   },
                 })}
-                defaultValue={user?.additionalDetails?.dateOfBirth}
+                defaultValue={user?.additionalDetail?.dateOfBirth}
               />
               {errors.dateOfBirth && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
@@ -117,7 +117,7 @@ export default function EditProfile() {
                 id="gender"
                 className="bg-richblack-700 p-2 rounded-md border-b-[1px] border-richblack-400"
                 {...register("gender", { required: true })}
-                defaultValue={user?.additionalDetails?.gender}
+                defaultValue={user?.additionalDetail?.gender}
               >
                 {genders.map((ele, i) => {
                   return (
@@ -154,7 +154,7 @@ export default function EditProfile() {
                   maxLength: { value: 12, message: "Invalid Contact Number" },
                   minLength: { value: 10, message: "Invalid Contact Number" },
                 })}
-                defaultValue={user?.additionalDetails?.contactNumber}
+                defaultValue={user?.additionalDetail?.contactNumber}
               />
               {errors.contactNumber && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
@@ -173,7 +173,7 @@ export default function EditProfile() {
                 placeholder="Enter Bio Details"
                 className="bg-richblack-700 p-2 rounded-md border-b-[1px] border-richblack-400"
                 {...register("about", { required: true })}
-                defaultValue={user?.additionalDetails?.about}
+                defaultValue={user?.additionalDetail?.about}
               />
               {errors.about && (
                 <span className="-mt-1 text-[12px] text-yellow-100">

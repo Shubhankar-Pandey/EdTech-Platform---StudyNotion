@@ -136,18 +136,18 @@ function SubSectionModal ({modalData, setModalData, add = false, view = false, e
 
 
     return (
-        <div>
+        <div className="fixed inset-0 z-[1000] !mt-0 grid h-screen w-screen place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">
             
-            <div>
+            <div className="my-10 w-11/12 max-w-[700px] rounded-lg border border-richblack-400 bg-richblack-800">
 
-                <div className="flex justify-between">
-                    <p>{view && "Viewing"} {add && "Adding"} {edit && "Editing"} Lecture</p>
+                <div className="flex justify-between items-center bg-richblack-700 p-5 rounded-t-lg">
+                    <p className="text-xl font-semibold text-richblack-5">{view && "Viewing"} {add && "Adding"} {edit && "Editing"} Lecture</p>
                     <button onClick={() => (!loading && setModalData(null))}>
-                        <IoClose />
+                        <IoClose className="text-2xl text-richblack-5 hover:text-richblack-100" />
                     </button>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 px-8 py-10 text-richblack-5">
 
                     <Upload
                         name = "lectureVideo"
@@ -172,7 +172,7 @@ function SubSectionModal ({modalData, setModalData, add = false, view = false, e
                             className="p-2 bg-richblack-700 text-richblack-5
                             rounded-md border-b-[1px] border-richblack-500"
                         />
-                        {errors.lectureTitle && (<span>Lecture Title is Required</span>)}
+                        {errors.lectureTitle && (<span className="mt-1 text-[12px] text-yellow-100">Lecture Title is Required</span>)}
                     </div>
 
                     <div className="flex flex-col gap-1">
@@ -186,14 +186,14 @@ function SubSectionModal ({modalData, setModalData, add = false, view = false, e
                             placeholder="Enter lecture Description"
                             {...register("lectureDescription", {required:true})}
                             className="p-2 bg-richblack-700 text-richblack-5
-                            rounded-md border-b-[1px] border-richblack-500"
+                            rounded-md border-b-[1px] border-richblack-500 min-h-[130px] w-full"
                         />
-                        {errors.lectureDescription && (<span>Lecture description is required</span>)}
+                        {errors.lectureDescription && (<span className="mt-1 text-[12px] text-yellow-100">Lecture description is required</span>)}
                     </div>
 
                     {
                         !view && (
-                            <div className="mt-5">
+                            <div className="mt-5 flex justify-end">
                                 <IconButton
                                     text = {loading ? "loading..." :  edit ? "Save Changes" : "Save"}
                                     customClasses={"bg-yellow-50 rounded-md hover:scale-95 transition-all duration-200 text-richblack-900 font-bold py-2 px-4"}
