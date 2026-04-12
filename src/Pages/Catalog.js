@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { apiConnector } from "../Services/apiConnector";
 import { categories } from "../Services/apis";
 import { getCatalogPageData } from "../Services/operation/pageAndComponentData";
-import Course_Card from "../Components/Core/Catalog/Course_Card";
+import CourseCard from "../Components/Core/Catalog/CourseCard";
 import CourseSlider from "../Components/Core/Catalog/CourseSlider";
 
 
@@ -97,7 +97,7 @@ function Catalog(){
                                 {
                                     catalogPageData?.data?.mostSellingCourses?.slice(0,4)
                                     .map((course, index) => (
-                                        <Course_Card key={index} course = {course}/>
+                                        <CourseCard key={index} course = {course}/>
                                     ))
                                 }
                             </div>

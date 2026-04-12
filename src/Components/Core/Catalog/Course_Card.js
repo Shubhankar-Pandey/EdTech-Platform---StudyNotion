@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 
 
-function Course_Card({course}){
+function CourseCard({course}){
 
     const [avgReviewCount, setAvgReviewCount] = useState(0);
 
@@ -41,4 +41,4 @@ function Course_Card({course}){
 }
 
 
-export default Course_Card;
+export default CourseCard;
