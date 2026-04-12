@@ -173,41 +173,7 @@ function CourseDetails(){
                 <div className="text-richblack-50 leading-relaxed">
                     {whatYouWillLearn}
                 </div>
-            </div>
-
-            <div className="w-full max-w-7xl px-4 md:px-10 lg:w-[50%] mx-auto lg:mx-0 lg:ml-20 mt-10">
-                <div>
-                    <p className="text-xl font-semibold">Course Content</p>
-                </div>
-
-                <div className="flex justify-between mt-3">
-
-                    <div className="flex gap-x-3 text-richblack-50">
-                        <div className="flex items-center">
-                            <GoDotFill />
-                            <span>{courseContent.length} sections</span>
-                        </div>
-                        <div className="flex items-center">
-                            <GoDotFill />
-                            <span> {totalNoOfLectures} lectures </span>
-                        </div>
-                    </div>
-
-                    <div>
-                        <button 
-                        className="text-yellow-50"
-                        onClick={() =>
-                            setIsActive([])}
-                        >Collapse All Sections </button>
-                    </div> 
-                    
-                </div>
-                
-                
-            </div>
-
-            
-
+            </div>            
 
             {confirmationModal && <ConfirmationModal modalData={confirmationModal}/>}
 

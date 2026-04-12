@@ -199,7 +199,8 @@ const VideoDetails = () => {
                   disabled={loading}
                   onClick={() => handleLectureCompletion()}
                   text={!loading ? "Mark As Completed" : "Loading..."}
-                  customClasses="text-xl max-w-max px-4 mx-auto"
+                  customClasses="text-xl max-w-max px-4 mx-auto bg-yellow-50 p-2 rounded-md text-richblack-900 hover:scale-95 transition-all duration-200"
+
                 />
               )}
               <IconBtn
@@ -212,14 +213,14 @@ const VideoDetails = () => {
                   }
                 }}
                 text="Rewatch"
-                customClasses="text-xl max-w-max px-4 mx-auto mt-2"
+                customClasses="text-xl max-w-max px-4 mx-auto mt-2 bg-yellow-50 p-2 rounded-md text-richblack-900 hover:scale-95 transition-all duration-200"
               />
               <div className="mt-10 flex min-w-[250px] justify-center gap-x-4 text-xl">
                 {!isFirstVideo() && (
                   <button
                     disabled={loading}
                     onClick={goToPrevVideo}
-                    className="blackButton"
+                    className="bg-yellow-50 p-2 rounded-md text-richblack-900 hover:scale-95 transition-all duration-200"
                   >
                     Prev
                   </button>
@@ -228,7 +229,7 @@ const VideoDetails = () => {
                   <button
                     disabled={loading}
                     onClick={goToNextVideo}
-                    className="blackButton"
+                    className="bg-yellow-50 p-2 rounded-md text-richblack-900 hover:scale-95 transition-all duration-200"
                   >
                     Next
                   </button>

@@ -54,7 +54,7 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
             </div>
             <IconBtn
               text="Add Review"
-              customClasses="ml-auto"
+              customClasses = "ml-auto bg-yellow-50 p-2 rounded-md text-richblack-900 hover:scale-95 transition-all duration-200"
               onClick={() => setReviewModal(true)}
             />
           </div>
