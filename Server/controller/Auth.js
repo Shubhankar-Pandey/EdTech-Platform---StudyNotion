@@ -228,7 +228,7 @@ exports.login = async(req, res) => {
             // create cookie and send response
             const options = {
                 httpOnly: true,   // prevents XSS -> not able to change cookie data
-                secure: false,     // true -> HTTPS only   flase -> HTTP
+                secure: true,     // true -> HTTPS only   false -> HTTP
                 expires : new Date(Date.now() + 3*24*60*60*1000),
                 sameSite: "lax",
             }
