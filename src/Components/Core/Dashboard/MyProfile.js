@@ -5,9 +5,9 @@ import EditButton from "./EditButton"
 
 
 
-function MyProfile(){
+function MyProfile() {
 
-    const {user} = useSelector((state) => state.profile);
+    const { user } = useSelector((state) => state.profile);
     const navigate = useNavigate();
 
     return (
@@ -20,9 +20,9 @@ function MyProfile(){
             <div className="w-11/12 md:w-[70%] mx-auto md:mx-0 mt-8 md:mt-16 bg-richblack-800 p-4
              rounded-lg border-[1px] border-richblack-700
               flex flex-col md:flex-row items-center md:items-start gap-5">
-                
+
                 <img alt="userImage" src={user.image}
-                className="w-16 h-16 rounded-full"></img>
+                    className="w-16 h-16 rounded-full"></img>
 
                 <div className="flex flex-col md:flex-row w-full justify-between items-center md:items-start p-2 gap-4">
 
@@ -35,8 +35,8 @@ function MyProfile(){
                         <p className="text-sm text-richblack-300">{user.email}</p>
                     </div>
 
-                    <EditButton link={"/edit-profile"}/>
-                
+                    <EditButton link={"/edit-profile"} />
+
                 </div>
 
             </div>
@@ -47,7 +47,7 @@ function MyProfile(){
 
                 <div className="flex justify-between">
                     <p className="text-richblack-5">Personal Details</p>
-                    <EditButton link={"/edit-profile"}/>
+                    <EditButton link={"/edit-profile"} />
                 </div>
 
                 <div className="flex flex-col md:flex-row justify-between w-full md:w-[60%] text-sm gap-4">
@@ -68,22 +68,22 @@ function MyProfile(){
                     </div>
                     <div>
                         <p className="text-richblack-600">Gender</p>
-                        
-                            {
-                                user.additionalDetail.gender ? (
-                                    <p className="text-richblack-5">
-                                        {user.additionalDetail.gender}
-                                    </p>
-                                )
+
+                        {
+                            user.additionalDetail.gender ? (
+                                <p className="text-richblack-5">
+                                    {user.additionalDetail.gender}
+                                </p>
+                            )
                                 : (<p className="text-richblack-5">Add gender</p>)
-                            }
-                        
+                        }
+
                     </div>
                 </div>
 
-              </div>
+            </div>
 
-            
+
 
         </div>
     )

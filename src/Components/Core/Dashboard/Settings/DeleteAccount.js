@@ -45,12 +45,12 @@ export default function DeleteAccount() {
              border-richblack-50 py-2 px-4 rounded-full hover:scale-95 transition-all duration-200
              bg-pink-800"
             onClick={() => setConfirmationModal({
-              text1 : "Are you sure",
-              text2 : "You account will be deleted permanently",
-              btn1Text : "Delete",
-              btn2Text : "Cancel",
-              btn1Handler : () => handleDeleteAccount(),
-              btn2Handler : () => setConfirmationModal(null),
+              text1: "Are you sure",
+              text2: "You account will be deleted permanently",
+              btn1Text: "Delete",
+              btn2Text: "Cancel",
+              btn1Handler: () => handleDeleteAccount(),
+              btn2Handler: () => setConfirmationModal(null),
             })
             }
           >
@@ -58,7 +58,7 @@ export default function DeleteAccount() {
           </button>
         </div>
         {
-          confirmationModal && <ConfirmationModal modalData={confirmationModal}/>
+          confirmationModal && <ConfirmationModal modalData={confirmationModal} />
         }
       </div>
     </>

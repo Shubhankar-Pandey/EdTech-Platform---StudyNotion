@@ -3,15 +3,15 @@ import { CgAsterisk } from "react-icons/cg";
 
 
 
-function RequirementField({name, label, register, errors, setValue, getValues}){
+function RequirementField({ name, label, register, errors, setValue, getValues }) {
 
-    const[requirement, setRequirement] = useState("");
+    const [requirement, setRequirement] = useState("");
     const [requirementList, setRequirementList] = useState([]);
 
     useEffect(() => {
         register(name, {
-            required : true,
-            validate : (value) => value.length > 0
+            required: true,
+            validate: (value) => value.length > 0
         })
     }, [])
 
@@ -20,7 +20,7 @@ function RequirementField({name, label, register, errors, setValue, getValues}){
     }, [requirementList])
 
     const handleAddRequirement = () => {
-        if(requirement){
+        if (requirement) {
             setRequirementList([...requirementList, requirement]);
             setRequirement("");
         }
@@ -37,7 +37,7 @@ function RequirementField({name, label, register, errors, setValue, getValues}){
         <div className="flex flex-col gap-1">
             <label htmlFor={name} className="flex">
                 <p> {label} </p>
-                <CgAsterisk className="text-pink-200 text-sm"/>
+                <CgAsterisk className="text-pink-200 text-sm" />
             </label>
             <input
                 type="text"
@@ -46,17 +46,17 @@ function RequirementField({name, label, register, errors, setValue, getValues}){
                     rounded-md border-b-[1px] border-richblack-500 w-full"
                 placeholder={label}
                 value={requirement}
-                onChange={(event) => {setRequirement(event.target.value)}}
+                onChange={(event) => { setRequirement(event.target.value) }}
             />
             <button className="text-yellow-50 w-min font-bold hover:underline"
-            type="button"
-            onClick={handleAddRequirement}>
+                type="button"
+                onClick={handleAddRequirement}>
                 Add
             </button>
             <div className="flex flex-col gap-1 w-[35%]">
                 {
                     requirementList.map((item, index) => (
-                        <div key={index} className="flex gap-6 justify-between"> 
+                        <div key={index} className="flex gap-6 justify-between">
                             <p>{item}</p>
                             <button onClick={() => handleRemoveRequirement(index)}
                                 type="button"
@@ -72,10 +72,10 @@ function RequirementField({name, label, register, errors, setValue, getValues}){
                     <span>{label} is required </span>
                 )
             }
-            
+
         </div>
 
-        
+
 
     )
 }

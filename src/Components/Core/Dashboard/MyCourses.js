@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { FaPlus } from "react-icons/fa";
 
 
-function MyCourses(){
+function MyCourses() {
 
 
     const navigate = useNavigate();
@@ -16,9 +16,9 @@ function MyCourses(){
 
 
     useEffect(() => {
-        const fetchCourses = async() => {
+        const fetchCourses = async () => {
             const result = await fetchInstructorCourses();
-            if(result){
+            if (result) {
                 setCourses(result);
             }
         }
@@ -33,16 +33,16 @@ function MyCourses(){
             <div className="flex justify-between items-center">
                 <h1 className="text-2xl">My Courses</h1>
                 <IconButton
-                  onClick={() => navigate("/dashboard/add-course")}  
-                  customClasses={"bg-yellow-50 px-4 py-2 text-richblack-900 rounded-md hover:scale-95 transition-all duration-200 flex items-center justify-center font-bold"}>
-                    <FaPlus/>
+                    onClick={() => navigate("/dashboard/add-course")}
+                    customClasses={"bg-yellow-50 px-4 py-2 text-richblack-900 rounded-md hover:scale-95 transition-all duration-200 flex items-center justify-center font-bold"}>
+                    <FaPlus />
                     <p>Add Course</p>
                 </IconButton>
             </div>
 
-            
-            <CoursesTable courses = {courses} setCourses = {setCourses}/>
-            
+
+            <CoursesTable courses={courses} setCourses={setCourses} />
+
 
         </div>
     )

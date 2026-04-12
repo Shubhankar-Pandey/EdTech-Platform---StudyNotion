@@ -5,24 +5,24 @@ import Logo2 from "../../../assets/TimeLineLogo/Logo2.svg"
 import Logo3 from "../../../assets/TimeLineLogo/Logo3.svg"
 import Logo4 from "../../../assets/TimeLineLogo/Logo4.svg"
 
-function TimeLineSection(){
+function TimeLineSection() {
     return (
         <div className="flex flex-col md:flex-row w-full justify-evenly gap-10 mb-40 items-center">
             <div className="flex flex-col justify-evenly p-5 md:p-12 w-full md:w-auto">
-                <TimeLineBlock logo = {Logo1} heading = "Leadership"
-                 subheading = "Fully committed to the success company"/>
+                <TimeLineBlock logo={Logo1} heading="Leadership"
+                    subheading="Fully committed to the success company" />
                 <div className="ml-7 h-[10%] border-dotted border-l-2 border-pure-greys-200"></div>
 
-                <TimeLineBlock logo = {Logo2} heading = "Responsibility"
-                 subheading = "Students will always be our top priority"/>
+                <TimeLineBlock logo={Logo2} heading="Responsibility"
+                    subheading="Students will always be our top priority" />
                 <div className="ml-7 h-[10%] border-dotted border-l-2 border-pure-greys-200"></div>
 
-                <TimeLineBlock logo = {Logo3} heading = "Flexibility"
-                 subheading = "The ability to switch is an important skills"/>
+                <TimeLineBlock logo={Logo3} heading="Flexibility"
+                    subheading="The ability to switch is an important skills" />
                 <div className="ml-7 h-[10%] border-dotted border-l-2 border-pure-greys-200"></div>
 
-                <TimeLineBlock logo = {Logo4} heading = "Solve the problem"
-                 subheading = "Code your way to a solution"/>
+                <TimeLineBlock logo={Logo4} heading="Solve the problem"
+                    subheading="Code your way to a solution" />
             </div>
             <div className="w-full md:w-[55%] relative mt-16 md:mt-0">
                 <img src={timeLineImage} alt="time line image" className="w-full object-cover shadow-[-20px_-20px_0_0] shadow-white rounded-lg"></img>
@@ -49,7 +49,7 @@ function TimeLineSection(){
                     </div>
                 </div>
             </div>
-        </div>  
+        </div>
     )
 }
 

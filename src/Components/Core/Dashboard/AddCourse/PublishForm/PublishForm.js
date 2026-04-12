@@ -11,18 +11,18 @@ import { useNavigate } from "react-router-dom";
 
 
 
-function PublishForm(){
+function PublishForm() {
 
-    const {register, handleSubmit, setValue, getValues} = useForm();
+    const { register, handleSubmit, setValue, getValues } = useForm();
     const dispatch = useDispatch();
 
-    const {course} = useSelector((state) => state.course);
+    const { course } = useSelector((state) => state.course);
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
 
     useEffect(() => {
-        if(course?.status === "Published"){
+        if (course?.status === "Published") {
             setValue("public", true);
         }
     }, [])
@@ -37,10 +37,10 @@ function PublishForm(){
         navigate("/dashboard/my-courses")
     }
 
-    const handleCoursePublish = async() => {
+    const handleCoursePublish = async () => {
         // console.log("reached in handleCoursePublish and getValues(public) : ", getValues("public"));
-        if((course?.status === "Published" && getValues("public")  === true) ||
-            (course?.status === "Draft" && getValues("public") === false)){
+        if ((course?.status === "Published" && getValues("public") === true) ||
+            (course?.status === "Draft" && getValues("public") === false)) {
             // means form update nahi hua hai
             // no need to make API call
             goToCourses();
@@ -58,7 +58,7 @@ function PublishForm(){
         setLoading(true);
         const result = await editCourseDetails(formData);
 
-        if(result){
+        if (result) {
             goToCourses();
         }
 
@@ -90,7 +90,7 @@ function PublishForm(){
 
                 <div className="flex justify-between mt-16">
                     <button
-                        disabled = {loading}
+                        disabled={loading}
                         type="button"
                         onClick={goBack}
                         className="bg-richblack-600 border-b-[1px] border-richblack-300 py-2 px-4

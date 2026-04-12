@@ -147,12 +147,12 @@ function CoursesTable({ courses, setCourses }) {
                           btn2Text: "Cancel",
                           btn1Handler: !loading
                             ? () =>
-                                handleCourseDelete(course._id)
-                            : () => {},
+                              handleCourseDelete(course._id)
+                            : () => { },
                           btn2Handler: !loading
                             ? () =>
-                                setConfomationModal(null)
-                            : () => {},
+                              setConfomationModal(null)
+                            : () => { },
                         });
                       }}
                     >

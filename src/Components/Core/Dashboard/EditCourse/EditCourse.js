@@ -6,20 +6,20 @@ import { getFullDetailsOfCourse } from "../../../../Services/operation/courseDet
 import { setCourse, setEditCourse } from "../../../../Slices/courseSlice";
 
 
-function EditCourse(){
+function EditCourse() {
 
     const dispatch = useDispatch();
-    const {courseId} = useParams();
-    const {course} = useSelector((state) => state.course);
+    const { courseId } = useParams();
+    const { course } = useSelector((state) => state.course);
     const [loading, setLoading] = useState(false);
 
 
 
     useEffect(() => {
-        const populateCourseDetail = async() => {
+        const populateCourseDetail = async () => {
             setLoading(true);
             const result = await getFullDetailsOfCourse(courseId);
-            if(result?.courseDetails){
+            if (result?.courseDetails) {
                 dispatch(setEditCourse(true));
                 dispatch(setCourse(result?.courseDetails));
             }
@@ -29,7 +29,7 @@ function EditCourse(){
     }, [])
 
 
-    if(loading){
+    if (loading) {
         return (
             <div>
                 Loading....
@@ -43,7 +43,7 @@ function EditCourse(){
 
             <div>
                 {
-                    course ? (<RenderSteps/>) : (<p>Course Not Found</p>)
+                    course ? (<RenderSteps />) : (<p>Course Not Found</p>)
                 }
             </div>
 

@@ -1,6 +1,6 @@
 import { matchPath, NavLink } from "react-router-dom";
 import StudyNotionLOGO from "../../assets/Logo/Logo-Full-Light.png";
-import {NavbarLinks} from "../../data/navbar-links";
+import { NavbarLinks } from "../../data/navbar-links";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { IoCartOutline, IoMenuOutline, IoCloseOutline } from "react-icons/io5";
@@ -15,11 +15,11 @@ import { FaAngleDown } from "react-icons/fa";
 import { AiOutlineMenu } from "react-icons/ai";
 
 
-function Navbar(){
+function Navbar() {
 
 
     const user = useSelector((state) => state.profile.user);
-    const totalItems = useSelector((state) => state.cart.totalItems); 
+    const totalItems = useSelector((state) => state.cart.totalItems);
 
 
     const location = useLocation();
@@ -30,22 +30,22 @@ function Navbar(){
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobileCatalogOpen, setIsMobileCatalogOpen] = useState(false);
 
-    const fetchCategories = async() => {
-        try{
+    const fetchCategories = async () => {
+        try {
             const result = await apiConnector("GET", categories.CATEGORIES_API);
             setSubLinks(result.data.data);
         }
-        catch(error){
+        catch (error) {
             console.log("Could not fetch the catalog list");
         }
     }
 
     useEffect(() => {
         fetchCategories();
-    },[])
+    }, [])
 
-    function matchRoute(route){
-        return matchPath({path:route}, location.pathname);
+    function matchRoute(route) {
+        return matchPath({ path: route }, location.pathname);
     }
 
     return (
@@ -57,7 +57,7 @@ function Navbar(){
                 {/* LOGO  */}
                 <NavLink to={"/"}>
                     <img alt="StudyNotionLOGO" src={StudyNotionLOGO}
-                     width={160} height={42} loading="lazy"></img>
+                        width={160} height={42} loading="lazy"></img>
                 </NavLink>
 
                 {/* Nav links  */}
@@ -68,13 +68,13 @@ function Navbar(){
                                 <li key={index}>
                                     {
                                         link.title === "Catalog" ?
-                                         (
-                                            <div className="relative flex items-center gap-1 group
+                                            (
+                                                <div className="relative flex items-center gap-1 group
                                             hover:cursor-pointer">
-                                                <p>{link.title}</p>
-                                                <FaAngleDown />
-                                                
-                                                <div className="invisible absolute -left-28
+                                                    <p>{link.title}</p>
+                                                    <FaAngleDown />
+
+                                                    <div className="invisible absolute -left-28
                                                 top-10 flex flex-col rounded-md
                                                 bg-richblack-5 p-4
                                                 text-richblack-900 opacity-0
@@ -83,42 +83,42 @@ function Navbar(){
                                                 group-hover:opacity-100
                                                 lg:w-[300px] z-10">
 
-                                                    <div className="absolute left-32 rounded
+                                                        <div className="absolute left-32 rounded
                                                     -top-2 h-6 w-6 rotate-45 bg-richblack-5">
-                                                        
-                                                    </div>
 
-                                                    <div className="flex flex-col gap-4 mt-1">
-                                                        {
-                                                            subLinks?.length > 0 &&
-                                                            subLinks.map((sublink, index) => (
-                                                                <NavLink key={index} to={
-                                                                    `/catalog/${sublink.name
-                                                                    .split(" ")
-                                                                    .join("-")
-                                                                    .toLowerCase()}`
-                                                                }
-                                                                    className="hover:bg-richblack-50
+                                                        </div>
+
+                                                        <div className="flex flex-col gap-4 mt-1">
+                                                            {
+                                                                subLinks?.length > 0 &&
+                                                                subLinks.map((sublink, index) => (
+                                                                    <NavLink key={index} to={
+                                                                        `/catalog/${sublink.name
+                                                                            .split(" ")
+                                                                            .join("-")
+                                                                            .toLowerCase()}`
+                                                                    }
+                                                                        className="hover:bg-richblack-50
                                                                      p-2 rounded-md">
-                                                                    <p>{sublink.name}</p>
-                                                                </NavLink>
-                                                            )) 
-                                                        }
+                                                                        <p>{sublink.name}</p>
+                                                                    </NavLink>
+                                                                ))
+                                                            }
+                                                        </div>
+
+
                                                     </div>
 
-                                                    
-                                                </div>
 
-                                                
-                                                
-                                            </div>
-                                         )
-                                          : (<NavLink to={link?.path}>
-                                                <p 
-                                                className={`${matchRoute(link?.path) ?
-                                                     "text-yellow-25" : ""}`}
+
+                                                </div>
+                                            )
+                                            : (<NavLink to={link?.path}>
+                                                <p
+                                                    className={`${matchRoute(link?.path) ?
+                                                        "text-yellow-25" : ""}`}
                                                 > {link?.title} </p>
-                                          </NavLink>)
+                                            </NavLink>)
                                     }
                                 </li>
                             ))
@@ -131,7 +131,7 @@ function Navbar(){
                     {
                         user && user?.accountType !== "Instructor" && (
                             <NavLink to={"/dashboard/cart"}
-                            className="relative text-richblack-25">
+                                className="relative text-richblack-25">
                                 <IoCartOutline className="text-3xl hover:text-richblack-5" />
                                 {
                                     totalItems > 0 && (
@@ -151,7 +151,7 @@ function Navbar(){
                                 <div className="flex text-richblack-25 gap-3">
                                     <NavLink to={"/login"}>
                                         <button
-                                         className="border-[1px] py-1 px-2
+                                            className="border-[1px] py-1 px-2
                                           border-richblack-700 rounded-md
                                           bg-richblack-800
                                           hover:scale-95 transition-all duration-200
@@ -160,8 +160,8 @@ function Navbar(){
                                         </button>
                                     </NavLink>
                                     <NavLink to={"/signup"}>
-                                        <button 
-                                        className="border-[1px] py-1 px-2
+                                        <button
+                                            className="border-[1px] py-1 px-2
                                           border-richblack-700 rounded-md
                                           bg-richblack-800
                                           hover:scale-95 transition-all duration-200
@@ -170,14 +170,14 @@ function Navbar(){
                                         </button>
                                     </NavLink>
                                 </div>
-                                
+
                             )
                         }
-                        {   
-                            user !== null && <ProfileDropDown/>
+                        {
+                            user !== null && <ProfileDropDown />
                         }
                     </div>
-                    
+
                     <button className="md:hidden text-richblack-100 ml-1" onClick={() => setIsMobileMenuOpen(true)}>
                         <AiOutlineMenu fontSize={24} />
                     </button>
@@ -191,22 +191,22 @@ function Navbar(){
                     <button className="absolute top-6 right-6 text-3xl text-richblack-100" onClick={() => setIsMobileMenuOpen(false)}>
                         <IoCloseOutline />
                     </button>
-                    
+
                     <ul className="flex flex-col gap-6 text-2xl items-center font-medium">
                         <li onClick={() => setIsMobileMenuOpen(false)}><NavLink to="/" className={matchRoute("/") ? "text-yellow-50" : ""}>Home</NavLink></li>
-                        
+
                         {/* Mobile Catalog Dropdown */}
                         <li className="flex flex-col items-center">
                             <div className="flex items-center gap-1 cursor-pointer" onClick={() => setIsMobileCatalogOpen(!isMobileCatalogOpen)}>
                                 <span className={matchRoute("/catalog") ? "text-yellow-50" : ""}>Catalog</span>
                                 <FaAngleDown className={`transition-transform duration-200 ${isMobileCatalogOpen ? "rotate-180" : ""}`} />
                             </div>
-                            
+
                             <div className={`flex flex-col items-center w-[200px] rounded-md bg-richblack-5 overflow-hidden transition-all duration-300 ${isMobileCatalogOpen ? "max-h-[500px] opacity-100 mt-4 py-2" : "max-h-0 opacity-0 py-0"}`}>
                                 {subLinks?.length > 0 ? (
                                     subLinks.map((sublink, index) => (
-                                        <NavLink 
-                                            key={index} 
+                                        <NavLink
+                                            key={index}
                                             to={`/catalog/${sublink.name.split(" ").join("-").toLowerCase()}`}
                                             className="text-lg text-richblack-900 py-2 w-full text-center hover:bg-richblack-50"
                                             onClick={() => setIsMobileMenuOpen(false)}
@@ -222,7 +222,7 @@ function Navbar(){
 
                         <li onClick={() => setIsMobileMenuOpen(false)}><NavLink to="/about" className={matchRoute("/about") ? "text-yellow-50" : ""}>About Us</NavLink></li>
                         <li onClick={() => setIsMobileMenuOpen(false)}><NavLink to="/contact" className={matchRoute("/contact") ? "text-yellow-50" : ""}>Contact Us</NavLink></li>
-                        
+
                         {user !== null && (
                             <li onClick={() => setIsMobileMenuOpen(false)}><NavLink to="/dashboard/my-profile" className={location.pathname.includes("dashboard") ? "text-yellow-50" : ""}>Dashboard</NavLink></li>
                         )}
