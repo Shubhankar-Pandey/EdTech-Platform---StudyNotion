@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin:"https://edtech-platform-studynotion-backend.onrender.com/",
+		origin:"https://ed-tech-platform-study-notion-frontend-9j64ro60a.vercel.app/",
 		credentials:true,
 	})
 )
