@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import CountryCodes from "../../../data/countrycode.json";
 import { apiConnector } from "../../../Services/apiConnector";
@@ -7,8 +7,6 @@ import { toast } from "react-hot-toast";
 
 
 function ContactUsForm() {
-
-    const [loading, setLoading] = useState(false);
 
     const {
         register,

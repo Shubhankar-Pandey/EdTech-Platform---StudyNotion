@@ -26,7 +26,7 @@ function CourseDetails() {
     const [confirmationModal, setConfirmationModal] = useState(null);
     const [courseData, setCourseData] = useState(null);
 
-    const [totalNoOfLectures, setTotalNoOfLectures] = useState(0);
+
 
 
     useEffect(() => {
@@ -54,16 +54,7 @@ function CourseDetails() {
 
 
 
-    useEffect(() => {
-        if (!courseData) {
-            return;
-        }
-        let lectures = 0;
-        courseData?.courseDetails?.courseContent?.forEach((sec) => {
-            lectures += sec?.subSection?.length || 0;
-        })
-        setTotalNoOfLectures(lectures);
-    }, [courseData])
+
 
 
 

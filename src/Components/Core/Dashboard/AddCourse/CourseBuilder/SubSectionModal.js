@@ -30,6 +30,7 @@ function SubSectionModal({ modalData, setModalData, add = false, view = false, e
             setValue("lectureDescription", modalData.description);
             setValue("lectureVideo", modalData.videoUrl);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

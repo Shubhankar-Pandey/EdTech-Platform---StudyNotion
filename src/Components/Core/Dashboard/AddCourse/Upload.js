@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import { useDropzone } from "react-dropzone"
 import { FiUploadCloud } from "react-icons/fi"
-import { useSelector } from "react-redux"
 import { CgAsterisk } from "react-icons/cg";
 
 import "video-react/dist/video-react.css"
@@ -19,12 +18,10 @@ export default function Upload({
   viewData = null,
   editData = null,
 }) {
-  const { course } = useSelector((state) => state.course)
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewSource, setPreviewSource] = useState(
     viewData ? viewData : editData ? editData : ""
   )
-  const inputRef = useRef(null)
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0]

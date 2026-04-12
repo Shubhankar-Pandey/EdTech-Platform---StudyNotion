@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+
 import EditButton from "./EditButton"
 
 
@@ -8,7 +8,7 @@ import EditButton from "./EditButton"
 function MyProfile() {
 
     const { user } = useSelector((state) => state.profile);
-    const navigate = useNavigate();
+
 
     return (
         <div className="text-white w-full">

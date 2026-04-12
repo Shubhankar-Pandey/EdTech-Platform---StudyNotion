@@ -1,5 +1,5 @@
 import * as Icons from "react-icons/vsc"
-import { useDispatch } from "react-redux";
+
 import { matchPath, NavLink, useLocation } from "react-router-dom";
 
 
@@ -9,7 +9,7 @@ function SidebarLink({ link }) {
     const Icon = Icons[link.icon];
 
     const location = useLocation();
-    const dispatch = useDispatch();
+
 
     const matchRoute = (route) => {
         return matchPath({ path: route }, location.pathname);

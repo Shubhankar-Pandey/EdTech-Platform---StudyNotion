@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import ConfirmationModal from "../../../Common/ConfirmationModal";
 import {
   deleteCourse,

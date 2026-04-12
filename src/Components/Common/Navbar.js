@@ -3,7 +3,7 @@ import StudyNotionLOGO from "../../assets/Logo/Logo-Full-Light.png";
 import { NavbarLinks } from "../../data/navbar-links";
 import { useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { IoCartOutline, IoMenuOutline, IoCloseOutline } from "react-icons/io5";
+import { IoCartOutline, IoCloseOutline } from "react-icons/io5";
 import ProfileDropDown from "../Core/Auth/ProfileDropDown";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";

@@ -25,6 +25,7 @@ function PublishForm() {
         if (course?.status === "Published") {
             setValue("public", true);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

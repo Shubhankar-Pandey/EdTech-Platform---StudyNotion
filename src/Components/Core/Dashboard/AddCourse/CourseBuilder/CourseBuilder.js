@@ -12,11 +12,11 @@ import { createSection, updateSection } from "../../../../../Services/operation/
 
 function CourseBuilder() {
 
-    const [loading, setLoading] = useState(false);
 
 
 
-    const { register, handleSubmit, formState: { errors }, getValues, setValue } = useForm()
+
+    const { register, handleSubmit, formState: { errors }, setValue } = useForm()
 
     const [editSectionName, setEditSectionName] = useState(null);
 
@@ -50,7 +50,6 @@ function CourseBuilder() {
 
 
     const onSubmit = async (data) => {
-        setLoading(true);
 
         let result;
 
@@ -80,7 +79,6 @@ function CourseBuilder() {
             setValue("sectionName", "");
         }
         // loading ko false karo
-        setLoading(false);
 
     }
 

@@ -42,7 +42,7 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
     return (
         <div className="text-richblack-5 bg-richblack-700 rounded-md">
 
-            <img alt="course thumbnail image" src={course.thumbnail} width="384px" height="201px" />
+            <img alt="course thumbnail" src={course.thumbnail} width="384px" height="201px" />
 
 
             <div className="px-5 py-3 flex flex-col gap-3">

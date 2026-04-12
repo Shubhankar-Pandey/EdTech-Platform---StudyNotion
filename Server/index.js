@@ -23,9 +23,12 @@ dbConnect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+
+FRONTEND_URL = process.env.FRONTEND_URL;
+
 app.use(
 	cors({
-		origin:"https://ed-tech-platform-study-notion-front.vercel.app",
+		origin: FRONTEND_URL,
 		credentials:true,
 	})
 )

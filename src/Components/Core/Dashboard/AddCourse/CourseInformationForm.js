@@ -22,7 +22,7 @@ function CourseInformationForm() {
         handleSubmit,
         setValue,
         getValues,
-        formState: { errors, isSubmitSuccessful },
+        formState: { errors },
     } = useForm();
 
     const dispatch = useDispatch();
@@ -57,6 +57,7 @@ function CourseInformationForm() {
             setValue("courseImage", course.thumbnail);
         }
         getCategories();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

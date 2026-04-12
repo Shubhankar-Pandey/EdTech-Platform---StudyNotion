@@ -25,7 +25,7 @@ function TimeLineSection() {
                     subheading="Code your way to a solution" />
             </div>
             <div className="w-full md:w-[55%] relative mt-16 md:mt-0">
-                <img src={timeLineImage} alt="time line image" className="w-full object-cover shadow-[-20px_-20px_0_0] shadow-white rounded-lg"></img>
+                <img src={timeLineImage} alt="time line" className="w-full object-cover shadow-[-20px_-20px_0_0] shadow-white rounded-lg"></img>
                 <div className="bg-caribbeangreen-700 w-full md:w-[70%] absolute z-10
                 -bottom-16 md:-bottom-12 md:left-24 flex flex-col sm:flex-row p-5 sm:p-10 gap-5 sm:gap-0">
                     <div className="w-full sm:w-[50%] flex items-center justify-center gap-5

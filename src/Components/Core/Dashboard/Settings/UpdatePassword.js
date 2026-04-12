@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-import { useSelector } from "react-redux"
+
 import { useNavigate } from "react-router-dom"
 
 import { changePassword } from "../../../../Services/operation/SettingsAPI"
