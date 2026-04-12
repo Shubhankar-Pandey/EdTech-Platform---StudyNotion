@@ -1,4 +1,3 @@
-const { LuRotateCwSquare } = require("react-icons/lu");
 const Course = require("../models/Course");
 const Section = require("../models/Section");
 
