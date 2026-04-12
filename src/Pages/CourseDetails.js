@@ -10,7 +10,6 @@ import RatingStars from "../Components/Common/RatingStars"
 import {FormatDate} from "../Services/FormatDate"
 import CourseDetailsCard from "../Components/Core/Course/CourseDetailsCard";
 import { HiGlobeAlt } from "react-icons/hi";
-import { GoDotFill } from "react-icons/go";
 
 
 
@@ -22,18 +21,13 @@ function CourseDetails(){
     const navigate = useNavigate();
     const {courseId} = useParams();
     const {loading} = useSelector((state) => state.profile);
-    const {paymentLoading} = useSelector((state) => state.course);
 
 
     const [confirmationModal, setConfirmationModal] = useState(null);
     const [courseData, setCourseData] = useState(null);
 
     const[isActive, setIsActive] = useState([]);
-    const handleActive = (id) => {
-        setIsActive(
-            !isActive.includes(id) ? isActive.concat(id) : isActive.filter((e) => e !== id)
-        )
-    }
+    
 
     useEffect(() => {
         const getFullCourseDetails = async() => {
@@ -59,7 +53,7 @@ function CourseDetails(){
     }, [courseData])
 
 
-    const[totalNoOfLectures, setTotalNoOfLectures] = useState(0);
+    
     useEffect(() => {
         if(!courseData){
             return;
@@ -109,10 +103,7 @@ function CourseDetails(){
     const {
         courseName,
         courseDescription,
-        thumbnail,
-        price,
         whatYouWillLearn,
-        courseContent,
         ratingAndReview,
         instructor,
         studentEnrolled,
