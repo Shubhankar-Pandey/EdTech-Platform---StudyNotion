@@ -1,0 +1,71 @@
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Common/Navbar.js
+  6:25  warning  'IoMenuOutline' is defined but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Contact Page/ContactUsForm.js
+  11:12  warning  'loading' is assigned a value but never used     no-unused-vars
+  11:21  warning  'setLoading' is assigned a value but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Course/CourseDetailsCard.js
+  45:13  warning  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/AddCourse/CourseBuilder/CourseBuilder.js
+  15:12  warning  'loading' is assigned a value but never used    no-unused-vars
+  19:56  warning  'getValues' is assigned a value but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/AddCourse/CourseBuilder/SubSectionModal.js
+  33:8  warning  React Hook useEffect has missing dependencies: 'edit', 'modalData.description', 'modalData.title', 'modalData.videoUrl', 'setValue', and 'view'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/AddCourse/CourseInformationForm.js
+  25:30  warning  'isSubmitSuccessful' is assigned a value but never used                                                                                                                                                                                                                                                  no-unused-vars
+  60:8   warning  React Hook useEffect has missing dependencies: 'course.category', 'course.courseDescription', 'course.courseName', 'course.instructions', 'course.price', 'course.tag', 'course.thumbnail', 'course.whatYouWillLearn', 'editCourse', and 'setValue'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/AddCourse/PublishForm/PublishForm.js
+  28:8  warning  React Hook useEffect has missing dependencies: 'course?.status' and 'setValue'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/AddCourse/RequirementField.js
+  16:8  warning  React Hook useEffect has missing dependencies: 'name' and 'register'. Either include them or remove the dependency array. If 'register' changes too often, find the parent component that defines it and wrap that definition in useCallback  react-hooks/exhaustive-deps
+  20:8  warning  React Hook useEffect has missing dependencies: 'name' and 'setValue'. Either include them or remove the dependency array. If 'setValue' changes too often, find the parent component that defines it and wrap that definition in useCallback  react-hooks/exhaustive-deps
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/AddCourse/Upload.js
+  22:11  warning  'course' is assigned a value but never used    no-unused-vars
+  27:9   warning  'inputRef' is assigned a value but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/EditCourse/EditCourse.js
+  29:8  warning  React Hook useEffect has missing dependencies: 'courseId' and 'dispatch'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/EnrolledCourses.js
+  3:10  warning  'useSelector' is defined but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/InstructorCourses/CoursesTable.js
+  2:10  warning  'useSelector' is defined but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/MyCourses.js
+  1:10  warning  'useSelector' is defined but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/MyProfile.js
+  11:11  warning  'navigate' is assigned a value but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/Settings/DeleteAccount.js
+  2:23  warning  'useSelector' is defined but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/Settings/UpdatePassword.js
+  4:10  warning  'useSelector' is defined but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/Dashboard/SidebarLink.js
+  12:11  warning  'dispatch' is assigned a value but never used  no-unused-vars
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/HomePage/TimeLineBlock.js
+  8:17  warning  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/HomePage/TimeLineSection.js
+  28:17  warning  Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop  jsx-a11y/img-redundant-alt
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Components/Core/ViewCourse/VideoDetails.js
+  48:6  warning  React Hook useEffect has missing dependencies: 'courseId', 'navigate', 'sectionId', and 'subSectionId'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+/Users/shubhankarpandey/Documents/Webdev_Files/StudyNotion Project/src/Pages/CourseDetails.js
+  29:12  warning  'totalNoOfLectures' is assigned a value but never used  no-unused-vars
+
+✖ 26 problems (0 errors, 26 warnings)
+
