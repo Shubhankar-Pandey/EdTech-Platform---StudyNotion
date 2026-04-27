@@ -30,7 +30,7 @@ exports.mailSender = async (email, title, body) => {
     try{
         // send mail using transporter 
         let info = await transporter.sendMail({
-            from : `"Trello App" <${process.env.EMAIL_USER}>`,
+            from : `"StudyNotion" <${process.env.EMAIL_USER}>`,
             to : `${email}`,
             subject : `${title}`,
             html : `${body}`,
